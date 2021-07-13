@@ -160,8 +160,8 @@ public class MemberProc implements MemberProcInter {
   }
 
   @Override
-  public int leave(HashMap<Object, Object> map) {
-    int cnt = this.memberDAO.leave(map);
+  public int grade_update(HashMap<Object, Object> map) {
+    int cnt = this.memberDAO.grade_update(map);
     return cnt;
   }
 

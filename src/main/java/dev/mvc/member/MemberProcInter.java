@@ -136,7 +136,7 @@ public interface MemberProcInter {
    * @param map
    * @return
    */
-  public int leave(HashMap<Object, Object> map);
+  public int grade_update(HashMap<Object, Object> map);
   
 
   

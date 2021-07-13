@@ -494,3 +494,23 @@ ul.menu>li ul.submenu>li:hover {
     margin: 20px auto;
     padding-right: 20px;
   }
+  
+  A:link{  /* 방문전 상태 */
+    text-decoration: none; /* 밑줄 삭제 */
+    color: #555555;
+  }
+
+  A:visited{  /* 방문후 상태 */
+    text-decoration: none; /* 밑줄 삭제 */
+    color: #555555;
+  }
+  
+  A:hover{  /* A 태그에 마우스가 올라간 상태 */
+    text-decoration: underline; /* 밑줄 출력 */
+    color: #7777FF;
+  }
+  
+  A:active{  /* A 태그를 클릭한 상태 */
+    text-decoration: underline; /* 밑줄 출력 */
+    color: #7777FF;
+  }

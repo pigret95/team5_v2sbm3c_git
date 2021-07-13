@@ -28,7 +28,7 @@ public class MemberCont {
   private MemberProcInter memberProc;
   
   /**
-   * 새로운 고침 방지
+   * 새로고침 방지
    * @param memberno
    * @return
    */
@@ -608,25 +608,28 @@ public class MemberCont {
     
     if (cnt == 1) { // 현재 패스워드가 일치하는 경우
       MemberVO memberVO = this.memberProc.read(memberno);
-      memberVO.setGrade(99);
-      int new_grade = memberVO.getGrade();
-      int update_grade = 0;
+      memberVO.setGrade(99); // 회원등급 99로 지정
+      int update_grade = memberVO.getGrade();
+      int grade = 0;
+      //System.out.println("-> grade: " + new_grade);
       
-      System.out.println("-> grade: " + new_grade);
+      map.put("grade", update_grade); // 변경된 회원등급 저장
+      grade = memberProc.grade_update(map);  // 회원등급 적용
       
-      map.put("grade", new_grade); // 회원등급 99로 지정
-      update_grade = memberProc.leave(map); // 회원탈퇴 처리
-      mav.addObject("update_grade", update_grade); 
+      mav.addObject("grade", grade); 
+      mav.addObject("cnt", cnt); // 패스워드 일치 여부
       
+      session.invalidate(); // 모든 session 변수 삭제(로그아웃)
+      
+      mav.addObject("url", "leave_msg");
+      
+      mav.setViewName("redirect:/member/msg.do");
+    }else {
+      mav.addObject("url", "passwd_fail");
+      
+      mav.setViewName("redirect:/member/msg.do");
     }
-    mav.addObject("cnt", cnt); // 패스워드 일치 여부
-    
-    session.invalidate(); // 모든 session 변수 삭제(로그아웃)
-    
-    mav.addObject("url", "leave_msg");
-    
-    mav.setViewName("redirect:/member/msg.do");
-    
+
     return mav;
   }
   

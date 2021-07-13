@@ -119,18 +119,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE  memberno=#{memberno}
   </select>
   
-  <!-- 회원 탈퇴 -->
-  <update id="leave" parameterType="HashMap">
+  <!-- 회원등급 변경-->
+  <update id="grade_update" parameterType="HashMap">
     UPDATE member
     SET grade=#{grade}
     WHERE memberno=#{memberno}
   </update>
   
-  <!-- 회원등급 변경  -->
-  <update id="grade_update">
-  
-  
-  </update>
   
 
 
