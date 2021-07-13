@@ -28,7 +28,7 @@ public class MemberCont {
   private MemberProcInter memberProc;
   
   /**
-   * 새로운 URL로 이동?
+   * 새로운 고침 방지
    * @param memberno
    * @return
    */
