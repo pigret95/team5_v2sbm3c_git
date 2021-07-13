@@ -221,7 +221,7 @@ ul.menu>li ul.submenu>li:hover {
   .title_line {
     text-align: left;
     border-bottom: solid 3px #555555;
-    width: 100%;
+    width: 90%;
     margin: 20px auto;
     font-size: 20px;
     font-weight:bold;    
@@ -360,3 +360,137 @@ ul.menu>li ul.submenu>li:hover {
   text-align:center;
 }
 
+ .td_basic {
+    border-top: none;
+    border-right: none;
+    border-bottom: solid 1px #DDDDDD;
+    border-left: none;
+    text-align: center;
+  }
+  
+  .td_left {
+    border-top: none;
+    border-right: none;
+    border-bottom: solid 1px #DDDDDD;
+    border-left: none;
+    text-align: left;
+  }
+  
+  .td_bs {
+    text-align: center;
+  }
+  
+  .td_bs_left {
+    text-align: left;
+  }
+
+  .th_basic {
+    font-size: 0.8em;
+    border-bottom: solid 3px #DDDDDD; 
+  }
+  
+  .th_bs {
+    text-align: center;
+  }
+  
+    .bottom_menu {
+    text-align: center; 
+    margin: 20px auto;
+    clear: both;  /* 앞쪽 태그의 float 효과를 제거함. */
+  }
+  /* 기타 메시지 */
+  .message {
+    width: 70%;
+    border: none;
+    margin: 30px auto;
+    text-align: center;
+    background-color: #FAFAFA;
+    padding: 30px;
+    
+  }
+  
+  /* 알림 메시지 */ 
+  .span_info {
+    color: #ffffff;
+    background-color: rgba(0, 200, 0, 0.6);
+    padding: 2px;
+  }
+  
+  /* 주의 메시지 */
+  .span_alert {
+    color: #ffffff;
+    background-color: rgba(0, 0, 200, 0.6);
+    padding: 2px;
+  }
+  
+  /* 경고 메시지 */  
+  .span_warning {
+    color: #FFFFFF;
+    background-color: rgba(255, 0, 0, 0.6);
+    padding: 2px; 
+  }
+  
+  .msg_warning {
+    color: #FFFFFF;
+    background-color: rgba(255, 0, 0, 0.6);
+    padding: 2px;
+    margin: 10px auto;
+    text-align: center;
+    width: 80%; 
+  }  
+  
+  /* 처리 성공 메시지 */
+  .span_success {
+    background: url('/css/images/url5.png') left center no-repeat;
+    background-size: 10px;
+    padding-top: 0px;
+    padding-left: 20px; 
+  }
+  
+  /* 처리 실패 메시지 */
+  .span_fail {
+    background: url('/css/images/url8.png') left center no-repeat;
+    background-size: 10px;
+    padding-top: 0px;
+    padding-left: 20px; 
+  }
+
+    .fieldset_basic {
+    width: 90%; 
+    margin: 10px auto; 
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    padding: 10px;
+  }
+  
+  .li_none {
+    list-style: none;
+    margin: 15px 10px;
+  }
+
+  .li_none_left {
+    text-align: left;
+    list-style: none;
+    margin: 15px 10px;
+  }
+  
+  .li_warning { /* 경고 메시지 */
+    list-style: none;
+    margin: 15px 10px;
+    color: #FF6600;
+  }
+  
+  .li_error { /* 에러 메시지 */
+    list-style: none;
+    margin: 15px 10px;
+    color: #FF0000;
+  }
+  
+  .li_right {
+    text-align: right;
+    list-style: none;
+    margin: 20px auto;
+    padding-right: 20px;
+  }
