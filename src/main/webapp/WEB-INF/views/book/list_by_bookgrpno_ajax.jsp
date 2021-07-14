@@ -76,7 +76,7 @@ function delete_by_bookgrpno(bookgrpno) {
   f.submit();
 } 
 
-// 다수의 chno를 전달하여 contents 레코드 삭제
+// 다수의 bookno를 전달하여 contents 레코드 삭제
 function delete_contents_by_all_bookno() {
   
   var f = $('#frm_delete_by_bookgrpno');
@@ -126,7 +126,7 @@ function read_delete_ajax(bookno) {
         if (count_by_bookno > 0 ) { // 자식 레코드가 있다면
           $('#frm_delete_count_by_bookno').show(); // 자식레코드 보여줌
           $('#frm_delete_count_by_bookno_panel').html('관련자료 : ' + count_by_bookno +'건'); 
-          $('#a_list_by_bookno').attr('href', '../contents/list_by_bookno_search_paging.do?chno=' + bookno);
+          $('#a_list_by_bookno').attr('href', '../contents/list_by_bookno_search_paging.do?bookno=' + bookno);
         } else { // 자식 레코드가 없는 경우
           $('#frm_delete_count_by_bookno').hide();  // 자식레코드 숨김
         } //else end
@@ -212,12 +212,12 @@ function read_delete_ajax(bookno) {
   
   <TABLE class='table table-striped'>
     <colgroup>
-      <col style='width: 5%;'/>
-    <col style='width: 5%;'/>
-      <col style='width: 20%;'/>
-      <col style='width: 40%;'/>
-      <col style='width: 20%;'/>
       <col style='width: 10%;'/>
+    <col style='width: 10%;'/>
+      <col style='width: 40%;'/>
+       <col style='width: 20%;'/>
+      <col style='width: 20%;'/>
+
     </colgroup>
    
     <thead>  
@@ -225,6 +225,7 @@ function read_delete_ajax(bookno) {
     <TH class="th_bs">번호</TH>
      <TH class="th_bs">그룹<br>번호</TH>
       <TH class="th_bs">종류</TH>
+      <TH class="th_bs">등록일</TH>
       <TH class="th_bs">기타</TH>
     </TR>
     </thead>

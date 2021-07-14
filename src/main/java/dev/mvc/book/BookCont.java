@@ -13,7 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.bookgrp.BookgrpProcInter;
 import dev.mvc.bookgrp.BookgrpVO;
-//import dev.mvc.contents.ContentsProcInter;
+import dev.mvc.contents.ContentsProcInter;
+
 
 
 
@@ -29,10 +30,11 @@ public class BookCont {
   @Autowired
   @Qualifier("dev.mvc.bookgrp.BookgrpProc")
    private BookgrpProcInter  bookgrpProc;
-  /* @Autowired
+  
+   @Autowired
    @Qualifier("dev.mvc.contents.ContentsProc") 
     private ContentsProcInter contentsProc;
-  */
+  
   
   public BookCont(){
     System.out.println("-->BookCont created");
@@ -163,8 +165,8 @@ public class BookCont {
     json.put("rdate", bookVO.getRdate());
     
     //자식 레코드의 갯수 추가 
-    //int count_by_chno=this.contentsProc.count_by_bookno(bookno);
-    //json.put("count_by_bookno", count_by_bookno);
+    int count_by_bookno=this.contentsProc.count_by_bookno(bookno);
+    json.put("count_by_bookno", count_by_bookno);
     
     return json.toString();
 

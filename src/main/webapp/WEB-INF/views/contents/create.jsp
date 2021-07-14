@@ -83,8 +83,37 @@
           <input type='text' class="form-control" name='word'  value='' placeholder="검색어" style='width: 90%;'>
         </div>
       </div>
+       
+        <div class="form-group">
+    
+        <label class="control-label col-md-2">정가</label>
+        
+         <input type='number' name='price' value='' required="required" autofocus="autofocus"
+                    min="0" max="10000000" step="100"  placeholder="정가" 
+                    class="form-control" style='width: 10%;'>
+        
+       <label class="control-label col-md-2">할인률</label>
+
+         <input type='number' name='dc' value='' required="required"
+                    min="0" max="100" step="1"  placeholder="할인률" 
+                    class="form-control" style='width: 10%;'>
+             
+        <label class="control-label col-md-2">판매가</label>
+       
+         <input type='number' name='saleprice' value='' required="required"
+                    min="0" max="10000000" step="100"  placeholder="판매가" 
+                    class="form-control" style='width: 10%;'>
+    
+         <label class="control-label col-md-2">포인트</label>
+   
+         <input type='number' name='point' value='' required="required"
+                    min="0" max="10000000" step="10"   placeholder="포인트" 
+                    class="form-control" style='width: 10%;'>
+               
+    </div> 
       
-       <div class="form-group">   
+         
+<div class="form-group">   
         <div class="col-md-12">
           <input type='text' class="form-control" name='writer'  value='' placeholder="저자" style='width: 90%;'>
         </div>

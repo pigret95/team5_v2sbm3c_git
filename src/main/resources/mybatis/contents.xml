@@ -73,6 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        3 page: WHERE r >= 21 AND r <= 30; -->
      
   </select>
+  
+  <!-- 일반적인 조회 -->
     <select id="read" resultType="dev.mvc.contents.ContentsVO" parameterType="int">
     SELECT contentsno, bookno, memberno, title, content, recom, word, rdate,
               file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher
@@ -80,6 +82,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE contentsno = #{contentsno}
   </select>  
   
+  <!-- 텍스트 수정 -->
+  <update id="update_text" parameterType="dev.mvc.contents.ContentsVO">
+    UPDATE contents
+    SET title=#{title}, content=#{content},  word=#{word}, 
+          price=#{price}, dc=#{dc}, saleprice=#{saleprice}, point=#{point}
+    WHERE contentsno = #{contentsno}
+  </update>
+  
+  <!-- 파일 수정 -->
+  <update id="update_file" parameterType="dev.mvc.contents.ContentsVO">
+    UPDATE contents
+    SET file1=#{file1}, file1saved=#{file1saved}, thumb1=#{thumb1}, size1=#{size1}
+    WHERE contentsno = #{contentsno}
+  </update>
+  
+  
+   <delete id="delete" parameterType="int">
+    DELETE FROM contents
+    WHERE contentsno=#{contentsno}
+  </delete>
+    <!-- 특정 그룹에 속한 레코드 갯수 산출 -->
+  <select id="count_by_bookno" resultType="int" parameterType="int">
+    SELECT COUNT(*) as cnt 
+    FROM contents 
+    WHERE bookno=#{bookno}
+  </select>  
+  
+    <!-- 다수의 bookno를 전달하여 contents 레코드 삭제 -->
+  <delete id="delete_contents_by_all_bookno" parameterType="Map">
+    DELETE FROM contents
+    WHERE bookno IN 
+    <foreach collection="booknos_list" item="codeno" separator="," open="(" close=")">
+      #{codeno}
+    </foreach>
+  </delete>
+  
+
 </mapper> 
 
 

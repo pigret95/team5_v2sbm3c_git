@@ -246,4 +246,178 @@ public class ContentsCont {
         
     return mav;
   }
+  
+  /**
+   * 다수의 bookno를 전달하여 contents 레코드 삭제
+   * @param contentsno
+   * @return
+   */
+  @RequestMapping(value="/contents/delete_contents_by_all_bookno.do", method=RequestMethod.POST)
+  public ModelAndView delete_contents_by_all_bookno(String booknos) { 
+    ModelAndView mav = new  ModelAndView();
+    
+    String[] booknos_array = booknos.split(",");  
+    List<Integer> booknos_list = new ArrayList<Integer>();
+    
+    for(int index=0; index < booknos_array.length; index++) {
+      booknos_list.add(Integer.parseInt(booknos_array[index]));
+    }
+    
+    Map<String, Object> booknos_map = new HashMap<String, Object>();
+    booknos_map.put("booknos_list", booknos_list);
+    
+    this.contentsProc.delete_contents_by_all_bookno(booknos_map);
+
+    mav.setViewName("redirect:/bookgrp/list.do"); 
+    
+    return mav; 
+  }
+  /**
+   * 수정 폼
+   * http://localhost:9091/contents/update_text.do?contentsno=1
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/update_text.do", method = RequestMethod.GET)
+  public ModelAndView update_text(int contentsno) {
+    ModelAndView mav = new ModelAndView();
+    
+    ContentsVO contentsVO = this.contentsProc.read_update_text(contentsno);
+    BookVO bookVO = this.bookProc.read(contentsVO.getBookno());
+    BookgrpVO bookgrpVO = this.bookgrpProc.read(bookVO.getBookgrpno());
+    
+    mav.addObject("contentsVO", contentsVO);
+    mav.addObject("bookVO", bookVO);
+    mav.addObject("bookgrpVO", bookgrpVO);
+    
+    mav.setViewName("/contents/update_text"); // /WEB-INF/views/contents/update_text.jsp
+    // String content = "장소:\n인원:\n준비물:\n비용:\n기타:\n";
+    // mav.addObject("content", content);
+
+    return mav; // forward
+  }
+  
+  /**
+   * 수정 처리
+   * http://localhost:9091/contents/update_text.do?contentsno=1
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/update_text.do", method = RequestMethod.POST)
+  public ModelAndView update_text(ContentsVO contentsVO,
+                                                     @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
+    ModelAndView mav = new ModelAndView();
+    
+    int cnt = this.contentsProc.update_text(contentsVO); // 수정 처리
+    
+    mav.addObject("contentsno", contentsVO.getContentsno());
+    mav.addObject("now_page", now_page);
+    
+    mav.setViewName("redirect:/contents/read.do"); // 전송된 form 데이터는 모두 삭제됨.
+
+    return mav; // forward
+  }
+  
+  /**
+   * 파일 수정 폼
+   * http://localhost:9091/contents/update_file.do?contentsno=1
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/update_file.do", method = RequestMethod.GET)
+  public ModelAndView update_file(int contentsno) {
+    ModelAndView mav = new ModelAndView();
+    
+    ContentsVO contentsVO = this.contentsProc.read_update_text(contentsno);
+    BookVO bookVO = this.bookProc.read(contentsVO.getBookno());
+    BookgrpVO bookgrpVO = this.bookgrpProc.read(bookVO.getBookgrpno());
+    
+    mav.addObject("contentsVO", contentsVO);
+    mav.addObject("bookVO", bookVO);
+    mav.addObject("bookgrpVO", bookgrpVO);
+    
+    mav.setViewName("/contents/update_file"); // /WEB-INF/views/contents/update_file.jsp
+
+    return mav; // forward
+  }
+  
+  /**
+   * 파일 수정 처리 http://localhost:9091/contents/update_file.do
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/update_file.do", method = RequestMethod.POST)
+  public ModelAndView update_file(HttpServletRequest request, 
+                                                    ContentsVO contentsVO, 
+                                                    @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
+    ModelAndView mav = new ModelAndView();
+
+    // -------------------------------------------------------------------
+    // 파일 삭제 코드 시작
+    // -------------------------------------------------------------------
+    // 삭제할 파일 정보를 읽어옴.
+    ContentsVO vo = contentsProc.read(contentsVO.getContentsno());
+//    System.out.println("contentsno: " + vo.getContentsno());
+//    System.out.println("file1: " + vo.getFile1());
+    
+    String file1saved = vo.getFile1saved();
+    String thumb1 = vo.getThumb1();
+    long size1 = 0;
+    boolean sw = false;
+    
+    // 완성된 경로 F:/ai8/ws_frame/resort_v1sbm3a/src/main/resources/static/contents/storage/
+    String upDir =  System.getProperty("user.dir") + "/src/main/resources/static/contents/storage/"; // 절대 경로
+
+    sw = Tool.deleteFile(upDir, file1saved);  // Folder에서 1건의 파일 삭제
+    sw = Tool.deleteFile(upDir, thumb1);     // Folder에서 1건의 파일 삭제
+    // System.out.println("sw: " + sw);
+    // -------------------------------------------------------------------
+    // 파일 삭제 종료 시작
+    // -------------------------------------------------------------------
+    
+    // -------------------------------------------------------------------
+    // 파일 전송 코드 시작
+    // -------------------------------------------------------------------
+    String file1 = "";          // 원본 파일명 image
+
+    // 완성된 경로 F:/ai8/ws_frame/resort_v1sbm3a/src/main/resources/static/contents/storage/
+    // String upDir =  System.getProperty("user.dir") + "/src/main/resources/static/contents/storage/"; // 절대 경로
+    
+    // 전송 파일이 없어도 fnamesMF 객체가 생성됨.
+    // <input type='file' class="form-control" name='file1MF' id='file1MF' 
+    //           value='' placeholder="파일 선택">
+    MultipartFile mf = contentsVO.getFile1MF();
+    
+    file1 = mf.getOriginalFilename(); // 원본 파일명
+    size1 = mf.getSize();  // 파일 크기
+    
+    if (size1 > 0) { // 파일 크기 체크
+      // 파일 저장 후 업로드된 파일명이 리턴됨, spring.jsp, spring_1.jpg...
+      file1saved = Upload.saveFileSpring(mf, upDir); 
+      
+      if (Tool.isImage(file1saved)) { // 이미지인지 검사
+        // thumb 이미지 생성후 파일명 리턴됨, width: 250, height: 200
+        thumb1 = Tool.preview(upDir, file1saved, 250, 200); 
+      }
+      
+    }    
+    
+    contentsVO.setFile1(file1);
+    contentsVO.setFile1saved(file1saved);
+    contentsVO.setThumb1(thumb1);
+    contentsVO.setSize1(size1);
+    // -------------------------------------------------------------------
+    // 파일 전송 코드 종료
+    // -------------------------------------------------------------------
+    
+    // Call By Reference: 메모리 공유, Hashcode 전달
+    int cnt = this.contentsProc.update_file(contentsVO);
+    
+    mav.addObject("contentsno", contentsVO.getContentsno());
+    mav.addObject("now_page", now_page);
+    
+    mav.setViewName("redirect:/contents/read.do"); 
+
+    return mav; // forward
+  }   
 }

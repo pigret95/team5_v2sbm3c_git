@@ -39,12 +39,53 @@ public interface ContentsProcInter {
    */
   public List<ContentsVO> list_by_bookno_search_paging(HashMap<String, Object> map);
   
+
   /**
    * 조회
    * @param contentsno
    * @return
    */
   public ContentsVO read(int contentsno);
+  
+  /**
+   * 텍스트 수정용 조회
+   * @param contentsno
+   * @return
+   */
+  public ContentsVO read_update_text(int contentsno);
+  /**
+   * 텍스트 정보 수정
+   * @param contentsVO
+   * @return
+   */
+  public int update_text(ContentsVO contentsVO);
+  
+  /**
+   * 파일 정보 수정
+   * @param contentsVO
+   * @return
+   */
+  public int update_file(ContentsVO contentsVO);
+  /**
+   * 특정 그룹에 속한 레코드 갯수 산출
+   * @param bookno
+   * @return
+   */
+  public int count_by_bookno(int bookno);
+  
+  /**
+   * 삭제
+   * @param contentsno
+   * @return
+   */
+  // public int delete(int contentsno);
+  
+  /**
+   * 다수의 booknos를 전달하여 contents 레코드 삭제
+   * @param booknos
+   * @return
+   */
+  public int delete_contents_by_all_bookno(Map<String, Object> booknos);
 }
 
 

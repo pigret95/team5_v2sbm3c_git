@@ -175,5 +175,38 @@ public class ContentsProc implements ContentsProcInter {
     return contentsVO;
   }
 
+  @Override
+  public ContentsVO read_update_text(int contentsno) {
+    ContentsVO contentsVO = this.contentsDAO.read(contentsno);
+    return contentsVO;
+  }
+  
+
+  @Override
+  public int update_text(ContentsVO contentsVO) {
+    int cnt = this.contentsDAO.update_text(contentsVO);
+    return cnt;
+  }
+
+  @Override
+  public int update_file(ContentsVO contentsVO) {
+    int cnt = this.contentsDAO.update_file(contentsVO);
+    return cnt;
+  }
+  @Override
+  public int count_by_bookno(int bookno) {
+    int cnt=this.contentsDAO.count_by_bookno(bookno);
+    return cnt;
+  }
+
+  @Override
+  public int delete_contents_by_all_bookno(Map<String, Object> booknos) {
+    int cnt=this.contentsDAO.delete_contents_by_all_bookno(booknos);
+    return cnt;
+  }
+
+
+ 
+
 
 }
