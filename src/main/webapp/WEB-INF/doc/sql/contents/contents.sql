@@ -4,7 +4,7 @@
 DROP TABLE contents;
 CREATE TABLE contents(
 		contentsno                    		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
-		bookno                        		NUMBER(10)		 NULL ,
+		bookno                        		NUMBER(10)		 NOT NULL ,
         memberno                          NUMBER(10)		 NOT NULL,
 		title                         		VARCHAR2(300)		 NOT NULL,
 		content                       		CLOB	 NOT NULL,
@@ -19,10 +19,13 @@ CREATE TABLE contents(
 		saleprice                     		NUMBER(10)		 NULL ,
 		dc                            		NUMBER(10)		 NULL ,
 		point                         		NUMBER(10)		 NULL ,
-		salecnt                       		NUMBER(10)		 NULL ,
+                        writer                                 VARCHAR2(100)  NOT NULL,
+                        publisher                            VARCHAR2(100)  NOT NULL,
+        
   FOREIGN KEY (bookno) REFERENCES book (bookno),
-    FOREIGN KEY (memberno) REFERENCES member (memberno)
+  FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
+
 
 COMMENT ON TABLE contents is '컨텐츠 - 도서 상품';
 COMMENT ON COLUMN contents.contentsno is '컨텐츠 번호';
@@ -41,8 +44,8 @@ COMMENT ON COLUMN contents.price is '정가';
 COMMENT ON COLUMN contents.saleprice is '판매가';
 COMMENT ON COLUMN contents.dc is '할인률';
 COMMENT ON COLUMN contents.point is '포인트';
-COMMENT ON COLUMN contents.salecnt is '수량';
-
+COMMENT ON COLUMN contents.writer is '저자';
+COMMENT ON COLUMN contents.publisher is '출판사';
 DROP SEQUENCE contents_seq;  
 
 CREATE SEQUENCE contents_seq            -- 이부분부터만 실행
@@ -53,24 +56,25 @@ CREATE SEQUENCE contents_seq            -- 이부분부터만 실행
   NOCYCLE;                 -- 다시 1부터 생성되는 것을 방지
   
 INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, rdate,
-      file1,file1saved,thumb1,size1,price,saleprice,dc,point,salecnt)
+      file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher)
 VALUES(contents_seq.nextval, 1, 1, '한국사능력검정시험고급', '최태성 선생님의 최고의 역사 교육!',0,'한국사',sysdate,
-      'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,100);
+      'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,'가나다','라마바');
       
-INSERT INTO contents(contentsno, bookno,memberno, title, content, recom, word, rdate,
-      file1,file1saved,thumb1,size1,price,saleprice,dc,point,salecnt)
+INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, rdate,
+      file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher)
 VALUES(contents_seq.nextval, 4, 1, '해커스 TOEIC 한권으로 합격!', '베스트 셀러 1위 책!',0,'토익',sysdate,
-      'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,100);
-   
+      'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,100,'가나다','라마바');
+--컬럼 제거 
+ALTER TABLE contents DROP COLUMN cartno;
 --조회  
-  SELECT contentsno, bookno,memberno, title, content, recom, word, rdate,
-            file1,file1saved,thumb1,size1,price,saleprice,dc,point,salecnt
+  SELECT contentsno, bookno, memberno, title, content, recom, word, rdate
+             ,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher
   FROM contents
   ORDER BY contentsno ASC;
 
 --수정
 UPDATE contents 
-SET price=3000,dc=20,saleprice=2000,point=120,salecnt=300
+SET price=3000,dc=20,saleprice=2000,point=120
 WHERE contentsno=2;
 
 --삭제
