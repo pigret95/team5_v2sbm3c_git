@@ -36,11 +36,19 @@
     <FORM name='frm' id='frm' method='POST' action='./leave.do' class="form-horizontal">
     <input type='hidden' name='memberno' id='memberno' value='${param.memberno }'>  
       <div class="form-group">
-        <label class="col-md-5 control-label" style="font-size: 0.9em;">성명</label>${memberVO.name }
+        <label class="col-md-5 control-label" style="font-size: 0.9em;">성명</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control" name='name' id='name' value='${memberVO.name }' 
+                    style='width: 10%;' readonly="readonly">  
+        </div>
       </div>   
       
       <div class="form-group">
-        <label class="col-md-5 control-label" style="font-size: 0.9em;">ID</label>${memberVO.id }
+        <label class="col-md-5 control-label" style="font-size: 0.9em;">ID</label>
+        <div class="col-md-7">
+         <input type="text" class="form-control" name='id' id='id' value='${memberVO.id }' 
+                    style='width: 10%;' readonly="readonly">  
+        </div>
       </div>  
                       
      <div class="form-group">

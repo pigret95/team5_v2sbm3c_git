@@ -32,6 +32,7 @@
 
   $(function() {
     $('#btn_DaumPostcode').on("click", DaumPostcode);
+    
   });
 
  // select에서 옵션 값을 email2에 값 넣기
@@ -49,11 +50,38 @@
           $('#email2').attr("readonly",true);  // 읽기 전용 설정
         }
       });
+
+/*       if($('input:checkbox[name="email_yn"]').is(":checked") ==  true){
+        $('#email_yn').val('Y');
+       }else{
+        $('#email_yn').val('N');
+       } */
+      
+/*       $('input:checkbox[name="email_yn"]').each(function() {
+        if(this.value == "Y"){ //값 비교
+           this.checked = true; //checked 처리
+         }
+       }); */
       
     });
   });
+
+/*    // check 여부
+  $(function(){  
+    $(document).ready(function(){  
+      
+      if($("#email_yn").is(":checked")) {
+        $("#email_yn").val('Y');
+      }else{
+        $("#email_yn").val('N');
+      }
+
+      
+    });
+  });  */
  </script>
 </head>
+
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
 
@@ -77,11 +105,17 @@
     <FORM name='frm' id='frm' method='POST' action='./update.do' class="form-horizontal">
      <input type="hidden" name="memberno" value="${memberVO.memberno }"> <!-- ***** -->
       <div class="form-group">
-        <label for="id" class="col-md-2 control-label" style='font-size: 0.9em;'>아이디</label>${id }    
+        <label for="id" class="col-md-2 control-label" style='font-size: 0.9em;'>아이디</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name='id' id='id' value='${id }' style='width: 10%;' readonly="readonly"> 
+        </div>   
       </div>                 
       
       <div class="form-group">
-        <label for="name" class="col-md-2 control-label" style='font-size: 0.9em;'>성명</label>${name }  
+        <label for="name" class="col-md-2 control-label" style='font-size: 0.9em;'>성명</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" name='name' id='name' value='${name }' style='width: 10%;' readonly="readonly">
+        </div>
       </div>   
   
       <div class="form-group">
@@ -110,7 +144,22 @@
               <option value="empal.com">empal.com</option>
               <option value="korea.com">korea.com</option>
               <option value="freechal.com">freechal.com</option>
-          </select><br><!-- <input type="checkbox" name='email_yn' id='email_yn' value="Y" checked="checked"> --에서 발송하는 e-mail을 수신합니다. -->
+          </select><br>
+          <fieldset>
+            <input type="radio" name='email_yn' id='email_y' value="Y" checked="checked">
+            <label for='email_y' >메일 수신</label>
+            <input type="radio" name='email_yn' id='email_n' value="N">
+            <label for='email_n'>메일 수신 안함</label>
+          </fieldset>
+          <!-- <input type="checkbox" name='email_yn' id='email_yn' value='Y' checked="checked"> BOOK에서 발송하는 e-mail을 수신합니다. -->
+          <%-- <c:choose> 
+             <c:when test="${memberVO.email_yn=='Y' }">
+                 <input type="checkbox" name='email_yn' id='email_yn' value='Y' checked="checked"> BOOK에서 발송하는 e-mail을 수신합니다.
+            </c:when>
+            <c:otherwise>
+                <input type="checkbox" name='email_yn' id='email_yn' value='N'> BOOK에서 발송하는 e-mail을 수신합니다.
+            </c:otherwise>
+           </c:choose> --%>
         </div>
       </div>    
   

@@ -238,7 +238,14 @@
               <option value="empal.com">empal.com</option>
               <option value="korea.com">korea.com</option>
               <option value="freechal.com">freechal.com</option>
-          </select><br><input type="checkbox" name='email_yn' id='email_yn' value="Y" checked="checked"> --에서 발송하는 e-mail을 수신합니다.
+          </select><br>
+          <fieldset>
+            <input type="radio" name='email_yn' id='email_y' value="Y" checked="checked" >
+            <label for='email_y' >메일 수신</label>
+            <input type="radio" name='email_yn' id='email_n' value="N">
+            <label for='email_n'>메일 수신 안함</label>
+          </fieldset>
+          <!-- <input type="checkbox" name='email_yn' id ='email_yn' value="Y"checked="checked"> BOOK에서 발송하는 e-mail을 수신합니다. -->
         </div>
       </div>    
   

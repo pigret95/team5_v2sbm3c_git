@@ -165,12 +165,13 @@ public class MemberCont {
 //      mav.addObject("url", "login_fail_msg");
 //      mav.setViewName("redirect:/member/msg.do"); 
 //    }
-    
-    MemberVO memberVO = memberProc.readById(id);
-    int grade = memberVO.getGrade();
+   
     int count = memberProc.login(map);
     
     if (count == 1) { // 로그인 처리
+      MemberVO memberVO = memberProc.readById(id);
+      int grade = memberVO.getGrade();
+      
       if(grade == 99) {
         System.out.println(id + " 탈퇴회원 입니다.");
         mav.addObject("url", "not_member_msg");
