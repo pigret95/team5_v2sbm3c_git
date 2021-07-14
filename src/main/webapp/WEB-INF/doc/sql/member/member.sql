@@ -4,7 +4,7 @@
 DROP TABLE member cascade constraints;
 
 CREATE TABLE member(
-    memberno                          NUMBER(10)     NOT NULL,
+    memberno                          NUMBER(10)     NOT NULL  PRIMARY KEY,
     name                              VARCHAR2(20)     NOT NULL,
     id                                VARCHAR2(20)     NOT NULL,
     passwd                            VARCHAR2(30)     NOT NULL,

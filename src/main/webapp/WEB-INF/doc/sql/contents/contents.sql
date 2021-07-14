@@ -19,8 +19,8 @@ CREATE TABLE contents(
 		saleprice                     		NUMBER(10)		 NULL ,
 		dc                            		NUMBER(10)		 NULL ,
 		point                         		NUMBER(10)		 NULL ,
-                        writer                                 VARCHAR2(100)  NOT NULL,
-                        publisher                            VARCHAR2(100)  NOT NULL,
+    writer                                 VARCHAR2(100)  NOT NULL,
+    publisher                            VARCHAR2(100)  NOT NULL,
         
   FOREIGN KEY (bookno) REFERENCES book (bookno),
   FOREIGN KEY (memberno) REFERENCES member (memberno)
