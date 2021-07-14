@@ -168,9 +168,11 @@ public class MemberCont {
    
     int count = memberProc.login(map);
     
+    MemberVO memberVO = memberProc.readById(id);
+    int grade = memberVO.getGrade();
+    
     if (count == 1) { // 로그인 처리
-      MemberVO memberVO = memberProc.readById(id);
-      int grade = memberVO.getGrade();
+
       
       if(grade == 99) {
         System.out.println(id + " 탈퇴회원 입니다.");
