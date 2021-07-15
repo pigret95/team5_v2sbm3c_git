@@ -393,7 +393,7 @@ li.menu1:focus .type{
   
   .menu_line {
     text-align: left;
-    border-bottom: solid 1px #555555;
+   
     width: 100%;
     margin: 20px auto;
     font-size: 20px; 
@@ -419,6 +419,9 @@ li.menu1:focus .type{
   
   .contents{
     padding-top:10px;
+    margin:0px auto;
+    margin-top:20px;
+    width:80%;
   }
   
   
@@ -449,7 +452,13 @@ li.menu1:focus .type{
   float:left;
   width:20%;
   height:100%;
-   border:1px solid black;
+   border-top:1px solid #666666;
+ 
+
+}
+
+.side_menu_ademin{
+  border-top:1px solid #666666;
 }
 
 .main{
@@ -464,6 +473,7 @@ li.menu1:focus .type{
   height:100%;
   margin-bottom:20px;
   font-size:15px;
+  text-align:center;
 }
 
 .date{
