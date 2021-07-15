@@ -39,7 +39,7 @@ $(document).ready(function(){
          <span><a class="menu_link" href="#">마이페이지</a></span> &nbsp
          
          <c:choose>
-            <c:when test="${grade >= 1 and grade <= 10}"> <span><A class='menu_link'  href='/member/list.do' >회원목록</A></span>  &nbsp</c:when>    
+            <c:when test="${grade >= 1 or grade <= 10}"> <span><A class='menu_link'  href='/member/list.do' >회원목록</A></span>  &nbsp</c:when>    
            </c:choose>
         </c:otherwise>
       </c:choose> 
@@ -144,7 +144,7 @@ $(document).ready(function(){
 </li>
  <li><a class="menu_link" href="/">홈 </a></li>
  <c:choose>
-      <c:when test="${grade >= 1 and grade <= 10}"><li ><A class='menu_link'  href='/event/list_search.do' >이벤트</A></li></c:when>    
+      <c:when test="${grade >= 1 or grade <= 10}"><li ><A class='menu_link'  href='/event/list_search.do' >이벤트</A></li></c:when>    
       <c:when test="${grade >= 11 or grade == null}"><li><A class='menu_link'  href='/event/list_grid.do' >이벤트</A></li></c:when>
     </c:choose>  
 </ul>

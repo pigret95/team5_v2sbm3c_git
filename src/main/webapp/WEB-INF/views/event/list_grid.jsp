@@ -34,7 +34,7 @@
         
         <c:choose>
             
-            <c:when test="${grade >= 1 and grade <= 10}"> <span><A class='menu_link'  href='/event/list_search.do' >리스트형</A></span>  &nbsp</c:when>    
+            <c:when test="${grade >= 1 or grade <= 10}"> <span><A class='menu_link'  href='/event/list_search.do' >리스트형</A></span>  &nbsp</c:when>    
            </c:choose>
 
 

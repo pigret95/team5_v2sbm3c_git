@@ -133,6 +133,6 @@ WHERE memberno=19 AND grade between 1 and 20;
 
 --회원등급 변경  ?
 UPDATE member
-set grade=99
-where memberno=4;
+set grade=1
+where memberno=3;
 
