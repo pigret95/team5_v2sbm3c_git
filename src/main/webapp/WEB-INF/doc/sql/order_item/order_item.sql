@@ -36,7 +36,10 @@ CREATE SEQUENCE order_item_seq
 -- 등록  
 -- 주문 상태(stateno):  1: 결재 완료, 2: 상품 준비중, 3: 배송 시작, 4: 배달중, 5: 오늘 도착, 6: 배달 완료  
 INSERT INTO order_item(order_itemno, memberno, order_payno, contentsno, cnt, tot, stateno, rdate)
-VALUES (order_item_seq.nextval, 1, 1, 9, 1, 10000, 1, sysdate); 
+VALUES (order_item_seq.nextval, 1, 1, 1, 1, 10000, 1, sysdate); 
+
+INSERT INTO order_item(order_itemno, memberno, order_payno, contentsno, cnt, tot, stateno, rdate)
+VALUES (order_item_seq.nextval, 1, 1, 1, 1, 10000, 1, sysdate); 
 
 --주문 결재별 주문 상세 목록
 SELECT order_itemno, memberno, order_payno, contentsno, cnt, tot, stateno, rdate
@@ -44,12 +47,13 @@ FROM order_item
 WHERE order_payno=1
 ORDER BY order_itemno DESC;
 
+commit;
 -- contents + order_pay join 주문 결재별 주문 상세 목록
 -- 다른 사용자 주문 상세 내역 해킹방지를위해 memberno를 비교 <-- 구현
 SELECT i.order_itemno, i.memberno, i.order_payno, i.contentsno, i.cnt, i.tot, i.stateno, i.rdate,
            c.title, c.saleprice
 FROM order_item i, contents c 
-WHERE (i.contentsno = c.contentsno) AND order_payno=1 AND memberno=1
+WHERE (i.contentsno = c.contentsno) AND order_payno=1 AND i.memberno = 1
 ORDER BY order_itemno DESC;
 
 --회원별 주문 상세 목록
@@ -59,12 +63,19 @@ WHERE memberno=1
 ORDER BY order_itemno DESC;
 
 -- contents + order_pay join 회원별 주문 상세 목록
-SELECT i.order_itemno, i.memberno, i.order_payno, i.contentsno, i.cnt, i.tot, i.stateno, i.rdate,
-           c.title, c.saleprice
+SELECT i.order_itemno as ino, i.memberno as mno, i.order_payno as pno, i.contentsno as cno, i.cnt as cmt, i.tot as tot, i.stateno as statno, i.rdate as rda,
+           c.title as ti, c.saleprice as sp
 FROM order_item i, contents c 
 WHERE (i.contentsno = c.contentsno) AND (memberno=1)
 ORDER BY order_itemno DESC;
 
+SELECT *
+FROM order_item
+WHERE order_itemno = 1 and memberno = 1;
+
+
+
+SELECT 
 
 -- 수정: 개발 안함.
 

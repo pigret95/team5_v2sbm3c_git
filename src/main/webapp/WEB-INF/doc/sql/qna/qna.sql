@@ -43,7 +43,7 @@ CREATE SEQUENCE qna_seq
 
  -- 질문 등록
  INSERT INTO qna(qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state)
- VALUES (qna_seq.nextval, '1', 'title_01', 'content_01,' sysdate, file1, file1saved, thumb1, size1, memberno, state);
+ VALUES (qna_seq.nextval, '1', 'title_01', 'content_01', sysdate, file1, file1saved, thumb1, size1, memberno, state);
  
  -- 답변 등록
  UPDATE qna

@@ -59,7 +59,7 @@ INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, 
       file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher)
 VALUES(contents_seq.nextval, 1, 1, '한국사능력검정시험고급', '최태성 선생님의 최고의 역사 교육!',0,'한국사',sysdate,
       'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,'가나다','라마바');
-      
+
 INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, rdate,
       file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher)
 VALUES(contents_seq.nextval, 4, 1, '해커스 TOEIC 한권으로 합격!', '베스트 셀러 1위 책!',0,'토익',sysdate,
