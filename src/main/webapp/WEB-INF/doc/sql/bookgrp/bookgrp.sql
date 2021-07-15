@@ -24,29 +24,39 @@ CREATE SEQUENCE bookgrp_seq            -- 이부분부터만 실행
   CACHE 2                  -- 2번은 메모리에서만 계산
   NOCYCLE;                 -- 다시 1부터 생성되는 것을 방지
 
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '역사', 1,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '문학', 2,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, 'IT',3,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '외국어',4,sysdate);
+
+
 
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '소설', 1,sysdate);
+VALUES(bookgrp_seq.nextval, '소설', 10000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '시/에세이', 2,sysdate);
+VALUES(bookgrp_seq.nextval, '시/에세이', 20000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '경영/경제',3,sysdate);
+VALUES(bookgrp_seq.nextval, '경영/경제',30000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '인문',4,sysdate);
+VALUES(bookgrp_seq.nextval, '인문',40000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '자기계발', 5,sysdate);
+VALUES(bookgrp_seq.nextval, '자기계발', 50000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '과학', 6,sysdate);
+VALUES(bookgrp_seq.nextval, '과학', 60000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '기술/공학',7,sysdate);
+VALUES(bookgrp_seq.nextval, '기술/공학',70000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '자격증',8,sysdate);
+VALUES(bookgrp_seq.nextval, '자격증',80000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, 'IT',9,sysdate);
+VALUES(bookgrp_seq.nextval, 'IT',90000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '중/고등참고서', 10,sysdate);
+VALUES(bookgrp_seq.nextval, '중/고등참고서', 100000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '외국어', 11,sysdate);
+VALUES(bookgrp_seq.nextval, '외국어', 110000,sysdate);
 
 commit;
 
@@ -62,14 +72,7 @@ FROM bookgrp;
 --------------------------------------------------------------------
 
 
-INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '역사', 1,sysdate);
-INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '문학', 2,sysdate);
-INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, 'IT',3,sysdate);
-INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '외국어',4,sysdate);
+
 
 
 
