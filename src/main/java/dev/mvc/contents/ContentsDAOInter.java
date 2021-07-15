@@ -60,8 +60,15 @@ public interface ContentsDAOInter {
    * @param contentsno
    * @return
    */
-  // public int delete(int contentsno);
+   public int delete(int contentsno);
   
+   /**
+    * 추천수 증가
+    * @param contentsno
+    * @return
+    */
+   public int update_recom(int contentsno);
+   
   /**
    * 다수의 booknos를 전달하여 contents 레코드 삭제
    * @param booknos

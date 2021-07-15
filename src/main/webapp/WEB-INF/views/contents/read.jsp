@@ -16,13 +16,63 @@
 <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
+ <c:set var="contentsno" value="${contentsVO.contentsno }" />
+<c:set var="title" value="${contentsVO.title }" />
+<c:set var="price" value="${contentsVO.price }" />
+<c:set var="dc" value="${contentsVO.dc }" />
+<c:set var="saleprice" value="${contentsVO.saleprice }" />
+<c:set var="point" value="${contentsVO.point }" />
+<c:set var="recom" value="${contentsVO.recom }" />   
 <script type="text/javascript">
- 
-
  $(function() {
    CKEDITOR.replace('content');  // <TEXTAREA>태그 id 값 
  });
+
+ $(function(){
+   $('#btn_recom').on("click", function() { update_recom_ajax(${contentsno}); });
+
+ });
+ function update_recom_ajax(contentsno) {
+   // console.log('-> contentsno:' + contentsno);
+   var params = "";
+   // params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
+   params = 'contentsno=' + contentsno; // 공백이 값으로 있으면 안됨.
+
+   // csrf 파라미터 추가
+   // <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
+   //params += '&${ _csrf.parameterName }=${ _csrf.token }';
+   
+   $.ajax(
+     {
+       url: '/contents/update_recom_ajax.do',
+       type: 'post',  // get, post
+       cache: false, // 응답 결과 임시 저장 취소
+       async: true,  // true: 비동기 통신
+       dataType: 'json', // 응답 형식: json, html, xml...
+       data: params,      // 데이터
+       success: function(rdata) { // 응답이 온경우
+         // console.log('-> rdata: '+ rdata);
+         var str = '';
+         if (rdata.cnt == 1) {
+           // console.log('-> btn_recom: ' + $('#btn_recom').val());  // X
+           // console.log('-> btn_recom: ' + $('#btn_recom').html());
+           $('#btn_recom').html('♥('+rdata.recom+')');
+           $('#span_animation').hide();
+         } else {
+           $('#span_animation').html("지금은 추천을 할 수 없습니다.");
+         }
+       },
+       // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+       error: function(request, status, error) { // callback 함수
+         console.log(error);
+       }
+     }
+   );  //  $.ajax END
+
+   // $('#span_animation').css('text-align', 'center');
+   $('#span_animation').html("<img src='/contents/images/ani04.gif' style='width: 8%;'>");
+   $('#span_animation').show(); // 숨겨진 태그의 출력
+ }
 </script>
  
 </head> 
@@ -85,11 +135,29 @@
           <DIV style="width: 50%; float: left; margin-right: 10px;">
             <IMG src="/contents/storage/${contentsVO.file1saved }" style="width: 50%;">
           </DIV>
+         </c:if>   
           <DIV style="width: 47%; height: 260px; float: left; margin-right: 10px;">
             <span style="font-size: 1.5em; font-weight: bold;">${title }</span><br>
+            <span style="color: #FF0000; font-size: 2.0em;">${dc} %</span>
+            <span style="font-size: 1.5em; font-weight: bold;"><fmt:formatNumber value="${saleprice}" pattern="#,###" /> 원</span>
+            <del><fmt:formatNumber value="${price}" pattern="#,###" /> 원</del><br>
+            <span style="font-size: 1.2em;">포인트: <fmt:formatNumber value="${point}" pattern="#,###" /> 원</span><br>
+             <span style="font-size: 1.0em;">수량</span><br>
+            <form>
+              <input type='number' name='ordercnt' value='1' required="required" 
+                       min="1" max="99999" step="1" class="form-control" style='width: 30%;'><br>
+            <button type='button' id='btn_cart' onclick="cart_ajax(${contentsno })" class="btn btn-info">장바 구니</button>           
+            <button type='button' onclick="" class="btn btn-info">바로 구매</button>
+            <button type='button' onclick="" class="btn btn-info">관심 상품</button>
+            <button type='button' id="btn_recom" class="btn btn-info">♥(${recom })</button>
+            <span id="span_animation"></span>
+            </form>
           </DIV> 
-        </c:if> 
-     
+  
+          
+         <DIV style="width: 47%; height: 260px; float: left; margin-right: 10px;">
+            
+          </DIV> 
         <DIV>${contentsVO.content }</DIV>
                   
       </li>

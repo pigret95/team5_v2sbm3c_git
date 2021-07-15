@@ -42,10 +42,7 @@
       class='title_link'>${bookgrpVO.grpname }</A> > <A
       href="./list_by_bookno_search_paging.do?bookno=${bookVO.bookno }" class='title_link'>${bookVO.bookname }</A>
   </DIV>
-  <ASIDE  class="aside_right">
-    <A href=''>목록</A>
-    <!-- <span class='menu_divide' >│</span> --> 
-  </ASIDE> 
+
  
   <div class='menu_line'></div>
   
@@ -127,7 +124,7 @@
       <DIV class='content_bottom_menu'>
         <button type="submit" class="btn btn-info">등록</button>
         <button type="button" 
-                    onclick="location.href='./list.do?bookgrpno=${param.bookgrpno}'" 
+                    onclick="location.href='./list_by_bookno_search_paging.do?bookgrpno=${param.bookgrpno}'" 
                     class="btn btn-info">취소[목록]</button>
       </DIV>
        

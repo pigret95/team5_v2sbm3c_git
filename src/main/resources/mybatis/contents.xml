@@ -97,11 +97,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE contentsno = #{contentsno}
   </update>
   
-  
-   <delete id="delete" parameterType="int">
+    <!-- 삭제 -->
+  <delete id="delete" parameterType="int">
     DELETE FROM contents
     WHERE contentsno=#{contentsno}
   </delete>
+   
+     <!-- 추천 -->
+  <update id="update_recom" parameterType="int">
+    UPDATE contents
+    SET recom = recom + 1
+    WHERE contentsno = #{contentsno}
+  </update>
+   
+
     <!-- 특정 그룹에 속한 레코드 갯수 산출 -->
   <select id="count_by_bookno" resultType="int" parameterType="int">
     SELECT COUNT(*) as cnt 

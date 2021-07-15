@@ -357,8 +357,8 @@ public class ContentsCont {
     // -------------------------------------------------------------------
     // 삭제할 파일 정보를 읽어옴.
     ContentsVO vo = contentsProc.read(contentsVO.getContentsno());
-//    System.out.println("contentsno: " + vo.getContentsno());
-//    System.out.println("file1: " + vo.getFile1());
+    //    System.out.println("contentsno: " + vo.getContentsno());
+    //    System.out.println("file1: " + vo.getFile1());
     
     String file1saved = vo.getFile1saved();
     String thumb1 = vo.getThumb1();
@@ -417,6 +417,114 @@ public class ContentsCont {
     mav.addObject("now_page", now_page);
     
     mav.setViewName("redirect:/contents/read.do"); 
+
+    return mav; // forward
+  }   
+  
+  /**
+   * 삭제 폼
+   * @param contentsno
+   * @return
+   */
+  @RequestMapping(value="/contents/delete.do", method=RequestMethod.GET )
+  public ModelAndView delete(int contentsno) { 
+    ModelAndView mav = new  ModelAndView();
+    
+    // 삭제할 정보를 조회하여 확인
+    ContentsVO contentsVO = this.contentsProc.read(contentsno);
+    BookVO bookVO = this.bookProc.read(contentsVO.getBookno());
+    BookgrpVO bookgrpVO = this.bookgrpProc.read(bookVO.getBookgrpno());
+    
+    mav.addObject("contentsVO", contentsVO);    
+    mav.addObject("bookVO", bookVO);
+    mav.addObject("bookgrpVO", bookgrpVO);
+    
+    mav.setViewName("/contents/delete");  // contents/delete.jsp
+    
+    return mav; 
+  }
+  
+  /**
+   * 추천수 Ajax 수정 처리
+   * http://localhost:9091/contents/update_recom_ajax.do?contentsno=30
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/update_recom_ajax.do", method = RequestMethod.POST)
+  @ResponseBody
+  public String update_recom_ajax(int contentsno) {
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+    int cnt = this.contentsProc.update_recom(contentsno); // 추천수 증가
+    int recom = this.contentsProc.read(contentsno).getRecom(); // 새로운 추천수 읽음
+        
+    JSONObject json = new JSONObject();
+    json.put("cnt", cnt);
+    json.put("recom", recom);
+    
+    return json.toString();
+  }
+  /**
+   * 삭제 처리 http://localhost:9091/contents/delete.do
+   * 
+   * @return
+   */
+  @RequestMapping(value = "/contents/delete.do", method = RequestMethod.POST)
+  public ModelAndView delete(HttpServletRequest request,
+                                             int contentsno,
+                                             int now_page,
+                                             int bookno,
+                                             String word) {
+    ModelAndView mav = new ModelAndView();
+
+    // -------------------------------------------------------------------
+    // 파일 삭제 코드 시작
+    // -------------------------------------------------------------------
+    // 삭제할 파일 정보를 읽어옴.
+    ContentsVO vo = contentsProc.read(contentsno);
+    
+    String file1saved = vo.getFile1saved();
+    String thumb1 = vo.getThumb1();
+    long size1 = 0;
+    boolean sw = false;
+    
+    String upDir =  System.getProperty("user.dir") + "/src/main/resources/static/contents/storage/"; // 절대 경로
+
+    sw = Tool.deleteFile(upDir, file1saved);  // Folder에서 1건의 파일 삭제
+    sw = Tool.deleteFile(upDir, thumb1);     // Folder에서 1건의 파일 삭제
+    // System.out.println("sw: " + sw);
+    // -------------------------------------------------------------------
+    // 파일 삭제 종료 시작
+    // -------------------------------------------------------------------
+    
+    int cnt = this.contentsProc.delete(contentsno); // DBMS 삭제
+
+    if (cnt == 1) {
+      // -------------------------------------------------------------------------------------
+      // 마지막 페이지의 레코드 삭제시의 페이지 번호 -1 처리
+      HashMap<String, Object> map = new HashMap<String, Object>();
+      map.put("bookno", bookno);
+      map.put("word", word);
+      // 10번째 레코드를 삭제후
+      // 하나의 페이지가 3개의 레코드로 구성되는 경우 현재 9개의 레코드가 남아 있으면
+      // 페이지수를 4 -> 3으로 감소 시켜야함.
+      if (contentsProc.search_count(map) % Contents.RECORD_PER_PAGE == 0) {
+        now_page = now_page - 1;
+        if (now_page < 1) {
+          now_page = 1; // 시작 페이지
+        }
+      }
+      // -------------------------------------------------------------------------------------
+    }
+    // System.out.println("-> delete now_page: " + now_page);
+    mav.addObject("now_page", now_page);
+    mav.addObject("bookno", bookno);
+    
+    mav.setViewName("redirect:/contents/list_by_bookno_search_paging.do"); 
 
     return mav; // forward
   }   

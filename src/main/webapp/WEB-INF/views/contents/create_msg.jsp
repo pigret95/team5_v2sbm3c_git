@@ -19,16 +19,7 @@
 </head> 
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
-
-  <div class="title_line">
-        가을
-  </div>
- 
-   <ASIDE class="aside_left">
-    <A href=''>카테고리 그룹</A> > 
-    <A href=''>카테고리</A> >
-    신규 등록
-  </ASIDE>
+  
   <ASIDE  class="aside_right">
     <A href=''>목록</A>
     <!-- <span class='menu_divide' >│</span> --> 
@@ -56,7 +47,7 @@
         <c:choose>
           <c:when test="${param.cnt == 1 }">
             <button type='button' 
-                         onclick="location.href='./create.do?cateo=${param.cateno}'"
+                         onclick="location.href='./create.do?bookno=${param.bookno}'"
                          class="btn btn-info">새로운 컨텐츠 등록</button>
           </c:when>
           <c:otherwise>
@@ -67,7 +58,7 @@
         </c:choose>
                     
         <button type='button' 
-                    onclick="location.href='./list.do?cateno=${param.cateno}'"
+                    onclick="location.href='./list_by_bookno_search_paging.do?bookno=${param.bookno}'"
                     class="btn btn-info">목록</button>
       </LI>
      </UL>

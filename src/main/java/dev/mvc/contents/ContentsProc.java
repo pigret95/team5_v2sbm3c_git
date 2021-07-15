@@ -205,8 +205,18 @@ public class ContentsProc implements ContentsProcInter {
     return cnt;
   }
 
+  @Override
+  public int delete(int contentsno) {
+    int cnt=this.contentsDAO.delete(contentsno);
+    return cnt;
+  }
 
- 
+  @Override
+  public int update_recom(int contentsno) {
+    int cnt=this.contentsDAO.update_recom(contentsno);
+    return cnt;
+  }
+
 
 
 }
