@@ -13,10 +13,45 @@
           src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+// GET -> POST 전송, 상품 삭제
+function delete_func(cartno) { 
+  var frm = $('#frm_post');
+  frm.attr('action', './delete.do');
+  $('#cartno',  frm).val(cartno);
+  
+  frm.submit();
+}   
+
+// 수량
+function update_cnt(cartno) { 
+  var frm = $('#frm_post');
+  frm.attr('action', './update_cnt.do');
+  $('#cartno',  frm).val(cartno);
+  
+  var new_cnt = $('#' + cartno + '_cnt').val();  // $('#1_cnt').val()로 변환됨.
+  $('#cnt',  frm).val(new_cnt);
+
+  // alert('cnt: ' + $('#cnt',  frm).val());
+  // alert('cartno: ' + $('#cartno',  frm).val());
+  // return;
+  
+  frm.submit();
+  
+}
+
+</script>
 </head>
 
 <body>
 <jsp:include page="../menu/top.jsp" />
+
+<%-- GET -> POST: 상품 삭제, 수량 변경용 폼 --%>
+<form name='frm_post' id='frm_post' action='' method='post'>
+  <input type='hidden' name='cartno' id='cartno'>
+  <input type='hidden' name='cnt' id='cnt'>
+</form>
 
 <DIV class='title_line'>
   장바구니

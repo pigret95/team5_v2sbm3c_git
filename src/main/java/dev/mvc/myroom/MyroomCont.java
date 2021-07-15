@@ -26,7 +26,7 @@ public class MyroomCont {
   
   /**
    * 회원별 목록
-   * http://localhost:9091/cart/list_by_memberno.do
+   * http://localhost:9091/myroom/list_by_memberno.do
    * @return
    */
   @RequestMapping(value="/myroom/list_by_memberno.do", method=RequestMethod.GET )
@@ -49,6 +49,22 @@ public class MyroomCont {
       
       mav.setViewName("redirect:/member/login.do"); // /WEB-INF/views/member/login_ck_form.jsp
     }
+    return mav;
+  }
+  
+  /**
+   * 상품 삭제
+   * http://localhost:9091/myroom/delete.do
+   * @return
+   */
+  @RequestMapping(value="/myroom/delete.do", method=RequestMethod.POST )
+  public ModelAndView delete(HttpSession session,
+                   @RequestParam(value="myroomno", defaultValue="0") int myroomno ) {
+    ModelAndView mav = new ModelAndView();
+    
+    this.myroomProc.delete(myroomno);      
+    mav.setViewName("redirect:/myroom/list_by_memberno.do");
+    
     return mav;
   }
   

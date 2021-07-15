@@ -13,10 +13,25 @@
           src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+//GET -> POST 전송, 상품 삭제
+function delete_func(myroomno) { 
+  var frm = $('#frm_post');
+  frm.attr('action', './delete.do');
+  $('#myroomno',  frm).val(myroomno);
+  
+  frm.submit();
+}   
+</script>
 </head>
 
 <body>
 <jsp:include page="../menu/top.jsp" />
+
+<%-- GET -> POST: 상품 삭제, 수량 변경용 폼 --%>
+<form name='frm_post' id='frm_post' action='' method='post'>
+  <input type='hidden' name='myroomno' id='myroomno'>
+</form>
 
 <DIV class='title_line'>
   보관함
