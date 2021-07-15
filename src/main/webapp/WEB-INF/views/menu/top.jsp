@@ -43,7 +43,8 @@ $(document).ready(function(){
            </c:choose>
         </c:otherwise>
       </c:choose> 
-      <span><a class="menu_link" href="#">주문/장바구니</a></span>  &nbsp
+      <span><a class="menu_link" href="#">주문</a></span>  &nbsp
+      <span><a class="menu_link" href="#">장바구니</a></span>  &nbsp
       <span><a class="menu_link" href="../faq/service_home.do">고객센터</a></span>
       
      
@@ -101,7 +102,7 @@ $(document).ready(function(){
 <div>
     <ul class="menu">
        <li class="empty1"></li>
-       <li><a class="book">도서 </a>
+       <li><a class="book menu_link">도서 </a>
 
 <div class="board">
   <ul class="list">
@@ -142,7 +143,10 @@ $(document).ready(function(){
 
 </li>
  <li><a class="menu_link" href="/">홈 </a></li>
- <li><a class="menu_link" href="/event/list_grid.do">이벤트 </a></li>
+ <c:choose>
+      <c:when test="${grade >= 1 and grade <= 10}"><li ><A class='menu_link'  href='/event/list_search.do' >이벤트</A></li></c:when>    
+      <c:when test="${grade >= 11 or grade == null}"><li><A class='menu_link'  href='/event/list_grid.do' >이벤트</A></li></c:when>
+    </c:choose>  
 </ul>
 
 </DIV><!-- container_main -->
