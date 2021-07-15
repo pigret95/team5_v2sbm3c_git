@@ -17,7 +17,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@PropertySource("classpath:/application.properties")  // �꽕�젙 �뙆�씪 �쐞移�
+@PropertySource("classpath:/application.properties")  // 占쎄퐬占쎌젟 占쎈솁占쎌뵬 占쎌맄燁삼옙
 @MapperScan(basePackages= {"dev.mvc.team5_v2sbm3c_git",
                            "dev.mvc.member",
                            "dev.mvc.bookgrp",
@@ -25,14 +25,17 @@ import com.zaxxer.hikari.HikariDataSource;
                            "dev.mvc.contents",
                            "dev.mvc.cart",
                            "dev.mvc.myroom",
-                           "dev.mvc.notice"})
+                           "dev.mvc.notice",
+                           "dev.mvc.event",
+                           "dev.mvc.faqgrp",
+                           "dev.mvc.faq"})
 public class DatabaseConfiguration {
     
     @Autowired
     private ApplicationContext applicationContext;
     
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.hikari")  // �꽕�젙 �뙆�씪�쓽 �젒�몢�궗 �꽑�뼵 spring.datasource.hikari....
+    @ConfigurationProperties(prefix="spring.datasource.hikari")  // 占쎄퐬占쎌젟 占쎈솁占쎌뵬占쎌벥 占쎌젔占쎈あ占쎄텢 占쎄퐨占쎈섧 spring.datasource.hikari....
     public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
@@ -40,7 +43,7 @@ public class DatabaseConfiguration {
     @Bean
     public DataSource dataSource() throws Exception{
         DataSource dataSource = new HikariDataSource(hikariConfig());
-        System.out.println(dataSource.toString());  // �젙�긽�쟻�쑝濡� �뿰寃� �릺�뿀�뒗吏� �빐�떆肄붾뱶濡� �솗�씤
+        System.out.println(dataSource.toString());  // 占쎌젟占쎄맒占쎌읅占쎌몵嚥∽옙 占쎈염野껓옙 占쎈┷占쎈�占쎈뮉筌욑옙 占쎈퉸占쎈뻻�굜遺얜굡嚥∽옙 占쎌넇占쎌뵥
         return dataSource;
     }
     
@@ -48,7 +51,7 @@ public class DatabaseConfiguration {
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        // "/src/main/resources/mybatis" �뤃�뜑�쓽 �뙆�씪紐낆씠 "xml"濡� �걹�굹�뒗 �뙆�씪 留ㅽ븨
+        // "/src/main/resources/mybatis" 占쎈쨨占쎈쐭占쎌벥 占쎈솁占쎌뵬筌뤿굞�뵠 "xml"嚥∽옙 占쎄국占쎄돌占쎈뮉 占쎈솁占쎌뵬 筌띲끋釉�
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mybatis/**/*.xml"));
         
         return sqlSessionFactoryBean.getObject();
