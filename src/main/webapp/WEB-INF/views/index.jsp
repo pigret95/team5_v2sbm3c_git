@@ -21,6 +21,13 @@
   
   <DIV class="main_contents" style='text-align: center;'>
     메인컨텐츠자리
+    <br>
+    <br>
+    개발url
+    <ul>
+      <li><a href="/bookgrp/list.do"> 도서 카테고리 생성,수정,삭제</a></li>
+    </ul>
+    
   </DIV>
     <DIV class="sub_contents" style='text-align: center;'>
     이벤트자리

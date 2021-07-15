@@ -106,13 +106,13 @@ $(document).ready(function(){
 
 <div class="board">
   <ul class="list">
-    <li>type1</li>
-    <li><a class="menu_link" href="#">1-1</a></li>
+    <li>소설</li>
+    <li><a class="menu_link" href="#"></a></li>
     <li><a class="menu_link" href="#">1-2</a></li>
     <li><a class="menu_link" href="#">1-3</a></li>
     <li><a class="menu_link" href="#">1-4</a></li>
 
-    <li>type2</li>
+    <li>경제/경영</li>
     <li><a class="menu_link" href="#">2-1</a></li>
     <li><a class="menu_link" href="#">2-2</a></li>
     <li><a class="menu_link" href="#">2-3</a></li>
@@ -120,20 +120,34 @@ $(document).ready(function(){
   </ul>
   
   <ul class="list">
-     <li>type3</li>
+     <li>인문</li>
     <li><a class="menu_link" href="#">3-1</a></li>
     <li><a class="menu_link" href="#">3-2</a></li>
     <li><a class="menu_link" href="#">3-3</a></li>
     <li><a class="menu_link" href="#">3-4</a></li>
     
-    <li>type4</li>
+    <li>어린이</li>
     <li><a class="menu_link" href="#">4-1</a></li>
     <li><a class="menu_link" href="#">4-2</a></li>
     <li><a class="menu_link" href="#">4-3</a></li>
     <li><a class="menu_link" href="#">4-4</a></li>
   </ul>
   <ul class="list">
-    <li>type5</li>
+    <li>중/고등참고서</li>
+    <li><a class="menu_link" href="#">5-1</a></li>
+    <li><a class="menu_link" href="#">5-2</a></li>
+    <li><a class="menu_link" href="#">5-3</a></li>
+    <li><a class="menu_link" href="#">5-4</a></li>
+  </ul>
+  <ul class="list">
+    <li>취업/수험서</li>
+    <li><a class="menu_link" href="#">5-1</a></li>
+    <li><a class="menu_link" href="#">5-2</a></li>
+    <li><a class="menu_link" href="#">5-3</a></li>
+    <li><a class="menu_link" href="#">5-4</a></li>
+  </ul>
+  <ul class="list">
+    <li>IT</li>
     <li><a class="menu_link" href="#">5-1</a></li>
     <li><a class="menu_link" href="#">5-2</a></li>
     <li><a class="menu_link" href="#">5-3</a></li>
