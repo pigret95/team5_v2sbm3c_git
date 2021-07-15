@@ -28,7 +28,7 @@
            </c:choose>
         </c:otherwise>
       </c:choose> 
-      <span><a href="#">주문/장바구니</a></span>  &nbsp;
+      <span><a href="/cart/list_by_memberno.do">주문/장바구니</a></span>  &nbsp;
       <span><a href="../faq/service_home.do">고객센터</a></span>
       
      
