@@ -24,6 +24,44 @@ CREATE SEQUENCE bookgrp_seq            -- 이부분부터만 실행
   CACHE 2                  -- 2번은 메모리에서만 계산
   NOCYCLE;                 -- 다시 1부터 생성되는 것을 방지
 
+
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '소설', 1,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '시/에세이', 2,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '경영/경제',3,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '인문',4,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '자기계발', 5,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '과학', 6,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '기술/공학',7,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '자격증',8,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, 'IT',9,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '중/고등참고서', 10,sysdate);
+INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
+VALUES(bookgrp_seq.nextval, '외국어', 11,sysdate);
+
+commit;
+
+
+SELECT *
+FROM bookgrp;
+
+
+
+
+
+
+--------------------------------------------------------------------
+
+
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
 VALUES(bookgrp_seq.nextval, '역사', 1,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
@@ -32,6 +70,8 @@ INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
 VALUES(bookgrp_seq.nextval, 'IT',3,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
 VALUES(bookgrp_seq.nextval, '외국어',4,sysdate);
+
+
 
 --bookgrp,book,contents 테이블 조인
 SELECT   r.bookgrpno,b.bookno,c.contentsno,c.memberno, r.seqno, r.grpname, b.bookname, b.rdate,

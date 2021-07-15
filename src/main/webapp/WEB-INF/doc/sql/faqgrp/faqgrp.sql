@@ -21,7 +21,17 @@ CREATE SEQUENCE faqgrp_seq
     
 --등록
 INSERT INTO faqgrp(faqgrpno,  name)
-VALUES(faqgrp_seq.nextval, '반품/교환');
+VALUES(faqgrp_seq.nextval, '주문/결제');
+INSERT INTO faqgrp(faqgrpno,  name)
+VALUES(faqgrp_seq.nextval, '배송/수령일안내');
+INSERT INTO faqgrp(faqgrpno,  name)
+VALUES(faqgrp_seq.nextval, '반품/교환/환불');
+INSERT INTO faqgrp(faqgrpno,  name)
+VALUES(faqgrp_seq.nextval, '도서/상품');
+INSERT INTO faqgrp(faqgrpno,  name)
+VALUES(faqgrp_seq.nextval, '서비스');
+INSERT INTO faqgrp(faqgrpno,  name)
+VALUES(faqgrp_seq.nextval, '기타');
 COMMIT;
 
 --목록

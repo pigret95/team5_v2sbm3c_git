@@ -43,8 +43,9 @@
   position: absolute;
   top: 80px;
   left: 500px;
-  width: 430px;
-  height: 30px;
+  width: 600px;
+  height: 50px;
+
 }
 
 .search_input>input {
@@ -59,15 +60,16 @@
 
 .button {
   width: 34px;
-  height: 32px;
+  height: 34px;
   float: left;
   font-size: 12px;
   align-items: center;
   display: fles;
   justify-content: center;
   background-image: url('/css/image/button.png');
-  margin-top:3px;
-  margin-left:3px;
+  margin-top:5px;
+  margin-left:5px;
+
 }
 
 
@@ -83,7 +85,7 @@
 .search_input_main{
   border:2.5px solid #ffcab2;
   width:80%;
-  height:40px;
+  height:50px;
   border-radius: 80px / 40px;
   float:left;
   background:#ffffff;
@@ -598,7 +600,7 @@ li.menu1:focus .type{
   position:absolute;
   top:200px;
   width:100%x;
-  height:260px;
+  height:340px;
   background:#ffffff;
   border:1px solid black;
   visibility:hidden;
@@ -608,7 +610,7 @@ li.menu1:focus .type{
   float:left;
   border-right:1px solid black;
   width:200px;
-  height:260px;
+  height:340px;
   margin-left:10px;
  
 }

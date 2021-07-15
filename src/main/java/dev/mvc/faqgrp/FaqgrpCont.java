@@ -93,7 +93,7 @@ public class FaqgrpCont {
     mav.addObject("faqgrpVO", faqgrpVO); 
 
     int cnt = this.faqgrpProc.delete(faqgrpno); 
-    mav.addObject("cnt", cnt); 
+   
 
     if (cnt == 1) {
       mav.setViewName("redirect:/faqgrp/list.do");
