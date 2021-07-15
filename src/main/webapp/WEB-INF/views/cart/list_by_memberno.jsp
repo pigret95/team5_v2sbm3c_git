@@ -28,6 +28,8 @@
       <A href="/contents/list_by_cateno_search_paging?bookno=${bookno}">쇼핑 계속하기</A>
       <span class='menu_divide' >│</span>    
     </c:if>
+    <A href="#">선택삭제</A>
+    <span class='menu_divide' >│</span> 
     <A href="javascript:location.reload();">새로고침</A>
   </ASIDE> 
 
@@ -35,7 +37,7 @@
   
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
-      <col style="width: 1%"></col>
+      <col style="width: 3%"></col>
       <col style="width: 5%;"></col>
       <col style="width: #"></col>
       <col style="width: 10%;"></col>
@@ -113,6 +115,8 @@
           </td>
           
           <td style='vertical-align: middle; text-align: center;'>
+            <A href="#"><IMG src="#" title="바로구매"></A><br>
+            <A href="#"><IMG src="#" title="보관함담기"></A><br>
             <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
           </td>
         </tr>
