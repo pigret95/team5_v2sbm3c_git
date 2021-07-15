@@ -14,7 +14,7 @@ public class CartVO {
   private int memberno;
   private int contentsno;
   private int cnt;
-  private int rdate;
+  private String rdate;
   
   /*
     title                             VARCHAR2(300)    NOT NULL,
@@ -72,11 +72,11 @@ public class CartVO {
     this.cnt = cnt;
   }
 
-  public int getRdate() {
+  public String getRdate() {
     return rdate;
   }
 
-  public void setRdate(int rdate) {
+  public void setRdate(String rdate) {
     this.rdate = rdate;
   }
 

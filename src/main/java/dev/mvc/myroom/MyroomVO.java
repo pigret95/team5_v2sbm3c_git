@@ -12,7 +12,7 @@ public class MyroomVO {
     private int myroomno;
     private int memberno;
     private int contentsno;
-    private int rdate;
+    private String rdate;
     
     /*
       title                             VARCHAR2(300)    NOT NULL,
@@ -53,10 +53,10 @@ public class MyroomVO {
     public void setContentsno(int contentsno) {
       this.contentsno = contentsno;
     }
-    public int getRdate() {
+    public String getRdate() {
       return rdate;
     }
-    public void setRdate(int rdate) {
+    public void setRdate(String rdate) {
       this.rdate = rdate;
     }
     public String getTitle() {
