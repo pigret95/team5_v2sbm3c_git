@@ -97,6 +97,7 @@ public class CartCont {
     int point_tot = 0;       // 포인트 합계 = 포인트 합계 + (포인트 * 수량)
     int baesong_tot = 0;   // 배송비 합계
     int total_order = 0; // 전체 주문 금액
+    int tot_cnt = 0; // 총 수량
     
     if (session.getAttribute("memberno") != null) { // 회원으로 로그인을 했다면 쇼핑카트로 이동
       int memberno = (int)session.getAttribute("memberno");
@@ -106,7 +107,9 @@ public class CartCont {
       
       for (CartVO cartVO : list) {
         tot = cartVO.getSaleprice() * cartVO.getCnt();  // 할인 금액 합계 = 할인 금액 * 수량
+        tot_cnt = tot_cnt + cartVO.getCnt();
         cartVO.setTot(tot);
+        cartVO.setTot_cnt(tot_cnt);
         
         // 할인 금액 총 합계 = 할인 금액 총 합계 + 할인 금액 합계
         tot_sum = tot_sum + cartVO.getTot();

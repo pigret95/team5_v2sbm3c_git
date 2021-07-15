@@ -109,6 +109,7 @@ function update_cnt(cartno) {
         <c:set var="point" value="${cartVO.point }" />
         
         <c:set var="tot" value="${cartVO.tot }" />
+        <c:set var="tot_cnt" value="${cartVO.tot_cnt }" />
           
           
         <tr>
@@ -159,7 +160,62 @@ function update_cnt(cartno) {
       
     </tbody>
   </table>
+  
+  <table class="table table-striped" style='width: 100%;'>
+    <colgroup>
+      <col style="width: 25%;"></col>
+      <col style="width: 25%;"></col>
+      <col style="width: 25%;"></col> 
+      <col style="width: 10%;"></col>
+      <col style="width: 10%;"></col>
+    </colgroup>
+    
+     <thead>
+      <tr>
+        <th style='text-align: left; border-right: 1px solid;' >상품금액/수량(${tot_cnt}개)</th>
+        <th style='text-align: left; border-right: 1px solid;'>배송비</th>
+        <th style='text-align: left; border-right: 1px dotted;'>결제 예정금액</th>
+        <th style='text-align: left;'>적립예정</th>
+        <th style='text-align: right;'>${point_tot } 원P</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr>
+        <td style='vertical-align: middle; text-align: right; border-right: 1px solid;'>
+          <strong><fmt:formatNumber value="${tot_sum }" pattern="#,###" /></strong> 원
+           <span><img src="/cart/images/addition.gif" alt="+"></span>
+         </td>
+         
+        <td style='vertical-align: middle; text-align: right; border-right: 1px solid;'>
+          <strong><fmt:formatNumber value="${baesong_tot }" pattern="#,###" /></strong> 원
+          <span><img src="/cart/images/equals.gif" alt="+"></span>
+        </td>
+        
+        <td style='vertical-align: middle; text-align: right; border-right: 1px dotted;'>
+          <strong style="color: red;"><fmt:formatNumber value="${total_order }" pattern="#,###" /></strong> 원
+        </td>
+        
+        <td style='vertical-align: middle; text-align: left;'>
+          <span>기본적립</span>
+        </td>
+          
+        <td style='vertical-align: middle; text-align: right;'>
+          <strong ><fmt:formatNumber value="${point_tot }" pattern="#,###" /></strong> 원
+        </td>
+   
+      </tr>
+    </tbody>
+  </table>
+  <div  class='bottom_menu'>   
+    <form name='frm' id='frm' style='margin-top: 50px;' action="#" method='get'>
+      <button type='submit' id='btn_order' class="btn btn-primary">주문하기</button>
+    </form>
+  </div>
+  
 </DIV>
+          
+     
 
 <jsp:include page="../menu/bottom.jsp" />
 </body>

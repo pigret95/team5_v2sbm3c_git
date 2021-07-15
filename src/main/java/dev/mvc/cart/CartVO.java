@@ -38,6 +38,8 @@ public class CartVO {
   /** 추가 */
   /** 최종 금액*/
   private int tot;
+  /** 총 수량*/
+  private int tot_cnt;
 
   
   public int getCartno() {
@@ -143,6 +145,16 @@ public class CartVO {
   public void setTot(int tot) {
     this.tot = tot;
   }
+
+  public int getTot_cnt() {
+    return tot_cnt;
+  }
+
+  public void setTot_cnt(int tot_cnt) {
+    this.tot_cnt = tot_cnt;
+  }
+  
+  
   
 
   
