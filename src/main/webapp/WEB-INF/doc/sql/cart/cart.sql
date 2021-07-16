@@ -4,11 +4,11 @@
 DROP TABLE cart;
 
 CREATE TABLE cart(
-cartno                         NUMBER(10)  NOT NULL  PRIMARY KEY,
-memberno                       NUMBER(10)  NOT NULL,
-contentsno                     NUMBER(10)  NOT NULL,
-cnt                            NUMBER(5)  DEFAULT 1  NOT NULL,
-rdate                          DATE  NOT NULL,
+		cartno                        		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
+		memberno                      		NUMBER(10)		 NOT NULL,
+		contentsno                    		NUMBER(10)		 NOT NULL,
+		cnt                           		NUMBER(5)	 DEFAULT 1		 NOT NULL,
+		rdate                         		DATE		 NOT NULL,
    FOREIGN KEY (memberno) REFERENCES member (memberno),
    FOREIGN KEY (contentsno) REFERENCES contents (contentsno)
 );
@@ -21,6 +21,7 @@ COMMENT ON COLUMN cart.cnt is '수량';
 COMMENT ON COLUMN cart.rdate is '등록일';
 
 DROP SEQUENCE cart_seq;
+
 CREATE SEQUENCE cart_seq
   START WITH 1              -- 시작 번호
   INCREMENT BY 1          -- 증가값
@@ -32,7 +33,13 @@ CREATE SEQUENCE cart_seq
 
 --등록
 INSERT INTO cart(cartno, memberno, contentsno, cnt, rdate)
-VALUES(cart_seq.nextval,1,1,1,sysdate);
+VALUES(cart_seq.nextval,1,2,1,sysdate);
+
+INSERT INTO cart(cartno, memberno, contentsno, cnt, rdate)
+VALUES(cart_seq.nextval,1,3,1,sysdate);
+
+INSERT INTO cart(cartno, memberno, contentsno, cnt, rdate)
+VALUES(cart_seq.nextval,1,11000,1,sysdate);
 
 commit;
 
@@ -42,10 +49,12 @@ FROM cart c, contents i
 WHERE c.contentsno = i.contentsno and c.memberno=4
 ORDER BY cartno DESC;
 
+
 --전체 조회
-SELECT c.cartno, c.memberno, c.contentsno, c.cnt, c.rdate, i.title
-FROM cart c, contents i
-WHERE c.contentsno = i.contentsno and 
+SELECT m.cartno, m.memberno, m.contentsno, m.cnt, m.rdate, 
+          c.title, c.content, c.thumb1, c.price, c.saleprice, c.dc, c.point
+FROM cart m, contents c 
+WHERE c.memberno=21 AND m.contentsno = c.contentsno 
 ORDER BY cartno DESC;
 
 --수정
@@ -55,10 +64,11 @@ WHERE cartno=1;
 
 commit;
 
---전체 삭제 ?
+--전체 삭제 
 DELETE FROM cart;
---선택 삭제 ?
+
+--선택 삭제 
 DELETE FROM cart
-WHERE cartno=1;
+WHERE cartno=17 and memberno=21;
 
 commit;

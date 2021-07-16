@@ -4,10 +4,10 @@
 DROP TABLE myroom;
 
 CREATE TABLE myroom(
-myroomno                       NUMBER(10)  NOT NULL  PRIMARY KEY,
-memberno                       NUMBER(10)  NOT NULL ,
-contentsno                     NUMBER(10)  NOT NULL ,
-rdate                          DATE  NOT NULL,
+		myroomno                      		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
+		memberno                      		NUMBER(10)		 NOT NULL ,
+        contentsno                    		NUMBER(10)		 NOT NULL ,
+		rdate                         		DATE		 NOT NULL,
   FOREIGN KEY (memberno) REFERENCES member (memberno),
   FOREIGN KEY (contentsno) REFERENCES contents (contentsno)
 );
@@ -18,8 +18,8 @@ COMMENT ON COLUMN myroom.memberno is '회원번호';
 COMMENT ON COLUMN myroom.contentsno is '컨텐츠 번호';
 COMMENT ON COLUMN myroom.rdate is '등록일';
 
-
 DROP SEQUENCE myroom_seq;
+
 CREATE SEQUENCE myroom_seq
   START WITH 1              -- 시작 번호
   INCREMENT BY 1          -- 증가값
@@ -30,7 +30,10 @@ CREATE SEQUENCE myroom_seq
   
 --등록
 INSERT INTO myroom(myroomno, memberno, contentsno, rdate)
-VALUES(myroom_seq.nextval, 4, 1, sysdate);
+VALUES(myroom_seq.nextval, 21, 3, sysdate);
+
+INSERT INTO myroom(myroomno, memberno, contentsno, rdate)
+VALUES(myroom_seq.nextval, 21, 2, sysdate);
 
 commit;
 
@@ -43,16 +46,18 @@ ORDER BY myroomno DESC;
 --전체 조회
 SELECT m.myroomno, m.memberno, m.contentsno, i.title, m.rdate
 FROM myroom m, contents i
-WHERE m.contentsno = i.contentsno
+WHERE m.memberno = 4
 ORDER BY myroomno DESC;
 
 --수정 x
 
---전체 삭제 ?
+--전체 삭제 
 DELETE FROM myroom;
 
---선택 삭제 ?
+--선택 삭제 
 DELETE FROM myroom
 WHERE myroomno=1;
 
 commit;
+
+
