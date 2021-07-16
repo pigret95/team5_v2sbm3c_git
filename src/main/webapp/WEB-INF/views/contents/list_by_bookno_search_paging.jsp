@@ -78,12 +78,15 @@ function recom_ajax(contentsno, status_count) {
   <DIV class='content_body'>
     <DIV style="text-align: left;">
       <ASIDE class="aside_right">
+                  <c:choose> 
+           <c:when test="${grade <= 10 }">
         <A
           href="./create.do?bookno=${bookVO.bookno }&bookgrpno=${bookVO.bookgrpno }">등록</A>
-        <span class='menu_divide'>│</span> <A
-          href="javascript:location.reload();">새로고침</A> <span
-          class='menu_divide'>│</span> <A
-          href="./list_by_bookno_grid_search_paging.do?bookno=${bookVO.bookno }">갤러리형</A>
+        <span class='menu_divide'>│</span>
+          </c:when>
+          </c:choose>
+          <A
+          href="javascript:location.reload();">새로고침</A>
       </ASIDE>
     </DIV>
     <DIV style="text-align: right; clear: both;">
@@ -115,10 +118,19 @@ function recom_ajax(contentsno, status_count) {
 
     <table class="table table-striped" style='width: 100%;'>
           <colgroup>
+            <c:choose> 
+           <c:when test="${grade <= 10 }">
             <col style="width: 10%;"></col>
             <col style="width: 50%;"></col>
             <col style="width: 30%;"></col>
             <col style="width: 10%;"></col>
+            </c:when>
+                <c:otherwise>
+                  <col style="width: 10%;"></col>
+                    <col style="width: 60%;"></col>
+                    <col style="width: 30%;"></col>
+                </c:otherwise>
+            </c:choose>
           </colgroup>
           <%-- table 컬럼 --%>
           <thead>
@@ -175,7 +187,8 @@ function recom_ajax(contentsno, status_count) {
             <button type='button' id='btn_ordering' class="btn btn-info" 
                         onclick="cart_ajax(${contentsno })">바로 구매</button>  
           </td>
-
+            <c:choose> 
+           <c:when test="${grade <= 10 }">
                 <td style='vertical-align: middle; text-align: center;'>
               
                   <A
@@ -184,6 +197,8 @@ function recom_ajax(contentsno, status_count) {
                   href="./delete.do?contentsno=${contentsno}&now_page=${param.now_page }"><span
                     class="glyphicon glyphicon-trash"></span></A>
                 </td>
+                </c:when>
+                </c:choose>
               </tr>
             </c:forEach>
 

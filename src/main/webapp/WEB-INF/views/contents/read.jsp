@@ -90,19 +90,25 @@
   
   
         <ASIDE class="aside_right">
+                    <c:choose> 
+           <c:when test="${grade <= 10 }">
     <A href="./create.do?bookno=${bookVO.bookno }&bookgrpno=${bookVO.bookgrpno }">등록</A>
-        <span class='menu_divide'>│</span> <A
-          href="javascript:location.reload();">새로고침</A> 
+    
           <span class='menu_divide' >│</span>
     <A href="./update_text.do?contentsno=${contentsno}&now_page=${param.now_page }">수정</A>
     <span class='menu_divide' >│</span>
-    <A href="./update_file.do?contentsno=${contentsno}&now_page=${param.now_page }">파일 수정</A>  
+    <A href="./update_file.do?contentsno=${contentsno}&now_page=${param.now_page }">파일 수정</A>
+    <span class='menu_divide'>│</span> 
+    </c:when>
+    </c:choose>  
+        <A
+          href="javascript:location.reload();">새로고침</A> 
   </ASIDE> 
    
   </DIV><!-- title_line -->
 
 
-<!--  
+
  <DIV style="text-align: right; clear: both;">
       <form name='frm' id='frm' method='get'
         action='./list_by_bookno_search_paging.do'>
@@ -126,7 +132,7 @@
             취소</button>
         </c:if>
       </form>
-    </DIV>-->
+    </DIV>
   
 
   

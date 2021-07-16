@@ -129,6 +129,8 @@
 <DIV class='title_line'>도서 그룹</DIV>
 
 <DIV class='content_body'>
+<c:choose> 
+      <c:when test="${grade <= 10 }">
   <!-- 신규 등록 -->
   <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm_create' id='frm_create' method='POST' action='./create.do'>
@@ -193,21 +195,35 @@
       <button type="button" id='btn_delete_cancel' class='btn btn-primary'>취소</button>
     </FORM>
   </DIV>
-      
+      </c:when>
+      </c:choose>
   <TABLE class='table table-striped'>
     <colgroup>
+        <c:choose> 
+      <c:when test="${grade <= 10 }">
       <col style='width: 10%;'/>
       <col style='width: 40%;'/>
       <col style='width: 20%;'/>  
       <col style='width: 10%;'/>
+       </c:when>
+       <c:otherwise>
+       <col style='width: 10%;'/>
+      <col style='width: 40%;'/>
+      <col style='width: 30%;'/>  
+       </c:otherwise>
+       </c:choose>
     </colgroup>
    
     <thead>  
     <TR>
-      <TH class="th_bs">출력 순서</TH>
-      <TH class="th_bs">이름</TH>
+      <TH class="th_bs" style="margin-bottom: auto;">출력 순서</TH>
+      <TH class="th_bs" style="margin-bottom: auto;">이름</TH>
       <TH class="th_bs">그룹 생성일</TH>
+       <c:choose> 
+      <c:when test="${grade <= 10 }">
       <TH class="th_bs">기타</TH>
+      </c:when>
+      </c:choose>
     </TR>
     </thead>
     
@@ -220,7 +236,8 @@
           <A href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpno }">${bookgrpVO.grpname }</A>
         </TD>
         <TD class="td_bs">${bookgrpVO.rdate.substring(0, 10) }</TD>
-    
+       <c:choose> 
+      <c:when test="${grade <= 10 }">
         <TD class="td_bs">
         
           <%-- Ajax 기반 수정폼--%>
@@ -229,6 +246,8 @@
           <%-- Ajax 기반 Delete폼--%>
           <A href="javascript: read_delete_ajax(${bookgrpno })" title="삭제"><span class="glyphicon glyphicon-trash"></span></A>        
         </TD>   
+        </c:when>
+        </c:choose>
       </TR>   
     </c:forEach> 
     </tbody>

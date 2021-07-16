@@ -151,14 +151,19 @@ function read_delete_ajax(bookno) {
     <form name='frm_delete_by_bookgrpno' id='frm_delete_by_bookgrpno' action='' method='post'>
       <input type='hidden' name='bookgrpno' id='bookgrpno' value=''>
       <input type='hidden' name='booknos' id='booknos' value=''>
+      <c:choose> 
+      <c:when test="${grade <= 10 }">
       <A href="javascript: delete_contents_by_all_bookno()">모든 카테고리의 관련 자료 삭제</A>
       <span class='menu_divide' >│</span>
       <A href="javascript: delete_by_bookgrpno(${param.bookgrpno})">모든 카테고리 삭제</A>
+      </c:when>
+      </c:choose>
     </form>
  </ASIDE> 
 <DIV class='content_body'>
 
-
+<c:choose> 
+      <c:when test="${grade <= 10 }">
 <!-- 신규 등록 -->
   <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm_create' id='frm_create' method='POST' action='./create.do'>
@@ -209,24 +214,45 @@ function read_delete_ajax(bookno) {
       <button type="button" id='btn_delete_cancle'>취소</button>
     </FORM>
   </DIV>
-  
+  </c:when>
+  </c:choose>
   <TABLE class='table table-striped'>
     <colgroup>
+    <c:choose> 
+      <c:when test="${grade <= 10 }">
       <col style='width: 10%;'/>
     <col style='width: 10%;'/>
       <col style='width: 40%;'/>
        <col style='width: 20%;'/>
       <col style='width: 20%;'/>
-
+    </c:when>
+     <c:otherwise>
+           <col style='width: 10%;'/>
+    <col style='width: 10%;'/>
+      <col style='width: 40%;'/>
+       <col style='width: 40%;'/>
+        </c:otherwise>
+    </c:choose>
     </colgroup>
    
     <thead>  
     <TR>
+    <c:choose> 
+      <c:when test="${grade <= 10 }">
     <TH class="th_bs">번호</TH>
      <TH class="th_bs">그룹<br>번호</TH>
       <TH class="th_bs">종류</TH>
       <TH class="th_bs">등록일</TH>
       <TH class="th_bs">기타</TH>
+      </c:when>
+      <c:otherwise>
+          <TH class="th_bs" style="margin-bottom: auto;">번호</TH>
+     <TH class="th_bs">그룹<br>번호</TH>
+      <TH class="th_bs">종류</TH>
+      <TH class="th_bs">등록일</TH>
+      </c:otherwise>
+      </c:choose>
+      
     </TR>
     </thead>
     
@@ -246,11 +272,14 @@ function read_delete_ajax(bookno) {
          <TD class="td_bs_left"><A href="../contents/list_by_bookno_search_paging.do?bookno=${bookVO.bookno }&now_page=1 ">${bookVO.bookname }</A></TD>
         <TD class="td_bs">${bookVO.rdate.substring(0, 10) }</TD>
         
-        
+        <c:choose> 
+      <c:when test="${grade <= 10 }">
         <TD class="td_bs">
           <A href="javascript:read_update_ajax(${bookno })" title="수정"><span class="glyphicon glyphicon-pencil"></span></A>
           <A href="javascript:read_delete_ajax(${bookno })"  title="삭제"><span class="glyphicon glyphicon-trash"></span></A> 
-        </TD>   
+        </TD>  
+        </c:when>
+        </c:choose> 
       </TR>   
     </c:forEach> 
     </tbody>
