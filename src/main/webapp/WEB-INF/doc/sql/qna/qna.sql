@@ -47,26 +47,26 @@ CREATE SEQUENCE qna_seq
  
  -- 답변 등록
  UPDATE qna
- SET reply = 'reply_01', rdate = sysdate
+ SET reply = '첫번째 답변입니다', rdate = sysdate, state=1
  WHERE qnano = 1;
  
- -- 회원별 QnA 목록 조회
+ -- 회원별 QnA 목록 조회 (회원)
  SELECT qnano, memberno, title, order_itemno, qdate, state
  FROM qna
  WHERE memberno = 1
  ORDER BY qdate DESC;
  
- -- 회원별 QnA 상세 조회
+ -- 주문 건별 QnA 상세 조회 (회원)
  SELECT qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state
  FROM qna
  WHERE (memberno = 1) AND (order_itemno = 1);
  
- -- QnA 목록 조회
+ -- QnA 목록 조회 (관리자)
  SELECT qnano, memberno, title, order_itemno, qdate, state
  FROM qna
  ORDER BY qdate DESC;
  
- -- QnA 삭제
+ -- QnA 삭제 
  DELETE FROM qna
  WHERE qnano = 1;
  

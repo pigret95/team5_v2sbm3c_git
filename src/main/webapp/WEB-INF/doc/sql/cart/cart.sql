@@ -32,7 +32,7 @@ CREATE SEQUENCE cart_seq
 
 --등록
 INSERT INTO cart(cartno, memberno, contentsno, cnt, rdate)
-VALUES(cart_seq.nextval,4,1,1,sysdate);
+VALUES(cart_seq.nextval,1,1,1,sysdate);
 
 commit;
 

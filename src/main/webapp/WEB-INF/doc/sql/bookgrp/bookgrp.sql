@@ -36,7 +36,7 @@ VALUES(bookgrp_seq.nextval, '외국어',4,sysdate);
 
 
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
-VALUES(bookgrp_seq.nextval, '소설', 10000,sysdate);
+VALUES(10000, '소설', 10000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)
 VALUES(bookgrp_seq.nextval, '시/에세이', 20000,sysdate);
 INSERT INTO bookgrp(bookgrpno, grpname, seqno,rdate)

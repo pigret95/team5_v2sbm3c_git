@@ -57,7 +57,7 @@ CREATE SEQUENCE contents_seq            -- 이부분부터만 실행
   
 INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, rdate,
       file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher)
-VALUES(contents_seq.nextval, 1, 1, '한국사능력검정시험고급', '최태성 선생님의 최고의 역사 교육!',0,'한국사',sysdate,
+VALUES(11000, 10100, 1, '한국사능력검정시험고급', '최태성 선생님의 최고의 역사 교육!',0,'한국사',sysdate,
       'history.jpg', 'history_1.jpg','history_t.jpg' ,1000,20000,18000,20,100,'가나다','라마바');
 
 INSERT INTO contents(contentsno, bookno, memberno, title, content, recom, word, rdate,

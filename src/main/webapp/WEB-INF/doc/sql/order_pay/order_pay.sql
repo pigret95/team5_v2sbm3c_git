@@ -42,11 +42,17 @@ INSERT INTO order_pay(order_payno, memberno, rname, rtel, rzipcode,
                                  raddress1, raddress2, paytype, amount, rdate)
 VALUES(order_pay_seq.nextval,'1','홍길동','010-1234-5678','12345','주소1','주소2',1,10000,sysdate);                         
 
+INSERT INTO order_pay(order_payno, memberno, rname, rtel, rzipcode,
+                                 raddress1, raddress2, paytype, amount, rdate)
+VALUES(order_pay_seq.nextval,'1','홍길동','010-1234-5678','12345','주소1','주소2',1,20000,sysdate);        
+
+commit;
+
 -- 전체 목록
 SELECT order_payno, memberno, rname, rtel, rzipcode, raddress1, raddress2, paytype, amount, rdate
 FROM order_pay
 ORDER BY order_payno DESC;
-
+commit;
 --회원별 목록
 SELECT order_payno, memberno, rname, rtel, rzipcode, raddress1, raddress2, paytype, amount, rdate
 FROM order_pay

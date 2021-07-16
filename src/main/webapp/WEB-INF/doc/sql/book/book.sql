@@ -51,7 +51,6 @@ INSERT INTO book(bookno, bookgrpno, bookname, rdate)
 VALUES(10100, 10000, '소설', sysdate);
 INSERT INTO book(bookno, bookgrpno, bookname, rdate)
 VALUES(20100, 20000, '시/에세이',sysdate);
-
 INSERT INTO book(bookno, bookgrpno, bookname, rdate)
 VALUES(30100, 30000, '경영', sysdate);
 INSERT INTO book(bookno, bookgrpno, bookname, rdate)
