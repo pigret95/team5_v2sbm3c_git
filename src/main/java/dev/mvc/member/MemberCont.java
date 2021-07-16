@@ -1,6 +1,5 @@
 package dev.mvc.member;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -634,6 +633,27 @@ public class MemberCont {
     return mav;
   }
   
+  /**
+   * 결제시 내 주소 가져오기
+   * @param session
+   * @return
+   */
+  @GetMapping("/member/read_ajax.do")
+  @ResponseBody
+  public String read_ajax(HttpSession session) {
+    
+    int memberno = (int)session.getAttribute("memberno");
+    MemberVO memberVO = this.memberProc.read(memberno);
+    JSONObject json = new JSONObject();
+    
+    json.put("rname", memberVO.getName());
+    json.put("rtel", memberVO.getTel());
+    json.put("rzipcode", memberVO.getPostcode());
+    json.put("raddress1", memberVO.getAddress1());
+    json.put("raddress2", memberVO.getAddress2());
+    
+    return json.toString();
+  }
   
   
   
