@@ -171,7 +171,8 @@ public class ContentsCont {
   @RequestMapping(value = "/contents/list_by_bookno_search_paging.do", method = RequestMethod.GET)
   public ModelAndView list_by_bookno_search_paging(@RequestParam(value = "bookno", defaultValue = "1") int bookno,
       @RequestParam(value = "word", defaultValue = "") String word,
-      @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
+      @RequestParam(value = "now_page", defaultValue = "1") int now_page,
+      HttpServletRequest request) {
     System.out.println("--> now_page: " + now_page);
 
     ModelAndView mav = new ModelAndView();
@@ -219,6 +220,41 @@ public class ContentsCont {
 
     // /contents/list_by_bookno_table_img1_search_paging.jsp
     mav.setViewName("/contents/list_by_bookno_search_paging");
+    
+    // -------------------------------------------------------------------------------
+    // 쇼핑 카트 장바구니에 상품 등록전 로그인 폼 출력 관련 쿠기  
+    // -------------------------------------------------------------------------------
+    Cookie[] cookies = request.getCookies();
+    Cookie cookie = null;
+
+    String ck_id = ""; // id 저장
+    String ck_id_save = ""; // id 저장 여부를 체크
+    String ck_passwd = ""; // passwd 저장
+    String ck_passwd_save = ""; // passwd 저장 여부를 체크
+
+    if (cookies != null) {  // Cookie 변수가 있다면
+      for (int i=0; i < cookies.length; i++){
+        cookie = cookies[i]; // 쿠키 객체 추출
+        
+        if (cookie.getName().equals("ck_id")){
+          ck_id = cookie.getValue();                                 // Cookie에 저장된 id
+        }else if(cookie.getName().equals("ck_id_save")){
+          ck_id_save = cookie.getValue();                          // Cookie에 id를 저장 할 것인지의 여부, Y, N
+        }else if (cookie.getName().equals("ck_passwd")){
+          ck_passwd = cookie.getValue();                          // Cookie에 저장된 password
+        }else if(cookie.getName().equals("ck_passwd_save")){
+          ck_passwd_save = cookie.getValue();                  // Cookie에 password를 저장 할 것인지의 여부, Y, N
+        }
+      }
+    }
+    
+    System.out.println("-> ck_id: " + ck_id);
+    
+    mav.addObject("ck_id", ck_id); 
+    mav.addObject("ck_id_save", ck_id_save);
+    mav.addObject("ck_passwd", ck_passwd);
+    mav.addObject("ck_passwd_save", ck_passwd_save);
+    // -------------------------------------------------------------------------------
 
     return mav;
   }
@@ -229,7 +265,7 @@ public class ContentsCont {
    * @return
    */
   @RequestMapping(value="/contents/read.do", method=RequestMethod.GET )
-  public ModelAndView read(int contentsno,
+  public ModelAndView read(int contentsno, HttpServletRequest request,
       @RequestParam(value = "now_page", defaultValue = "1") int now_page) {
     ModelAndView mav = new ModelAndView();
 
@@ -243,6 +279,41 @@ public class ContentsCont {
     mav.addObject("bookgrpVO", bookgrpVO); 
     mav.addObject("now_page", now_page);
     mav.setViewName("/contents/read"); // /WEB-INF/views/contents/read.jsp
+    
+    // -------------------------------------------------------------------------------
+    // 쇼핑 카트 장바구니에 상품 등록전 로그인 폼 출력 관련 쿠기  
+    // -------------------------------------------------------------------------------
+    Cookie[] cookies = request.getCookies();
+    Cookie cookie = null;
+
+    String ck_id = ""; // id 저장
+    String ck_id_save = ""; // id 저장 여부를 체크
+    String ck_passwd = ""; // passwd 저장
+    String ck_passwd_save = ""; // passwd 저장 여부를 체크
+
+    if (cookies != null) {  // Cookie 변수가 있다면
+      for (int i=0; i < cookies.length; i++){
+        cookie = cookies[i]; // 쿠키 객체 추출
+        
+        if (cookie.getName().equals("ck_id")){
+          ck_id = cookie.getValue();                                 // Cookie에 저장된 id
+        }else if(cookie.getName().equals("ck_id_save")){
+          ck_id_save = cookie.getValue();                          // Cookie에 id를 저장 할 것인지의 여부, Y, N
+        }else if (cookie.getName().equals("ck_passwd")){
+          ck_passwd = cookie.getValue();                          // Cookie에 저장된 password
+        }else if(cookie.getName().equals("ck_passwd_save")){
+          ck_passwd_save = cookie.getValue();                  // Cookie에 password를 저장 할 것인지의 여부, Y, N
+        }
+      }
+    }
+    
+    System.out.println("-> ck_id: " + ck_id);
+    
+    mav.addObject("ck_id", ck_id); 
+    mav.addObject("ck_id_save", ck_id_save);
+    mav.addObject("ck_passwd", ck_passwd);
+    mav.addObject("ck_passwd_save", ck_passwd_save);
+    // -------------------------------------------------------------------------------
         
     return mav;
   }

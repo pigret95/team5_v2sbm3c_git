@@ -1,5 +1,6 @@
 package dev.mvc.member;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,10 @@ public class MemberCont {
   @Qualifier("dev.mvc.member.MemberProc")
   private MemberProcInter memberProc;
   
+  public MemberCont() {
+    System.out.println("-> MemberCont created.");
+  }
+
   /**
    * 새로고침 방지
    * @param memberno
@@ -164,13 +169,12 @@ public class MemberCont {
 //      mav.addObject("url", "login_fail_msg");
 //      mav.setViewName("redirect:/member/msg.do"); 
 //    }
-   
     int count = memberProc.login(map);
-    
+
     if (count == 1) { // 로그인 처리
       MemberVO memberVO = memberProc.readById(id);
       int grade = memberVO.getGrade();
-
+  
       if(grade == 99) {
         System.out.println(id + " 탈퇴회원 입니다.");
         mav.addObject("url", "not_member_msg");
@@ -342,7 +346,9 @@ public class MemberCont {
     
     int cnt = memberProc.update(memberVO);
     mav.addObject("cnt", cnt); 
-    mav.addObject("memberno", memberVO.getMemberno()); 
+    mav.addObject("memberno", memberVO.getMemberno());
+    mav.addObject("email_yn", memberVO.getEmail_yn());
+    
     mav.addObject("url", "update_msg"); 
 
     mav.setViewName("redirect:/member/msg.do");
@@ -478,12 +484,10 @@ public class MemberCont {
     if(cnt == 1) {
       int memberno = this.memberProc.id_memberno_check(map);
       mav.addObject("memberno", memberno); 
-      
       System.out.println("-> memberno: " + memberno);
       
       MemberVO memberVO = this.memberProc.read(memberno);
       int grade_ck = memberVO.getGrade(); 
-      
       System.out.println("-> grade: " + grade_ck);
       
       if(grade_ck != 99) {
@@ -545,12 +549,10 @@ public class MemberCont {
     if(cnt == 1) {
       int memberno = this.memberProc.passwd_memberno_check(map);
       mav.addObject("memberno", memberno); 
-      
       System.out.println("-> memberno: " + memberno);
       
       MemberVO memberVO = this.memberProc.read(memberno);
       int grade_ck = memberVO.getGrade(); 
-      
       System.out.println("-> grade: " + grade_ck);
       
       if(grade_ck != 99) {
@@ -634,25 +636,85 @@ public class MemberCont {
   }
   
   /**
-   * 결제시 내 주소 가져오기
-   * @param session
+   * Cookie + Ajax 기반 로그인 처리
+   * @param request Cookie를 읽기위해 필요
+   * @param response Cookie를 쓰기위해 필요
+   * @param session 로그인 정보를 메모리에 기록
+   * @param id  회원 아이디
+   * @param passwd 회원 패스워드
+   * @param id_save 회원 아이디 Cookie에 저장 여부
+   * @param passwd_save 패스워드 Cookie에 저장 여부
    * @return
    */
-  @GetMapping("/member/read_ajax.do")
+  // http://localhost:9091/member/login_ajax.do 
+  @RequestMapping(value = "/member/login_ajax.do", 
+                             method = RequestMethod.POST)
   @ResponseBody
-  public String read_ajax(HttpSession session) {
+  public String login_cookie_proc_ajax (
+                             HttpServletRequest request,
+                             HttpServletResponse response,
+                             HttpSession session,
+                             String id, String passwd,
+                             @RequestParam(value="id_save", defaultValue="") String id_save,
+                             @RequestParam(value="passwd_save", defaultValue="") String passwd_save) {
+
+    Map<String, Object> map = new HashMap<String, Object>();
+    map.put("id", id);
+    map.put("passwd", passwd);
     
-    int memberno = (int)session.getAttribute("memberno");
-    MemberVO memberVO = this.memberProc.read(memberno);
+    int count = memberProc.login(map);
+    if (count == 1) { // 로그인 성공
+      // System.out.println(id + " 로그인 성공");
+      MemberVO memberVO = memberProc.readById(id);
+      session.setAttribute("memberno", memberVO.getMemberno()); // 서버의 메모리에 기록
+      session.setAttribute("id", id);
+      session.setAttribute("name", memberVO.getName());
+      session.setAttribute("grade", memberVO.getGrade());
+      
+      // -------------------------------------------------------------------
+      // id 관련 쿠기 저장
+      // -------------------------------------------------------------------
+      if (id_save.equals("Y")) { // id를 저장할 경우, Checkbox를 체크한 경우
+        Cookie ck_id = new Cookie("ck_id", id);
+        ck_id.setMaxAge(60 * 60 * 72 * 10); // 30 day, 초단위
+        response.addCookie(ck_id); // id 저장
+      } else { // N, id를 저장하지 않는 경우, Checkbox를 체크 해제한 경우
+        Cookie ck_id = new Cookie("ck_id", "");
+        ck_id.setMaxAge(0);
+        response.addCookie(ck_id); // id 저장
+      }
+      // id를 저장할지 선택하는  CheckBox 체크 여부
+      Cookie ck_id_save = new Cookie("ck_id_save", id_save);
+      ck_id_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
+      response.addCookie(ck_id_save);
+      // -------------------------------------------------------------------
+
+      // -------------------------------------------------------------------
+      // Password 관련 쿠기 저장
+      // -------------------------------------------------------------------
+      if (passwd_save.equals("Y")) { // 패스워드 저장할 경우
+        Cookie ck_passwd = new Cookie("ck_passwd", passwd);
+        ck_passwd.setMaxAge(60 * 60 * 72 * 10); // 30 day
+        response.addCookie(ck_passwd);
+      } else { // N, 패스워드를 저장하지 않을 경우
+        Cookie ck_passwd = new Cookie("ck_passwd", "");
+        ck_passwd.setMaxAge(0);
+        response.addCookie(ck_passwd);
+      }
+      // passwd를 저장할지 선택하는  CheckBox 체크 여부
+      Cookie ck_passwd_save = new Cookie("ck_passwd_save", passwd_save);
+      ck_passwd_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
+      response.addCookie(ck_passwd_save);
+      // -------------------------------------------------------------------
+      
+    }
+    
+    int cnt = count;
+    
     JSONObject json = new JSONObject();
-    
-    json.put("rname", memberVO.getName());
-    json.put("rtel", memberVO.getTel());
-    json.put("rzipcode", memberVO.getPostcode());
-    json.put("raddress1", memberVO.getAddress1());
-    json.put("raddress2", memberVO.getAddress2());
-    
-    return json.toString();
+    json.put("cnt", cnt);
+   
+    return json.toString(); 
   }
   
   
