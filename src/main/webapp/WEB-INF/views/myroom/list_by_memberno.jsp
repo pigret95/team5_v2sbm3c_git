@@ -13,15 +13,69 @@
           src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
-//GET -> POST 전송, 상품 삭제
-function delete_func(myroomno) { 
-  var frm = $('#frm_post');
-  frm.attr('action', './delete.do');
-  $('#myroomno',  frm).val(myroomno);
-  
-  frm.submit();
-}   
+
+  //GET -> POST 전송, 상품 삭제
+  function delete_func(myroomno) { 
+    var frm = $('#frm_post');
+    frm.attr('action', './delete.do');
+    $('#myroomno',  frm).val(myroomno);
+    
+    frm.submit();
+  }   
+
+  $(function(){  
+    // 모두 체크
+     $("#allCheck").click(function(){                    
+        var chk = $("#allCheck").prop("checked");  // true 반환
+        if(chk) {
+         $("#chkBox").prop("checked", true);
+        } else {
+         $("#chkBox").prop("checked", false);
+        }
+       });
+
+    // 선택 체크
+     $("#chkBox").click(function(){
+       $("#allCheck").prop("checked", false);
+      });
+
+     $(".selectDelete_btn").click(function(){
+       var msg = confirm("정말 삭제하시겠습니까?");  // true/false
+       
+       if(msg) {
+        var checkArr = new Array(); // 다수의 myroomno를 저장하기 위함
+
+        // 선택된 상품들만 삭제를 위한 myroomno 배열 저장
+        $("input[id='chkBox']:checked").each(function(){   //체크된 체크박스 value 가져오기
+         checkArr.push($(this).attr("data-Myroomno"));  
+        });
+
+        // myroomno 번호
+        console.log("-> checkArr: " + checkArr);
+
+        $.ajax({
+          url : "/myroom/delete_ajax.do",
+          type : "post",  // post
+          cache: false, // 응답 결과 임시 저장 취소
+          async: true,  // true: 비동기 통신
+         // dataType: 'json', // 응답 형식: json, html, xml...
+          data: { chkbox : checkArr },     // 데이터
+          success: function(rdate) { 
+            if(rdate == 1) {          
+              location.href = "/myroom/list_by_memberno.do";
+             } else {
+               alert("삭제 실패");
+             }
+            
+         }
+        });
+        
+       } 
+      }); 
+    
+  });
 </script>
 </head>
 
@@ -38,14 +92,19 @@ function delete_func(myroomno) {
 </DIV>
 
 <DIV class='content_body'>
-  <ASIDE class="aside_right">
+  <ASIDE style="float: left;  font-size: 1.3em;">
+   <input type="checkbox" id="allCheck"> 
+    <label for="allCheck">모두 선택</label>
+  </ASIDE>
+  
+  <ASIDE style="float: right; font-size: 0.9em;">
     <c:if test="${bookno != null}">
       <A href="/contents/list_by_cateno_search_paging?bookno=${bookno}">쇼핑 계속하기</A>
       <span class='menu_divide' >│</span>    
     </c:if>
-    <A href="#">선택삭제</A>
-    <span class='menu_divide' >│</span> 
-    <A href="javascript:location.reload();">새로고침</A>
+    <div class="delBtn">
+     <button class="selectDelete_btn" type="button">선택 삭제</button>
+    </div>
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
@@ -86,9 +145,9 @@ function delete_func(myroomno) {
         <c:set var="point" value="${myroomVO.point }" />
           
           
-        <tr>
+      <tr>
         <td>
-          <input type="checkbox">
+          <input type="checkbox" id="chkBox" data-Myroomno="${myroomno }">
         </td> 
         
           <td style='vertical-align: middle; text-align: center;'>
@@ -119,7 +178,7 @@ function delete_func(myroomno) {
           </td>
           
           <td style='vertical-align: middle; text-align: center;'>
-            <A href="javascript: delete_func(${myroomno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
+           <A href="javascript: delete_func(${myroomno })"><IMG src="/cart/images/delete4.png" title="삭제"></A> 
           </td>
         </tr>
       </c:forEach>

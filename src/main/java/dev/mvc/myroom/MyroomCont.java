@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.mvc.cart.CartVO;
@@ -53,6 +55,32 @@ public class MyroomCont {
   }
   
   /**
+   * Ajax 등록 처리
+   * INSERT INTO cart(cartno, contentsno, memberno, cnt, rdate)
+   * VALUES(cart_seq.nextval, #{contentsno}, #{memberno}, #{cnt}, sysdate)
+   * @param categrpVO
+   * @return
+   */
+  @RequestMapping(value="/myroom/create.do", method=RequestMethod.POST )
+  @ResponseBody
+  public String create(HttpSession session, int contentsno) {
+    MyroomVO myroomVO = new MyroomVO();
+    myroomVO.setContentsno(contentsno);
+    
+    int memberno = (Integer)session.getAttribute("memberno");
+    myroomVO.setMemberno(memberno);
+    
+    int cnt = this.myroomProc.create(myroomVO); // 등록 처리
+    
+    JSONObject json = new JSONObject();
+    json.put("cnt", cnt);
+    
+    System.out.println("-> myroomCont create: " + json.toString());
+
+    return json.toString();
+  }
+  
+  /**
    * 상품 삭제
    * http://localhost:9091/myroom/delete.do
    * @return
@@ -67,6 +95,31 @@ public class MyroomCont {
     
     return mav;
   }
+  
+  /**
+   * 선택/모두 삭제
+   * @param categrpno
+   * @return
+   */
+  @ResponseBody
+  @RequestMapping(value="/myroom/delete_ajax.do", method=RequestMethod.POST )
+  public int delete_ajax(HttpSession session,
+      @RequestParam(value = "chkbox[]") List<String> checkArr) {  
+    
+    // 세션 값 조회하기
+    int memberno = (int)session.getAttribute("memberno"); 
+    int myroomno=0;
+    int result = 0; // '세션 없음' 을 의미
+    
+    if(memberno != 0) {  
+       for(String cartMyroomno : checkArr) {   
+         myroomno = Integer.parseInt(cartMyroomno);  
+         this.myroomProc.delete(myroomno);  // 삭제 처리
+       }   
+       result = 1; // '세션 있음' 을 의미
+     }  
+    return result;  
+   }
   
   
   
