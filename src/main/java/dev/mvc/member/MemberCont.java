@@ -716,6 +716,28 @@ public class MemberCont {
     return json.toString(); 
   }
   
+  /**
+   * 결제시 내 주소 가져오기
+   * @param session
+   * @return
+   */
+  @ResponseBody
+  @RequestMapping(value = "/member/read_ajax.do", method = RequestMethod.GET)
+    public String read_ajax(HttpSession session) {
+      
+      int memberno = (int)session.getAttribute("memberno");
+      MemberVO memberVO = this.memberProc.read(memberno);
+      JSONObject json = new JSONObject();
+      
+      json.put("rname", memberVO.getName());
+      json.put("rtel", memberVO.getTel());
+      json.put("rzipcode", memberVO.getPostcode());
+      json.put("raddress1", memberVO.getAddress1());
+      json.put("raddress2", memberVO.getAddress2());
+      
+      return json.toString();
+    }
+  
   
   
   
