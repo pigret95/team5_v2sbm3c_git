@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import dev.mvc.member.MemberVO;
+
 
 @Controller
 public class CartCont {
@@ -156,6 +158,32 @@ public class CartCont {
     return mav;
   }
   
+  /**
+   * 선택/모두 삭제
+   * @param categrpno
+   * @return
+   */
+  @ResponseBody
+  @RequestMapping(value="/cart/delete_ajax.do", method=RequestMethod.POST )
+  public int delete_ajax(HttpSession session,
+      @RequestParam(value = "chkbox[]") List<String> checkArr) {  
+    
+    // 세션 값 조회하기
+    int memberno = (int)session.getAttribute("memberno"); 
+    int cartno=0;
+    int result = 0; // '세션 없음' 을 의미
+    
+    if(memberno != 0) {  // 세션이 존재하면. 로그인 상태이면.
+      // 가져온 cartno을 1개씩 String 변수에 저장, (키:값) 형태이니까?
+       for(String cartNum : checkArr) {   
+         cartno = Integer.parseInt(cartNum);  
+         this.cartProc.delete(cartno);  // 삭제 처리
+       }   
+       result = 1; // '세션 있음' 을 의미
+     }  
+    return result;  
+   }
+
   
   
   

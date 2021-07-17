@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8"> 
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
-<title></title>
+<title>team5</title>
 <link href="/css/style.css" rel="Stylesheet" type="text/css">
 <script type="text/JavaScript"
           src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -15,31 +15,83 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-// GET -> POST 전송, 상품 삭제
-function delete_func(cartno) { 
-  var frm = $('#frm_post');
-  frm.attr('action', './delete.do');
-  $('#cartno',  frm).val(cartno);
-  
-  frm.submit();
-}   
 
-// 수량
-function update_cnt(cartno) { 
-  var frm = $('#frm_post');
-  frm.attr('action', './update_cnt.do');
-  $('#cartno',  frm).val(cartno);
-  
-  var new_cnt = $('#' + cartno + '_cnt').val();  // $('#1_cnt').val()로 변환됨.
-  $('#cnt',  frm).val(new_cnt);
+  // GET -> POST 전송, 상품 삭제
+  function delete_func(cartno) { 
+    var frm = $('#frm_post');
+    frm.attr('action', './delete.do');
+    $('#cartno',  frm).val(cartno);
+    
+    frm.submit();
+  }   
 
-  // alert('cnt: ' + $('#cnt',  frm).val());
-  // alert('cartno: ' + $('#cartno',  frm).val());
-  // return;
+  // 수량
+  function update_cnt(cartno) { 
+    var frm = $('#frm_post');
+    frm.attr('action', './update_cnt.do');
+    $('#cartno',  frm).val(cartno);
+    
+    var new_cnt = $('#' + cartno + '_cnt').val();  // $('#1_cnt').val()로 변환됨.
+    $('#cnt',  frm).val(new_cnt);
   
-  frm.submit();
-  
-}
+    // alert('cnt: ' + $('#cnt',  frm).val());
+    // alert('cartno: ' + $('#cartno',  frm).val());
+    // return;
+    
+    frm.submit();
+    
+  }
+
+
+  $(function(){  
+    // 모두 체크
+     $("#allCheck").click(function(){                    
+        var chk = $("#allCheck").prop("checked");  // true 반환
+        if(chk) {
+         $("#chkBox").prop("checked", true);
+        } else {
+         $("#chkBox").prop("checked", false);
+        }
+       });
+
+    // 선택 체크
+     $("#chkBox").click(function(){
+       $("#allCheck").prop("checked", false);
+      });
+
+     $(".selectDelete_btn").click(function(){
+       var msg = confirm("정말 삭제하시겠습니까?");  // true/false
+       
+       if(msg) {
+        var checkArr = new Array();
+
+        //선택된 상품들만 삭제
+        $("input[id='chkBox']:checked").each(function(){   //체크된 체크박스 value 가져오기
+         checkArr.push($(this).attr("data-cartNum"));  
+        });
+        
+        console.log("-> checkArr: " + checkArr);
+
+        $.ajax({
+          url : "/cart/delete_ajax.do",
+          type : "post",  // post
+          cache: false, // 응답 결과 임시 저장 취소
+          async: true,  // true: 비동기 통신
+         // dataType: 'json', // 응답 형식: json, html, xml...
+          data: { chkbox : checkArr },     // 데이터
+          success: function(rdate) { 
+            if(rdate == 1) {          
+              location.href = "/cart/list_by_memberno.do";
+             } else {
+               alert("삭제 실패");
+             }
+         }
+        });
+        
+       } 
+      }); 
+    
+  });
 
 </script>
 </head>
@@ -58,14 +110,20 @@ function update_cnt(cartno) {
 </DIV>
 
 <DIV class='content_body'>
-  <ASIDE class="aside_right">
+
+  <ASIDE style="float: left;  font-size: 1.3em;">
+   <input type="checkbox" id="allCheck"> 
+    <label for="allCheck">모두 선택</label>
+  </ASIDE>
+  
+  <ASIDE style="float: right; font-size: 0.9em;">
     <c:if test="${bookno != null}">
       <A href="/contents/list_by_cateno_search_paging?bookno=${bookno}">쇼핑 계속하기</A>
       <span class='menu_divide' >│</span>    
     </c:if>
-    <A href="#">선택삭제</A>
-    <span class='menu_divide' >│</span> 
-    <A href="javascript:location.reload();">새로고침</A>
+    <div class="delBtn">
+    <button class="selectDelete_btn" type="button">선택 삭제</button>
+    </div>
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
@@ -93,7 +151,7 @@ function update_cnt(cartno) {
     </thead>
     
     <tbody>
-      <c:forEach var="cartVO" items="${list }">
+      <c:forEach var="cartVO" items="${list }" varStatus="status">
         <c:set var="cartno" value="${cartVO.cartno }" />
         <c:set var="contentsno" value="${cartVO.contentsno }" />
         <c:set var="memberno" value="${cartVO.memberno }" />
@@ -111,12 +169,11 @@ function update_cnt(cartno) {
         <c:set var="tot" value="${cartVO.tot }" />
         <c:set var="tot_cnt" value="${cartVO.tot_cnt }" />
           
-          
         <tr>
-        <td>
-          <input type="checkbox">
-        </td> 
-        
+          <td>
+            <input type="checkbox" id="chkBox" data-cartNum="${cartno }">
+          </td>
+              
           <td style='vertical-align: middle; text-align: center;'>
             <c:choose>
               <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
@@ -151,9 +208,12 @@ function update_cnt(cartno) {
           </td>
           
           <td style='vertical-align: middle; text-align: center;'>
-            <A href="#"><IMG src="#" title="바로구매"></A><br>
-            <A href="#"><IMG src="#" title="보관함담기"></A><br>
+            <!-- <A href="#"><IMG src="#" title="바로구매"></A><br> -->
+            <button type="button">바로구매</button><br>
+            <!-- <A href="#"><IMG src="#" title="보관함담기"></A><br> -->
+            <button type="button">보관함담기</button><br>
             <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
+            <%-- <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button> --%>
           </td>
         </tr>
       </c:forEach>
@@ -172,7 +232,7 @@ function update_cnt(cartno) {
     
      <thead>
       <tr>
-        <th style='text-align: left; border-right: 1px solid;' >상품금액/수량(${tot_cnt}개)</th>
+        <th style='text-align: left; border-right: 1px solid;'>상품금액/수량(${tot_cnt}개)</th>
         <th style='text-align: left; border-right: 1px solid;'>배송비</th>
         <th style='text-align: left; border-right: 1px dotted;'>결제 예정금액</th>
         <th style='text-align: left;'>적립예정</th>
@@ -182,18 +242,23 @@ function update_cnt(cartno) {
   
     <tbody>
       <tr>
-        <td style='vertical-align: middle; text-align: right; border-right: 1px solid;'>
+        <td style='vertical-align: middle; text-align: right;'>
           <strong><fmt:formatNumber value="${tot_sum }" pattern="#,###" /></strong> 원
-           <span><img src="/cart/images/addition.gif" alt="+"></span>
          </td>
          
-        <td style='vertical-align: middle; text-align: right; border-right: 1px solid;'>
+        <td style='vertical-align: middle; text-align: right;'>
+        <div>
+          <span style="float: left;"><img src="/cart/images/addition.gif" alt="+"></span>
           <strong><fmt:formatNumber value="${baesong_tot }" pattern="#,###" /></strong> 원
-          <span><img src="/cart/images/equals.gif" alt="+"></span>
+        </div>
         </td>
-        
+         
+         
         <td style='vertical-align: middle; text-align: right; border-right: 1px dotted;'>
+        <div>
+         <span style="float: left;"><img src="/cart/images/equals.gif" alt="+"></span>
           <strong style="color: red;"><fmt:formatNumber value="${total_order }" pattern="#,###" /></strong> 원
+        </div>  
         </td>
         
         <td style='vertical-align: middle; text-align: left;'>
@@ -207,7 +272,7 @@ function update_cnt(cartno) {
       </tr>
     </tbody>
   </table>
-  <div  class='bottom_menu'>   
+  <div style="text-align: center;">   
     <form name='frm' id='frm' style='margin-top: 50px;' action="#" method='get'>
       <button type='submit' id='btn_order' class="btn btn-primary">주문하기</button>
     </form>
@@ -216,7 +281,6 @@ function update_cnt(cartno) {
 </DIV>
           
      
-
 <jsp:include page="../menu/bottom.jsp" />
 </body>
  
