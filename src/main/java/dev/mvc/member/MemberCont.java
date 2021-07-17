@@ -231,7 +231,7 @@ public class MemberCont {
         
         System.out.println("-> return_url: " + return_url);
         
-        if (return_url.length() > 0) {   // ★
+        if (return_url.length() > 0) {   
           mav.setViewName("redirect:" + return_url);  
         } else {
           mav.setViewName("redirect:/index.do");  
@@ -279,8 +279,7 @@ public class MemberCont {
       
     }else {
       mav.addObject("url", "login_need");
-      
-      mav.addObject("return_url","/member/list.do"); // 로그인 후 해당 url로 이동? -> 안됨
+      mav.addObject("return_url","list.do"); 
       
       mav.setViewName("redirect:/member/msg.do");
     }

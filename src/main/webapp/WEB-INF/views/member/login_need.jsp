@@ -22,9 +22,10 @@
   <DIV class='message'>
     <H3>관리자 권한이 필요한 페이지입니다.</H3>
     <BR><BR>
-    <button type='button' 
-                 onclick="location.href='/member/login.do'" 
-                 class="btn btn-primary">로그인</button>       
+    <form id="frm" name="frm" action="/member/login.do" method="get">
+    <input type="hidden" id="return_url" name="return_url" value="${param.return_url }">
+     <button type="submit" class="btn btn-primary">로그인</button>  
+    </form>     
   </DIV>
  
 <jsp:include page="../menu/bottom.jsp" flush='false' />
