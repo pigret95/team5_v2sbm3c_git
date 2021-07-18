@@ -18,18 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE cartno=#{cartno}
   </delete>
   
-    <!-- 선택 삭제  -->
-<!--   <delete id="delete_ajax" parameterType="int">
-    DELETE FROM cart
-    WHERE cartno=#{cartno} AND memberno=${memberno}
-  </delete> -->
-  
   <!-- 장바구니 목록 -->
   <select id="list_by_memberno" resultType="dev.mvc.cart.CartVO" parameterType="int" >
     SELECT m.cartno, m.memberno, m.contentsno, m.cnt, m.rdate,
                c.title, c.content, c.thumb1, c.price, c.saleprice, c.dc, c.point
     FROM  contents c, cart m 
-    WHERE c.memberno = #{memberno} AND m.contentsno = c.contentsno
+    WHERE m.memberno = #{memberno} AND (m.contentsno = c.contentsno)
     ORDER BY cartno DESC
   </select>
   
