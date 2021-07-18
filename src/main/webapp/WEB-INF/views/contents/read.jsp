@@ -29,19 +29,16 @@
  $(function() {
    CKEDITOR.replace('content');  // <TEXTAREA>태그 id 값 
  });
-
  $(function(){
    $('#btn_recom').on("click", function() { update_recom_ajax(${contentsno}); });
    $('#btn_login').on('click', login_ajax);
    $('#btn_loadDefault').on('click', loadDefault);
-
  });
  function update_recom_ajax(contentsno) {
    // console.log('-> contentsno:' + contentsno);
    var params = "";
    // params = $('#frm').serialize(); // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
    params = 'contentsno=' + contentsno; // 공백이 값으로 있으면 안됨.
-
    // csrf 파라미터 추가
    // <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">
    //params += '&${ _csrf.parameterName }=${ _csrf.token }';
@@ -72,12 +69,10 @@
        }
      }
    );  //  $.ajax END
-
    // $('#span_animation').css('text-align', 'center');
    $('#span_animation').html("<img src='/contents/images/ani04.gif' style='width: 8%;'>");
    $('#span_animation').show(); // 숨겨진 태그의 출력
  }
-
  <%-- 로그인 --%>
  function login_ajax() {
    var params = "";
@@ -111,15 +106,13 @@
          console.log(error);
        }
      });  
-
  }
-
  function loadDefault() {
    $('#id').val('admin1');
    $('#passwd').val('1234');
  } 
  
- <%-- 쇼핑 카트에 상품 추가 --%>
+ <%--장바구니에 상품 추가 --%>
  function cart_ajax(contentsno) {
    var f = $('#frm_login');
    $('#contentsno', f).val(contentsno);  // 쇼핑카트 등록시 사용할 상품 번호를 저장.
@@ -133,10 +126,8 @@
    } else {  // 로그인 한 경우
      cart_ajax_post();   // 쇼핑카트에 insert 처리 Ajax 호출 
    }
-
  }
-
- <%-- 쇼핑카트 상품 등록 --%>
+ <%-- 장바구니에 상품 등록 --%>
  function cart_ajax_post() {
    var f = $('#frm_login');
    var contentsno = $('#contentsno', f).val();  // 쇼핑카트 등록시 사용할 상품 번호.
@@ -162,7 +153,7 @@
            var sw = confirm('선택한 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?');
            if (sw == true) {
              // 쇼핑카트로 이동
-            location.href='/cart/list_by_memberno.do?bookno=' + ${bookVO.bookno };
+            location.href='/cart/list_by_memberno.do';
            }else{
              location.reload(); 
            }             
@@ -237,8 +228,7 @@
     <%-- ******************** Ajax 기반 로그인 폼 시작 ******************** --%>
     <DIV id='div_login' style='width: 80%; margin: 0px auto; display: none;'>
     <FORM name='frm_login' id='frm_login' method='POST' action='/member/login.do' class="form-horizontal">
-      
-      <input type="hidden" name="contentsno" id="contentsno" value="contentsno">
+    <input type="hidden" name="contentsno" id="contentsno" value="contentsno">
       
       <div class="form-group">
         <label class="col-md-4 control-label" style='font-size: 0.8em;'>아이디</label>    

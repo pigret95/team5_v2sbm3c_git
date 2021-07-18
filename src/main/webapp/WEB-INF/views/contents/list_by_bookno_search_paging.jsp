@@ -150,7 +150,7 @@ function cart_ajax_post() {
           var sw = confirm('선택한 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?');
           if (sw == true) {
             // 쇼핑카트로 이동
-           location.href='/cart/list_by_memberno.do?bookno=' + ${bookVO.bookno };
+           location.href='/cart/list_by_memberno.do';
           }else{
             location.reload(); 
           }             
