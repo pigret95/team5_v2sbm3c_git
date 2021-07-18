@@ -21,7 +21,7 @@ public class CartProc implements CartProcInter {
     int cnt = this.cartDAO.delete(cartno);
     return cnt;
   }
-
+  
   @Override
   public List<CartVO> list_by_memberno(int memebrno) {
     List<CartVO> list = this.cartDAO.list_by_memberno(memebrno);
@@ -33,6 +33,9 @@ public class CartProc implements CartProcInter {
     int cnt = this.cartDAO.update_cnt(cartVO);
     return cnt;
   }
+
+
+
 
   
   

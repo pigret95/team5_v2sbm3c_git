@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <update id="update" parameterType="dev.mvc.member.MemberVO">
     UPDATE member
     SET  postcode=#{postcode}, address1=#{address1}, address2=#{address2}, tel=#{tel},
-           email1=#{email1}, email2=#{email2}
+           email1=#{email1}, email2=#{email2}, email_yn=#{email_yn}
     WHERE memberno = #{memberno}
   </update>
   
@@ -119,13 +119,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE  memberno=#{memberno}
   </select>
   
-  <!-- 회원등급 변경-->
+  <!-- 회원 등급변경 -->
   <update id="grade_update" parameterType="HashMap">
     UPDATE member
     SET grade=#{grade}
     WHERE memberno=#{memberno}
   </update>
   
+
   
 
 
