@@ -41,9 +41,13 @@ CREATE SEQUENCE qna_seq
   CACHE 2                     -- 2번은 메모리에서만 계산
   NOCYCLE;                   -- 다시 1부터 생성되는 것을 방지
 
- -- 질문 등록
+ -- 관리자 질문 등록
  INSERT INTO qna(qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state)
- VALUES (qna_seq.nextval, '1', 'title_01', 'content_01', sysdate, file1, file1saved, thumb1, size1, memberno, state);
+ VALUES (qna_seq.nextval, 1,  'QnA 관리자 질문 제목', 'QnA 관리자 질문 내용', sysdate, 'file1', 'file1saved',  'thumb1', 1024, 1, 0);
+ 
+  -- 회원 질문 등록
+ INSERT INTO qna(qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state)
+ VALUES (qna_seq.nextval, 1, 'QnA 회원 질문 제목', 'QnA 회원 질문 내용', sysdate, 'file1', 'file1saved',  'thumb1', 1024, 3, 0);
  
  -- 답변 등록
  UPDATE qna
@@ -51,19 +55,20 @@ CREATE SEQUENCE qna_seq
  WHERE qnano = 1;
  
  -- 회원별 QnA 목록 조회 (회원)
- SELECT qnano, memberno, title, order_itemno, qdate, state
+ SELECT qnano, memberno, title, order_itemno, qdate, state, file1, thumb1, file1saved
  FROM qna
  WHERE memberno = 1
  ORDER BY qdate DESC;
  
- -- 주문 건별 QnA 상세 조회 (회원)
+ -- 문의 건별 QnA 상세 조회 (회원, 관리자)
  SELECT qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state
  FROM qna
- WHERE (memberno = 1) AND (order_itemno = 1);
+ WHERE qnano = 1;
  
  -- QnA 목록 조회 (관리자)
- SELECT qnano, memberno, title, order_itemno, qdate, state
+ SELECT qnano, order_itemno, title, content, qdate, file1, file1saved, thumb1, size1, memberno, state
  FROM qna
+ WHERE state < 1
  ORDER BY qdate DESC;
  
  -- QnA 삭제 
