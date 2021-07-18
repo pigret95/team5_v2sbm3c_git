@@ -22,8 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="list_by_memberno" resultType="dev.mvc.cart.CartVO" parameterType="int" >
     SELECT m.cartno, m.memberno, m.contentsno, m.cnt, m.rdate,
                c.title, c.content, c.thumb1, c.price, c.saleprice, c.dc, c.point
-    FROM  contents c, cart m 
-    WHERE m.memberno = #{memberno} AND (m.contentsno = c.contentsno)
+    FROM  cart m, contents c 
+    WHERE m.memberno = #{memberno} AND m.contentsno = c.contentsno
     ORDER BY cartno DESC
   </select>
   
