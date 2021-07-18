@@ -98,7 +98,7 @@
     
   </TABLE>
    
-  <DIV class='bottom_menu'>
+  <DIV style="text-align: center;">
     <button type='button' onclick="location.href='/member/create.do'" class="btn btn-primary">등록</button>
   </DIV>
 </DIV>
