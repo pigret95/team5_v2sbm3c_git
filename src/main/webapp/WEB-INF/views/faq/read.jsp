@@ -40,7 +40,7 @@
       <ASIDE class="aside_right">
         <A class="menu_link" onclick="history.back()">목록</A>
           <c:choose>
-            <c:when test="${grade >= 1 and grade <= 10}"> <span><span class='menu_divide'>│</span><A class="menu_link" href="../faq/update.do?noticeno=${param.noticeno }">수정</A></span>  &nbsp</c:when>    
+            <c:when test="${grade >= 1 and grade <= 10}"> <span><span class='menu_divide'>│</span><A class="menu_link" href="../faq/update.do?faqgrpno=${param.faqgrpno }&faqno=${param.faqno}">수정</A></span>  &nbsp</c:when>    
            </c:choose>
       </ASIDE>
     </DIV>
