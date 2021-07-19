@@ -267,7 +267,7 @@ function cart_ajax_post() {
   
 
 
-    <table class="table table-striped" style='width: 100%;'>
+    <table class="table table-striped" style='width: 100%; border:none;'>
           <colgroup>
             <c:choose> 
            <c:when test="${grade <= 10 }">
