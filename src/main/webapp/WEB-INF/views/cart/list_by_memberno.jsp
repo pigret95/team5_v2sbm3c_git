@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- 천단위 콤마 -->
  
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,7 +16,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
   // GET -> POST 전송, 상품 삭제
   function delete_func(cartno) { 
     var frm = $('#frm_post');
@@ -24,7 +24,6 @@
     
     frm.submit();
   }   
-
   // 수량
   function update_cnt(cartno) { 
     var frm = $('#frm_post');
@@ -41,37 +40,35 @@
     frm.submit();
     
   }
-
-
-  $(function(){  
+  
+  $(document).ready(function(){  
     // 모두 체크
      $("#allCheck").click(function(){                    
         var chk = $("#allCheck").prop("checked");  // true 반환
         if(chk) {
-         $("#chkBox").prop("checked", true);
+         $("input[name=chkBox]:checkbox").prop("checked", true);    //cf) name 속성은 중복 가능, id는 고유한 속성(중복 불가)
         } else {
-         $("#chkBox").prop("checked", false);
+         $("input[name=chkBox]:checkbox").prop("checked", false);
         }
        });
-
+     
     // 선택 체크
-     $("#chkBox").click(function(){
+     $("input[name=chkBox]:checkbox").click(function(){
        $("#allCheck").prop("checked", false);
       });
 
+     //선택 삭제
      $(".selectDelete_btn").click(function(){
        var msg = confirm("정말 삭제하시겠습니까?");  // true/false
        
        if(msg) {
-        var checkArr = new Array();
-
-        //선택된 상품들만 삭제
+        var checkArr = new Array(); // 다수의 cartno를 저장하기 위함
         $("input[id='chkBox']:checked").each(function(){   //체크된 체크박스 value 가져오기
          checkArr.push($(this).attr("data-cartNum"));  
         });
         
         console.log("-> checkArr: " + checkArr);
-
+        
         $.ajax({
           url : "/cart/delete_ajax.do",
           type : "post",  // post
@@ -93,6 +90,42 @@
     
   });
 
+  <%-- 보관함에 상품 등록 --%>
+  function myroom_ajax(contentsno) {
+    var params = "";
+    params += 'contentsno=' + contentsno;
+    console.log('-> myroom_ajax params: ' + params);
+    //return;
+    
+    $.ajax({
+        url: '/myroom/create.do',
+        type: 'post',  // get, post
+        cache: false, // 응답 결과 임시 저장 취소
+        async: true,  // true: 비동기 통신
+        dataType: 'json', // 응답 형식: json, html, xml...
+        data: params,      // 데이터
+        success: function(rdata) { // 응답이 온경우
+          var str = '';
+          console.log('-> myroom_ajax cnt: ' + rdata.cnt);  // 1: 관심모델 등록 성공
+          
+          if (rdata.cnt == 1) {
+            var sw = confirm('선택한 상품이 보관함에 담겼습니다.\n클릭하면 보관함으로 이동합니다.');
+            if (sw == true) {
+              // 보관함으로 이동
+             location.href='/myroom/list_by_memberno.do';
+            }else{
+              location.reload(); 
+            }             
+          } else {
+            alert('선택한 상품을 보관함에 담지못했습니다.\n잠시후 다시 시도해주세요.');
+          }
+        },
+        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+        error: function(request, status, error) { // callback 함수
+          console.log(error);
+        }
+      });
+  }
 </script>
 </head>
 
@@ -104,11 +137,12 @@
   <input type='hidden' name='cartno' id='cartno'>
   <input type='hidden' name='cnt' id='cnt'>
 </form>
-<DIV class='content_body'>
+
 <DIV class='title_line'>
   장바구니
 </DIV>
 
+<DIV class='content_body'>
 
   <ASIDE style="float: left;  font-size: 1.3em;">
    <input type="checkbox" id="allCheck"> 
@@ -150,7 +184,7 @@
     </thead>
     
     <tbody>
-      <c:forEach var="cartVO" items="${list }">
+      <c:forEach var="cartVO" items="${list }" varStatus="status">
         <c:set var="cartno" value="${cartVO.cartno }" />
         <c:set var="contentsno" value="${cartVO.contentsno }" />
         <c:set var="memberno" value="${cartVO.memberno }" />
@@ -170,7 +204,7 @@
           
         <tr>
           <td>
-            <input type="checkbox" id="chkBox" data-cartNum="${cartno }">
+            <input type="checkbox" id="chkBox" name="chkBox" data-cartNum="${cartno }">
           </td>
               
           <td style='vertical-align: middle; text-align: center;'>
@@ -208,7 +242,7 @@
           
           <td style='vertical-align: middle; text-align: center;'>
             <!-- <A href="#"><IMG src="#" title="보관함담기"></A><br> -->
-            <button type="button">보관함담기</button><br>
+            <button type="button" id='btn_myroom' onclick="myroom_ajax(${contentsno})">보관함담기</button><br>
             <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
             <%-- <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button> --%>
           </td>
@@ -240,7 +274,7 @@
     <tbody>
       <tr>
         <td style='vertical-align: middle; text-align: right;'>
-          <strong><fmt:formatNumber value="${tot_sum }" pattern="#,###" /></strong> 원
+          <strong><fmt:formatNumber value="${tot_sum }" pattern="#,###" /></strong> 원
          </td>
          
         <td style='vertical-align: middle; text-align: right;'>
