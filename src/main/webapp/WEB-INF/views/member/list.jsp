@@ -16,17 +16,19 @@
 </head>
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
-
+  <DIV class='content_body'>
   <DIV class='title_line'>
     회원 목록
-  </DIV>
-  
-  <DIV class='content_body'>
-    <ASIDE class="aside_right">
+    
+      <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
     </ASIDE>
+  </DIV>
+  
+
+  
     
-  <div class='menu_line'></div>
+
    
     <table class="table table-striped" style='width: 100%;'>
     <colgroup>
