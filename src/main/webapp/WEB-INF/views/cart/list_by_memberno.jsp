@@ -244,7 +244,7 @@
             <A href="#"><IMG src="#" title="보관함담기"></A><br>
             <button type="button" id='btn_myroom' onclick="myroom_ajax(${contentsno})">보관함담기</button><br>
             <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
-            <%-- <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button> --%>
+            <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button>
           </td>
         </tr>
       </c:forEach>
