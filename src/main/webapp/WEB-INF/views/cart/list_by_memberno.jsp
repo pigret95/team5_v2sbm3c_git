@@ -110,7 +110,6 @@
 </DIV>
 
 <DIV class='content_body'>
-
   <ASIDE style="float: left;  font-size: 1.3em;">
    <input type="checkbox" id="allCheck"> 
     <label for="allCheck">모두 선택</label>
@@ -151,7 +150,7 @@
     </thead>
     
     <tbody>
-      <c:forEach var="cartVO" items="${list }" varStatus="status">
+      <c:forEach var="cartVO" items="${list }">
         <c:set var="cartno" value="${cartVO.cartno }" />
         <c:set var="contentsno" value="${cartVO.contentsno }" />
         <c:set var="memberno" value="${cartVO.memberno }" />
@@ -273,7 +272,7 @@
     </tbody>
   </table>
   <div style="text-align: center;">   
-    <form name='frm' id='frm' style='margin-top: 50px;' action="#" method='get'>
+    <form name='frm' id='frm' style='margin-top: 50px;' action="/order_pay/create.do" method='get'>
       <button type='submit' id='btn_order' class="btn btn-primary">주문하기</button>
     </form>
   </div>
