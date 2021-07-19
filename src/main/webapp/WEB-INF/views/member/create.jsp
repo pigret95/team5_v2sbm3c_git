@@ -165,12 +165,12 @@
     </div>
   </div>
   <!-- ************************ Modal 알림창 종료 ************************ -->
-
+  <DIV class='content_body'>
   <DIV class='title_line'>
     회원 가입
   </DIV>
 
-  <DIV class='content_body'>
+ 
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
     </ASIDE>

@@ -42,7 +42,7 @@
       <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=5">서비스</A></span></li></ul>
       
       <ul><div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 공지사항</div>
-     <li class="side_menu_admin"><span><A class='menu_link'  href="/notice/list_admin.do">공지사항</A></span></li>
+     <li class="side_menu_admin"><span><A class='menu_link'  href="/notice/list_admin.do">공지사항</A></span></li></ul>
      
       
       </c:when>    
