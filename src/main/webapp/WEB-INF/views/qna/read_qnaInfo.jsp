@@ -75,7 +75,18 @@
             <li>
               <%-- 관리자면 답글 등록이 보임 --%>
               <c:if test="${sessionScope.grade lt '10' }">
-                <span style="font-size: 1.5em; font-weight: bold;">관리자입니다</span><br>
+                
+                <form name='frm' method='POST' action="/qna/write_reply.do" class="form-horizontal">
+                <input type="hidden" name="qnano" value="${qnano }">
+                <input type="hidden" name="state" value="${state }">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <textarea class="form-control" name='reply' id='reply' rows='10'
+                        placeholder="문의에 대한 답변을 입력하세요"></textarea>
+                    </div>
+                  </div>
+                  <input type="submit" value="답변 등록">
+                </form>
               </c:if> 
             </li>
 
