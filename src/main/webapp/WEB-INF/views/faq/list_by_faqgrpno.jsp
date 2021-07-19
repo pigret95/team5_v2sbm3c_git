@@ -54,7 +54,9 @@
     </DIV><!-- title_line -->
 
    <DIV class="side_menu">
-  1:1문의
+ <ul>
+    <li><span><A class='menu_link'  href="/qna/list_qna.do">1:1문의</A></span>
+  </ul>
   
     <c:choose>
       <c:when test="${grade >= 1 and grade <= 10}">
