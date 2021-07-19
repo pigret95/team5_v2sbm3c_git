@@ -50,7 +50,7 @@ $(document).ready(function(){
      
     </div><!-- login_menu --> 
     
-     <div class="search">
+<!--      <div class="search">
       <div class="search_input_main">
         <input type="text" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" placeholder="검색어 입력">
        </div>
@@ -58,7 +58,31 @@ $(document).ready(function(){
         <a class="button" href="#"></a>
        </div>
      </div>
+      -->
+      
+           <div class="search">
      
+      <form  name="frm" id="frm" method='get' action="/contents/list_by_bookno_search_paging.do">
+      
+          <c:choose>
+        <c:when test="${param.word != '' }"> <%-- 검색하는 경우 --%>
+        <div class="search_input_main">
+          <input style="border:none;" type='text' name='word' id='word' value='${param.word }'>
+        </div>
+        </c:when>
+        <c:otherwise> <%-- 검색하지 않는 경우 --%>
+          <div class="search_input_main">
+          <input style="border:none;" type='text' name='word' id='word' value=''>
+          </div>
+        </c:otherwise>
+      </c:choose>
+        <!-- search_input_main -->
+      <button type='submit' class="button"></button>
+      
+      
+      </form>
+    
+      </div>
     
   </DIV><!-- main_header -->
  
@@ -193,7 +217,7 @@ $(document).ready(function(){
       <c:when test="${grade >= 11 or grade == null}"><li><A class='menu_link'  href='/event/list_grid.do' >이벤트</A></li></c:when>
     </c:choose>  
 </ul>
-
+</div>
 </DIV><!-- container_main -->
 
 <%--내용--%>
