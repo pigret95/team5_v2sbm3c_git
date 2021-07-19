@@ -141,7 +141,7 @@ public class QnaCont {
    * @param session
    * @return
    */
-  @RequestMapping(value = "/qna/list_qna", method = RequestMethod.GET)
+  @RequestMapping(value = "/qna/list_qna.do", method = RequestMethod.GET)
   public ModelAndView read_by_memberno(HttpSession session) {
     ModelAndView mav = new ModelAndView();
     if (session.getAttribute("memberno") != null) { // 로그인 한 경우
