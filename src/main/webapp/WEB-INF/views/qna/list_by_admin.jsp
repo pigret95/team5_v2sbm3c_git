@@ -81,14 +81,7 @@
                     </td>
                     
                     <td style='vertical-align: middle; text-align: center;'>
-                      <c:choose>
-                        <c:when test="${state eq '0'}">
-                          처리중
-                        </c:when>
-                        <c:otherwise>
-                          답변완료
-                        </c:otherwise>
-                      </c:choose>
+                      처리중
                     </td>
                   </tr>
                 </c:forEach>
