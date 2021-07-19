@@ -40,7 +40,7 @@
   1:1문의
   
     <c:choose>
-      <c:when test="${grade >= 1 or grade <= 10}">
+      <c:when test="${grade >= 1 and grade <= 10}">
       <ul><div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 faq</div>
      <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=1">주문/결제</A></span></li>
      <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=2">배송/수령일 안내</A></span></li>
