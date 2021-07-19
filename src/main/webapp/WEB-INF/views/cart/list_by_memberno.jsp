@@ -207,8 +207,6 @@
           </td>
           
           <td style='vertical-align: middle; text-align: center;'>
-            <!-- <A href="#"><IMG src="#" title="바로구매"></A><br> -->
-            <button type="button">바로구매</button><br>
             <!-- <A href="#"><IMG src="#" title="보관함담기"></A><br> -->
             <button type="button">보관함담기</button><br>
             <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
