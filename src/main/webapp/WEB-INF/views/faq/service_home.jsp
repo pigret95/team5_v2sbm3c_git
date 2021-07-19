@@ -29,7 +29,7 @@
 
 <DIV class="side_menu">
   <ul>
-    <li><span><A class='menu_link'  href="/qna/list_qna">1:1문의</A></span>
+     <li><span><A class='menu_link'  href="/qna/list_qna.do">1:1문의</A></span>
   </ul>
   
     <c:choose>
