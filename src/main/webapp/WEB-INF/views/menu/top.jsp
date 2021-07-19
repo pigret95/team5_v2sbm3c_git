@@ -36,7 +36,7 @@ $(document).ready(function(){
         
         
           ${sessionScope.id } <span><A class='menu_link'  href='/member/logout.do' >로그아웃</A></span> &nbsp
-         <span><a class="menu_link" href="/order_pay/list_by_memberno.do?memberno=3">마이페이지</a></span> &nbsp
+         <span><a class="menu_link" href="/order_pay/list_by_memberno.do">마이페이지</a></span> &nbsp
          
          <c:choose>
             <c:when test="${grade >= 1 or grade <= 10}"> <span><A class='menu_link'  href='/member/list.do' >회원목록</A></span>  &nbsp</c:when>    
