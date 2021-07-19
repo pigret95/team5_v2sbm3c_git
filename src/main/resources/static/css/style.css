@@ -611,7 +611,7 @@ li.menu1:focus .type{
   position:absolute;
   top:200px;
   width:100%x;
-  height:260px;
+  height:50%;
   background:#ffffff;
   border:1px solid black;
   visibility:hidden;
@@ -621,7 +621,7 @@ li.menu1:focus .type{
   float:left;
   border-right:1px solid black;
   width:200px;
-  height:260px;
+  height:100%;
   margin-left:10px;
  
 }
