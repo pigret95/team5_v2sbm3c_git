@@ -181,7 +181,6 @@
   </table>
   
   <form name='frm' id='frm' style='margin-top: 50px;' action="/order_pay/create.do" method='post'>
-    <input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }">  
     <input type="hidden" name="amount" value=" ${total_order }">   <%-- 전체 주문 금액 --%>
     
     
