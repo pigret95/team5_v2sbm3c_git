@@ -223,7 +223,7 @@
       </form>
     </DIV>
     
-    <DIV class='menu_line'></DIV>
+    <DIV class="menu_line" style="border-bottom:1px solid #d3d3d3;"></DIV>
   
     <%-- ******************** Ajax 기반 로그인 폼 시작 ******************** --%>
     <DIV id='div_login' style='width: 80%; margin: 0px auto; display: none;'>
@@ -271,7 +271,7 @@
   
 
   
-   <fieldset class="fieldset_basic">
+   <fieldset class="fieldset_basic" style="border:1px solid red;">
    
     <ul>
    
@@ -281,12 +281,13 @@
         <c:set var="title" value="${contentsVO.title }" />
         <c:if test="${file1saved.endsWith('jpg') || file1saved.endsWith('png') || file1saved.endsWith('gif')}">
         
-          <DIV style=" width:35%;  float: left; margin-left:15%; margin-top:30px;  margin-bottom:30px; ">
+          <DIV style=" width:30%; float: left;  margin-left: 20%; margin-top:30px;  margin-bottom:30px;border:1px solid blue; ">
             <IMG src="/contents/storage/${contentsVO.file1saved }" style="width: 100%;">
           </DIV>
+          
          </c:if>   
          
-          <DIV style="width: 40%; height: 200px; float: left; margin-top:10%; margin-left:30px;">
+          <DIV style="width: 45%; height: 200px; float: left; margin-top:10%; margin-left:30px; border:1px solid green;">
             <span style="font-size: 1.5em; font-weight: bold;">${title }</span><br>
             <span style="color: #FF0000; font-size: 2.0em;">${dc} %</span>
             <span style="font-size: 1.5em; font-weight: bold;"><fmt:formatNumber value="${saleprice}" pattern="#,###" /> 원</span>
@@ -305,20 +306,20 @@
             </form>
           </DIV> 
   
-  <DIV style="float:left; width:100%; border-bottom:2px solid #d3d3d3; margin-bottom:50px; margin-left:30px; margin-right:30px;"></DIV>
+  <DIV style="float:left; width:100%; border-bottom:2px solid #d3d3d3; margin-bottom:30px; margin-left:30px; margin-right:30px;"></DIV>
     
          
 
-        <DIV>${contentsVO.content }</DIV>
+        <DIV style="border:3px solid blue; float:left; width:100%; height:100%; margin-left:20px;" >${contentsVO.content }</DIV>
               
       </li>
       <li class="li_none">
-        <DIV style='text-decoration: none;'>
+        <DIV style='text-decoration: none; border:3px solid black; float:left; margin-top:10px; margin-left:20px;'>
           검색어(키워드): ${contentsVO.word }
         </DIV>
       </li>
       <li class="li_none">
-        <DIV>
+        <DIV style="margin:5px solid green;">
           <c:if test="${contentsVO.file1.trim().length() > 0 }">
              첨부 파일: <A href='/download?dir=/contents/storage&filename=${contentsVO.file1saved}&downname=${contentsVO.file1}'>${contentsVO.file1}
              </A> (${contentsVO.size1_label})  </c:if>
