@@ -76,21 +76,7 @@ function delete_by_bookgrpno(bookgrpno) {
   f.submit();
 } 
 
-// 다수의 bookno를 전달하여 contents 레코드 삭제
-function delete_contents_by_all_bookno() {
-  
-  var f = $('#frm_delete_by_bookgrpno');
-  f.attr('action', '../contents/delete_contents_by_all_bookno.do');
-  var booknos = $('#booknos', f).val();
-  
-  booknos = booknos.substr(0, booknos.length-1);
-  console.log('-> booknos: ' + booknos);
-  console.log('-> action: ' + f.attr('action'));
 
-  $('#booknos').val(booknos);
-
-  f.submit();
-}
 //삭제폼
 function read_delete_ajax(bookno) {
   $('#panel_update').css("display","none"); 
@@ -144,7 +130,7 @@ function read_delete_ajax(bookno) {
  
 <body>
 <jsp:include page="../menu/top.jsp" />
- 
+ <DIV class='content_body'>
 <DIV class='title_line'><A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > ${bookgrpVO.grpname }
 </DIV>
 <ASIDE class="aside_right">
@@ -153,14 +139,12 @@ function read_delete_ajax(bookno) {
       <input type='hidden' name='booknos' id='booknos' value=''>
       <c:choose> 
       <c:when test="${grade <= 10 }">
-      <A href="javascript: delete_contents_by_all_bookno()">모든 카테고리의 관련 자료 삭제</A>
-      <span class='menu_divide' >│</span>
       <A href="javascript: delete_by_bookgrpno(${param.bookgrpno})">모든 카테고리 삭제</A>
       </c:when>
       </c:choose>
     </form>
  </ASIDE> 
-<DIV class='content_body'>
+
 
 <c:choose> 
       <c:when test="${grade <= 10 }">
@@ -181,11 +165,11 @@ function read_delete_ajax(bookno) {
 <DIV id='panel_update' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center ;display:none;'>
     <FORM name='frm_update' id='frm_update' method='POST' action='./update.do'>
       <input type='hidden' name='bookno' id='bookno' value='${bookVO.bookno }'>
-          <label> 번호</label>
+          <label> 그룹 번호</label>
       <input type='number' name='bookgrpno'   id='bookgrpno' required="required" style='width: 3%;'
            min='1'  autofocus="autofocus">
                  <label>종류</label>
-      <input type='text' name='bookname' id='bookname'  required="required" style='width: 40%;'
+      <input type='text' name='bookname' id='bookname'  required="required" style='width: 10%;'
                  >
       <button type="submit" id='submit'>저장</button>
       <button type="button" onclick="cancel();">취소</button>

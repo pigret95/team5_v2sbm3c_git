@@ -179,7 +179,7 @@
       href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpVO.bookgrpno }"
       class='title_link'>${bookgrpVO.grpname }</A> > <A
       href="./list_by_bookno_search_paging.do?bookno=${bookVO.bookno }" class='title_link'>${bookVO.bookname }</A>
-  
+      >${contentsVO.title } 
   
     <ASIDE class="aside_right">
     <c:choose> 

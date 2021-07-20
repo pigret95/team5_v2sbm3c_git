@@ -19,6 +19,8 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <script type="text/javascript">
+
+
 function recom_ajax(contentsno, status_count) {
   console.log("-> recom_" + status_count + ": " + $('#recom_' + status_count).html());  // A tag body      
   var params = "";
@@ -65,6 +67,7 @@ $(function(){
   $('#btn_login').on('click', login_ajax);
   $('#btn_loadDefault').on('click', loadDefault);
 });
+
 
 <%-- 로그인 --%>
 function login_ajax() {
@@ -171,15 +174,16 @@ function cart_ajax_post() {
 
 <body>
   <jsp:include page="../menu/top.jsp" />
-
+ <DIV class='content_body'>
   <DIV class='title_line'>
     <A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > <A
       href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpVO.bookgrpno }"
-      class='title_link'>${bookgrpVO.grpname }</A> > <A
-      href="./list_by_bookno_search_paging.do?bookno=${bookVO.bookno }" class='title_link'>${bookVO.bookname }</A>
+      class='title_link'>${bookgrpVO.grpname }</A> > ${bookVO.bookname }
   </DIV>
-
-  <DIV class='content_body'>
+  
+      
+      
+ 
     <DIV style="text-align: left;">
       <ASIDE class="aside_right">
                   <c:choose> 

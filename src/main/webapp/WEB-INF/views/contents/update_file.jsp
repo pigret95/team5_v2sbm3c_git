@@ -30,7 +30,7 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+ <DIV class='content_body'>
   <DIV class='title_line'>
     <A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > <A
       href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpVO.bookgrpno }"
@@ -38,7 +38,7 @@
       href="./list_by_bookno_search_paging.do?bookno=${bookVO.bookno }" class='title_link'>${bookVO.bookname }</A>
   </DIV>
 
-<DIV class='content_body'>
+
   <ASIDE class="aside_right">
     <A href="./create.do?bookno=${bookVO.bookno }">등록</A>
     <span class='menu_divide' >│</span>

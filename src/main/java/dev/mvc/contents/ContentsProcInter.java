@@ -86,13 +86,7 @@ public interface ContentsProcInter {
     * @return
     */
    public int update_recom(int contentsno);
-   
-  /**
-   * 다수의 booknos를 전달하여 contents 레코드 삭제
-   * @param booknos
-   * @return
-   */
-  public int delete_contents_by_all_bookno(Map<String, Object> booknos);
+
 }
 
 

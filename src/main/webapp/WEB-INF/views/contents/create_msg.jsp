@@ -6,7 +6,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" /> 
-<title>Resort world</title>
+<title>book world</title>
  
 <link href="../css/style.css" rel="Stylesheet" type="text/css">
 <script type="text/JavaScript"
@@ -20,10 +20,9 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
   
-  <ASIDE  class="aside_right">
-    <A href=''>목록</A>
-    <!-- <span class='menu_divide' >│</span> --> 
-  </ASIDE> 
+<DIV class='content_body'>
+   <DIV class='title_line'>
+  </DIV>
   
   <div class='menu_line'></div>
  
@@ -65,7 +64,7 @@
   </fieldset>
  
 </DIV>
- 
+ </DIV>
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
  

@@ -199,11 +199,7 @@ public class ContentsProc implements ContentsProcInter {
     return cnt;
   }
 
-  @Override
-  public int delete_contents_by_all_bookno(Map<String, Object> booknos) {
-    int cnt=this.contentsDAO.delete_contents_by_all_bookno(booknos);
-    return cnt;
-  }
+
 
   @Override
   public int delete(int contentsno) {

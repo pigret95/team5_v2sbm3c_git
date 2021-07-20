@@ -43,14 +43,14 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+ <DIV class='content_body'>
 <DIV class='title_line'>
-  <A href="../bookgrp/list.do" class='title_link'>카테고리 그룹</A> > 
+  <A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > 
   ${bookgrpVO.grpname } > ${bookVO.bookname } >
   ${title } 수정
 </DIV>
 
-<DIV class='content_body'>
+
   <ASIDE class="aside_right">
     <A href="./create.do?bookno=${bookVO.bookno }">등록</A>
     <span class='menu_divide' >│</span>

@@ -32,10 +32,10 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
-  <div class="title_line">
+
         
-  </div>
-  
+ 
+  <DIV class='content_body'>
   <DIV class='title_line'>
     <A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > <A
       href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpVO.bookgrpno }"
@@ -46,7 +46,7 @@
  
   <div class='menu_line'></div>
   
-  <DIV style='width: 100%;'>
+
     <FORM name='frm' method='POST' action='./create.do' class="form-horizontal"
              enctype="multipart/form-data">
                
@@ -71,7 +71,7 @@
       <div class="form-group">   
         <div class="col-md-12">
           <%-- 실제 컬럼명: file1, Spring File 객체 대응: file1MF --%>
-          <input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택">
+          <input type='file' class="form-control" name='file1MF' id='file1MF' value='' placeholder="파일 선택" style='width: 30%;'>
         </div>
       </div>
       
@@ -84,12 +84,11 @@
         <div class="form-group">
     
         <label class="control-label col-md-2">정가</label>
-        
          <input type='number' name='price' value='' required="required" autofocus="autofocus"
                     min="0" max="10000000" step="100"  placeholder="정가" 
                     class="form-control" style='width: 10%;'>
         
-       <label class="control-label col-md-2">할인률</label>
+      <label class="control-label col-md-2">할인률</label>
 
          <input type='number' name='dc' value='' required="required"
                     min="0" max="100" step="1"  placeholder="할인률" 
@@ -112,13 +111,13 @@
          
 <div class="form-group">   
         <div class="col-md-12">
-          <input type='text' class="form-control" name='writer'  value='' placeholder="저자" style='width: 90%;'>
+          <input type='text' class="form-control" name='writer'  value='' placeholder="저자" style='width: 20%;'>
         </div>
       </div>
 
              <div class="form-group">   
         <div class="col-md-12">
-          <input type='text' class="form-control" name='publisher'  value='' placeholder="출판사" style='width: 90%;'>
+          <input type='text' class="form-control" name='publisher'  value='' placeholder="출판사" style='width: 20%;'>
         </div>
       </div>
       <DIV class='content_bottom_menu'>
@@ -129,8 +128,7 @@
       </DIV>
        
     </FORM>
-  </DIV>
-
+</DIV>
   
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>

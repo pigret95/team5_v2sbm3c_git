@@ -125,10 +125,10 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" />
- 
+ <DIV class='content_body'>
 <DIV class='title_line'>도서 그룹</DIV>
 
-<DIV class='content_body'>
+
 <c:choose> 
       <c:when test="${grade <= 10 }">
   <!-- 신규 등록 -->

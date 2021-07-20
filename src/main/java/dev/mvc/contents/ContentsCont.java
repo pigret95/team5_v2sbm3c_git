@@ -318,31 +318,7 @@ public class ContentsCont {
     return mav;
   }
   
-  /**
-   * 다수의 bookno를 전달하여 contents 레코드 삭제
-   * @param contentsno
-   * @return
-   */
-  @RequestMapping(value="/contents/delete_contents_by_all_bookno.do", method=RequestMethod.POST)
-  public ModelAndView delete_contents_by_all_bookno(String booknos) { 
-    ModelAndView mav = new  ModelAndView();
-    
-    String[] booknos_array = booknos.split(",");  
-    List<Integer> booknos_list = new ArrayList<Integer>();
-    
-    for(int index=0; index < booknos_array.length; index++) {
-      booknos_list.add(Integer.parseInt(booknos_array[index]));
-    }
-    
-    Map<String, Object> booknos_map = new HashMap<String, Object>();
-    booknos_map.put("booknos_list", booknos_list);
-    
-    this.contentsProc.delete_contents_by_all_bookno(booknos_map);
 
-    mav.setViewName("redirect:/bookgrp/list.do"); 
-    
-    return mav; 
-  }
   /**
    * 수정 폼
    * http://localhost:9091/contents/update_text.do?contentsno=1
@@ -599,4 +575,6 @@ public class ContentsCont {
 
     return mav; // forward
   }   
+  
+
 }
