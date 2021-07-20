@@ -54,23 +54,24 @@ public class MyroomCont {
     return mav;
   }
   
-  /**
-   * Ajax 등록 처리
-   * INSERT INTO cart(cartno, contentsno, memberno, cnt, rdate)
-   * VALUES(cart_seq.nextval, #{contentsno}, #{memberno}, #{cnt}, sysdate)
-   * @param categrpVO
-   * @return
-   */
-  @RequestMapping(value="/myroom/create.do", method=RequestMethod.POST )
+/**
+ * Ajax 등록 처리
+ * @param session
+ * @param contentsno
+ * @return
+ */
+  @RequestMapping(value="/myroom/create_ajax.do", method=RequestMethod.POST )
   @ResponseBody
-  public String create(HttpSession session, int contentsno) {
+  public String create_ajax(HttpSession session, int contentsno) {
     MyroomVO myroomVO = new MyroomVO();
     myroomVO.setContentsno(contentsno);
     
     int memberno = (Integer)session.getAttribute("memberno");
     myroomVO.setMemberno(memberno);
-    
+
     int cnt = this.myroomProc.create(myroomVO); // 등록 처리
+    
+    System.out.println(cnt);
     
     JSONObject json = new JSONObject();
     json.put("cnt", cnt);

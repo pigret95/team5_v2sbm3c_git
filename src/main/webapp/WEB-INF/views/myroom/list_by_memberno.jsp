@@ -85,7 +85,7 @@
   function cart_ajax(contentsno) {
     var params = "";
     params += 'contentsno=' + contentsno;
-    console.log('-> myroom_ajax params: ' + params); // 여기까진 됨.
+    console.log('-> myroom_ajax params: ' + params); 
     //return;
     
     $.ajax({

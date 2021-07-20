@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
-
 @Controller
 public class CartCont {
   @Autowired
@@ -27,15 +26,38 @@ public class CartCont {
   }
   
   /**
-   * Ajax 등록 처리
-   * INSERT INTO cart(cartno, contentsno, memberno, cnt, rdate)
-   * VALUES(cart_seq.nextval, #{contentsno}, #{memberno}, #{cnt}, sysdate)
-   * @param categrpVO
+   * 등록 처리
+   * @param cartVO
    * @return
    */
   @RequestMapping(value="/cart/create.do", method=RequestMethod.POST )
+  public ModelAndView create(HttpSession session, int contentsno) {
+    ModelAndView mvc = new ModelAndView();
+    
+    CartVO cartVO = new CartVO();
+    cartVO.setContentsno(contentsno);
+    
+    int memberno = (Integer)session.getAttribute("memberno");
+    cartVO.setMemberno(memberno);
+    
+    cartVO.setCnt(1);
+    
+    int cnt = this.cartProc.create(cartVO); // 등록 처리
+    mvc.addObject("cnt", cnt);
+    
+    return mvc;
+  }
+  
+  
+  
+  /**
+   * Ajax 등록 처리
+   * @param cartVO
+   * @return
+   */
+  @RequestMapping(value="/cart/create_ajax.do", method=RequestMethod.POST )
   @ResponseBody
-  public String create(HttpSession session, int contentsno) {
+  public String create_ajax(HttpSession session, int contentsno) {
     CartVO cartVO = new CartVO();
     cartVO.setContentsno(contentsno);
     
