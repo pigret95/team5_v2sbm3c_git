@@ -139,7 +139,7 @@ function cart_ajax_post() {
   
   $.ajax(
     {
-      url: '/cart/create.do',
+      url: '/cart/create_ajax.do',
       type: 'post',  // get, post
       cache: false, // 응답 결과 임시 저장 취소
       async: true,  // true: 비동기 통신
@@ -153,7 +153,7 @@ function cart_ajax_post() {
           var sw = confirm('선택한 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?');
           if (sw == true) {
             // 쇼핑카트로 이동
-           location.href='/cart/list_by_memberno.do';
+           location.href='/cart/list_by_memberno.do?bookno=' + ${bookVO.bookno };
           }else{
             location.reload(); 
           }             
@@ -167,6 +167,7 @@ function cart_ajax_post() {
       }
     });
 }
+
 
 </script>
 

@@ -75,6 +75,7 @@
  }
  <%-- 로그인 --%>
  function login_ajax() {
+   
    var params = "";
    // 직렬화, 폼의 데이터를 키와 값의 구조로 조합
    params = $('#frm_login').serialize(); 
@@ -94,8 +95,9 @@
          if (rdata.cnt == 1) {  // 로그인 성공
            $('#div_login').hide();
            
-           // 쇼핑카트에 insert 처리 Ajax 호출
-           cart_ajax_post();            
+/*            // 쇼핑카트에 insert 처리 Ajax 호출
+           cart_ajax_post(); */            
+           location.href='./read.do?contentsno=' + ${contentsno };
            
          } else {
            alert('로그인에 실패했습니다. \n아이디/비밀번호를 확인해 주세요.');
@@ -106,13 +108,21 @@
          console.log(error);
        }
      });  
+
  }
+
  function loadDefault() {
    $('#id').val('admin1');
    $('#passwd').val('1234');
  } 
+
+ /*  function loadDefault2() {
+ $('#id').val('admin1');
+ $('#passwd').val('1234');
+}   */
  
- <%--장바구니에 상품 추가 --%>
+ 
+ <%-- 장바구니에 넣기 --%>
  function cart_ajax(contentsno) {
    var f = $('#frm_login');
    $('#contentsno', f).val(contentsno);  // 쇼핑카트 등록시 사용할 상품 번호를 저장.
@@ -122,11 +132,13 @@
    // console.log('-> id:' + '${sessionScope.id}');
    if ('${sessionScope.id}' == '') {  // 로그인이 안되어 있다면
      $('#div_login').show();    // 로그인폼 출력  
+     /* $('#div_login2').hide();    */
      
    } else {  // 로그인 한 경우
      cart_ajax_post();   // 쇼핑카트에 insert 처리 Ajax 호출 
    }
  }
+
  <%-- 장바구니에 상품 등록 --%>
  function cart_ajax_post() {
    var f = $('#frm_login');
@@ -137,16 +149,14 @@
    console.log('-> cart_ajax_post: ' + params);
    // return;
    
-   $.ajax(
-     {
-       url: '/cart/create.do',
+   $.ajax({
+       url: '/cart/create_ajax.do',
        type: 'post',  // get, post
        cache: false, // 응답 결과 임시 저장 취소
        async: true,  // true: 비동기 통신
        dataType: 'json', // 응답 형식: json, html, xml...
        data: params,      // 데이터
        success: function(rdata) { // 응답이 온경우
-         var str = '';
          console.log('-> cart_ajax_post cnt: ' + rdata.cnt);  // 1: 쇼핑카트 등록 성공
          
          if (rdata.cnt == 1) {
@@ -159,6 +169,63 @@
            }             
          } else {
            alert('선택한 상품을 장바구니에 담지못했습니다.\n잠시후 다시 시도해주세요.');
+         }
+       },
+       // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+       error: function(request, status, error) { // callback 함수
+         console.log(error);
+       }
+     });
+ }
+
+ <%-- 보관함에 넣기 --%>
+ function myroom_ajax(contentsno) {
+   var f = $('#frm_login');
+   $('#contentsno', f).val(contentsno);  // 쇼핑카트 등록시 사용할 상품 번호를 저장.
+   
+   console.log('-> contentsno: ' + $('#contentsno', f).val()); 
+   
+   // console.log('-> id:' + '${sessionScope.id}');
+   if ('${sessionScope.id}' == '') {  // 로그인이 안되어 있다면
+/*      $('#div_login2').show();    // 로그인폼 출력
+     $('#div_login').hide();    */
+     $('#div_login').show();
+   } else {  // 로그인 한 경우
+     myroom_ajax_post();   // 쇼핑카트에 insert 처리 Ajax 호출 
+   }
+ }
+
+ <%-- 보관함에 상품 등록 --%>
+ function myroom_ajax_post() {
+   var f = $('#frm_login');
+   var contentsno = $('#contentsno', f).val();  // 쇼핑카트 등록시 사용할 상품 번호.
+   
+   
+   var params = "";
+   params += 'contentsno=' + contentsno;
+   console.log('-> myroom_ajax params: ' + params);
+   // return;
+   
+   $.ajax({
+       url: '/myroom/create_ajax.do',
+       type: 'post',  // get, post
+       cache: false, // 응답 결과 임시 저장 취소
+       async: true,  // true: 비동기 통신
+       dataType: 'json', // 응답 형식: json, html, xml...
+       data: params,      // 데이터
+       success: function(rdata) { // 응답이 온경우
+         console.log("-> cnt: " + rdata.cnt);
+                  
+         if (rdata.cnt == 1) {
+           var sw = confirm('선택한 상품이 보관함에 담겼습니다.\n클릭하면 보관함으로 이동합니다.');
+           if (sw == true) {
+             // 쇼핑카트로 이동
+            location.href='/myroom/list_by_memberno.do';
+           }else{
+             location.reload(); 
+           }             
+         } else {
+           alert('선택한 상품을 보관함에 담지못했습니다.\n잠시후 다시 시도해주세요.');
          }
        },
        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
@@ -299,7 +366,7 @@
                        min="1" max="99999" step="1" class="form-control" style='width: 30%;'><br>
             <button type='button' id='btn_cart' onclick="cart_ajax(${contentsno })" class="btn btn-info">장바 구니</button>           
             <button type='button' onclick="" class="btn btn-info">바로 구매</button>
-            <button type='button' onclick="" class="btn btn-info">관심 상품</button>
+            <button type='button' onclick="myroom_ajax(${contentsno })" class="btn btn-info">관심 상품</button>
             <button type='button' id="btn_recom" class="btn btn-info">♥(${recom })</button>
             <span id="span_animation"></span>
      
