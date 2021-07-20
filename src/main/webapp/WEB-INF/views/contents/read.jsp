@@ -271,7 +271,7 @@
   
 
   
-   <fieldset class="fieldset_basic" style="border:1px solid red;">
+   <fieldset class="fieldset_basic">
    
     <ul>
    
@@ -281,13 +281,13 @@
         <c:set var="title" value="${contentsVO.title }" />
         <c:if test="${file1saved.endsWith('jpg') || file1saved.endsWith('png') || file1saved.endsWith('gif')}">
         
-          <DIV style=" width:30%; float: left;  margin-left: 20%; margin-top:30px;  margin-bottom:30px;border:1px solid blue; ">
+          <DIV style=" width:20%; float: left;  margin-left: 30%; margin-top:30px;  margin-bottom:30px;">
             <IMG src="/contents/storage/${contentsVO.file1saved }" style="width: 100%;">
           </DIV>
           
          </c:if>   
          
-          <DIV style="width: 45%; height: 200px; float: left; margin-top:10%; margin-left:30px; border:1px solid green;">
+          <DIV style="width: 45%; height: 200px; float: left; margin-top:15%; margin-left:30px;">
             <span style="font-size: 1.5em; font-weight: bold;">${title }</span><br>
             <span style="color: #FF0000; font-size: 2.0em;">${dc} %</span>
             <span style="font-size: 1.5em; font-weight: bold;"><fmt:formatNumber value="${saleprice}" pattern="#,###" /> 원</span>
@@ -310,16 +310,16 @@
     
          
 
-        <DIV style="border:3px solid blue; float:left; width:100%; height:100%; margin-left:20px;" >${contentsVO.content }</DIV>
+        <DIV style="width:100%; float:left; width:100%; height:100%; margin-left:20px;" >${contentsVO.content }</DIV>
               
       </li>
       <li class="li_none">
-        <DIV style='text-decoration: none; border:3px solid black; float:left; margin-top:10px; margin-left:20px;'>
+        <DIV style='width:100%; text-decoration: none; float:left; margin-top:10px; margin-left:20px;'>
           검색어(키워드): ${contentsVO.word }
         </DIV>
       </li>
       <li class="li_none">
-        <DIV style="margin:5px solid green;">
+        <DIV style=" float:left; width:100%; margin-left:20px">
           <c:if test="${contentsVO.file1.trim().length() > 0 }">
              첨부 파일: <A href='/download?dir=/contents/storage&filename=${contentsVO.file1saved}&downname=${contentsVO.file1}'>${contentsVO.file1}
              </A> (${contentsVO.size1_label})  </c:if>
