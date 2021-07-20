@@ -16,8 +16,7 @@
 
 <script type="text/javascript">
 
-  //GET -> POST 전송, 상품 삭제
-  function delete_func(myroomno) { 
+  function delete_func(myroomno) {  //GET -> POST 전송, 상품 삭제
     var frm = $('#frm_post');
     frm.attr('action', './delete.do');
     $('#myroomno',  frm).val(myroomno);
@@ -25,36 +24,42 @@
     frm.submit();
   }   
 
-  $(function(){  
+  function cart_ajax(contentsno){
+    var frm = $('#frm_post');
+    frm.attr('action', '/cart/create.do');
+    $('#contentsno',  frm).val(contentsno);
+    
+    frm.submit();
+  }
+
+  $(document).ready(function(){  
     // 모두 체크
      $("#allCheck").click(function(){                    
         var chk = $("#allCheck").prop("checked");  // true 반환
         if(chk) {
-         $("#chkBox").prop("checked", true);
+         $("input[name=chkBox]:checkbox").prop("checked", true);    //cf) name 속성은 중복 가능, id는 고유한 속성(중복 불가)
         } else {
-         $("#chkBox").prop("checked", false);
+         $("input[name=chkBox]:checkbox").prop("checked", false);
         }
        });
-
+     
     // 선택 체크
-     $("#chkBox").click(function(){
+     $("input[name=chkBox]:checkbox").click(function(){
        $("#allCheck").prop("checked", false);
       });
 
+     //선택 삭제
      $(".selectDelete_btn").click(function(){
        var msg = confirm("정말 삭제하시겠습니까?");  // true/false
        
        if(msg) {
-        var checkArr = new Array(); // 다수의 myroomno를 저장하기 위함
-
-        // 선택된 상품들만 삭제를 위한 myroomno 배열 저장
+        var checkArr = new Array(); // 다수의 cartno를 저장하기 위함
         $("input[id='chkBox']:checked").each(function(){   //체크된 체크박스 value 가져오기
-         checkArr.push($(this).attr("data-Myroomno"));  
+         checkArr.push($(this).attr("data-Myroomno"));  // $(this).val()
         });
-
-        // myroomno 번호
+        
         console.log("-> checkArr: " + checkArr);
-
+        
         $.ajax({
           url : "/myroom/delete_ajax.do",
           type : "post",  // post
@@ -68,7 +73,6 @@
              } else {
                alert("삭제 실패");
              }
-            
          }
         });
         
@@ -76,6 +80,41 @@
       }); 
     
   });
+
+  <%-- 장바구니에 상품 등록 --%>
+  function cart_ajax(contentsno) {
+    var params = "";
+    params += 'contentsno=' + contentsno;
+    console.log('-> myroom_ajax params: ' + params); // 여기까진 됨.
+    //return;
+    
+    $.ajax({
+        url: '/cart/create_ajax.do',
+        type: 'post',  // get, post
+        cache: false, // 응답 결과 임시 저장 취소
+        async: true,  // true: 비동기 통신
+        dataType: 'json', // 응답 형식: json, html, xml...
+        data: params,      // 데이터
+        success: function(rdata) { // 응답이 온경우
+          console.log('-> myroom_ajax cnt: ' + rdata.cnt);  // 1: 관심모델 등록 성공
+          
+          if (rdata.cnt == 1) {
+            var sw = confirm('선택한 상품이 장바구니에 담겼습니다.\n클릭하면 장바구니로 이동합니다.');
+            if (sw == true) {
+              // 보관함으로 이동
+             location.href='/cart/list_by_memberno.do';
+            }else{
+              location.reload(); 
+            }             
+          } else {
+            alert('선택한 상품을 보관함에 담지못했습니다.\n잠시후 다시 시도해주세요.');
+          }},
+        // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
+        error: function(request, status, error) { // callback 함수
+          console.log(error);
+        }
+      });
+  }
 </script>
 </head>
 
@@ -85,6 +124,7 @@
 <%-- GET -> POST: 상품 삭제, 수량 변경용 폼 --%>
 <form name='frm_post' id='frm_post' action='' method='post'>
   <input type='hidden' name='myroomno' id='myroomno'>
+  <input type='hidden' name='contentsno' id='contentsno'>
 </form>
 
 <DIV class='title_line'>
@@ -108,7 +148,7 @@
   </ASIDE> 
 
   <DIV class='menu_line'></DIV>
-  
+    
   <table class="table table-striped" style='width: 100%;'>
     <colgroup>
       <col style="width: 3%"></col>
@@ -143,14 +183,16 @@
         <c:set var="saleprice" value="${myroomVO.saleprice }" />
         <c:set var="dc" value="${myroomVO.dc }" />
         <c:set var="point" value="${myroomVO.point }" />
-          
-          
+        
+        
+                 
       <tr>
         <td>
-          <input type="checkbox" id="chkBox" data-Myroomno="${myroomno }">
+          <input type="checkbox" id="chkBox" name="chkBox" data-Myroomno="${myroomno }">
         </td> 
         
           <td style='vertical-align: middle; text-align: center;'>
+          
             <c:choose>
               <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
                 <%-- /static/contents/storage/ --%>
@@ -178,13 +220,14 @@
           </td>
           
           <td style='vertical-align: middle; text-align: center;'>
+           <button type="submit" id="btn_cart" onclick='cart_ajax(${contentsno })'>장바구니</button><br>
            <A href="javascript: delete_func(${myroomno })"><IMG src="/cart/images/delete4.png" title="삭제"></A> 
           </td>
         </tr>
       </c:forEach>
-      
     </tbody>
   </table>
+    
 </DIV>
 
 <jsp:include page="../menu/bottom.jsp" />

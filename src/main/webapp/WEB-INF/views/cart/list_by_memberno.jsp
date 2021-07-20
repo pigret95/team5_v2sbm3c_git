@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- 천단위 콤마 -->
- 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <!-- 천단위 콤마 --> 
  
 <!DOCTYPE html>
 <html lang="ko">
@@ -16,6 +15,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+$(function(){
+
+});
+
   // GET -> POST 전송, 상품 삭제
   function delete_func(cartno) { 
     var frm = $('#frm_post');
@@ -94,18 +97,17 @@
   function myroom_ajax(contentsno) {
     var params = "";
     params += 'contentsno=' + contentsno;
-    console.log('-> myroom_ajax params: ' + params);
+    console.log('-> myroom_ajax params: ' + params); // 여기까진 됨.
     //return;
     
     $.ajax({
-        url: '/myroom/create.do',
+        url: '/myroom/create_ajax.do',
         type: 'post',  // get, post
         cache: false, // 응답 결과 임시 저장 취소
         async: true,  // true: 비동기 통신
         dataType: 'json', // 응답 형식: json, html, xml...
         data: params,      // 데이터
         success: function(rdata) { // 응답이 온경우
-          var str = '';
           console.log('-> myroom_ajax cnt: ' + rdata.cnt);  // 1: 관심모델 등록 성공
           
           if (rdata.cnt == 1) {
@@ -118,8 +120,7 @@
             }             
           } else {
             alert('선택한 상품을 보관함에 담지못했습니다.\n잠시후 다시 시도해주세요.');
-          }
-        },
+          }},
         // Ajax 통신 에러, 응답 코드가 200이 아닌경우, dataType이 다른경우 
         error: function(request, status, error) { // callback 함수
           console.log(error);
@@ -314,6 +315,5 @@
      
 <jsp:include page="../menu/bottom.jsp" />
 </body>
- 
  
 </html>
