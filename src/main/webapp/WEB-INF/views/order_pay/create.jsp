@@ -98,7 +98,7 @@
       return;
     }     
 
-    frm.submit();
+    frm1.submit();
   }
 </script>
 </head> 
@@ -180,7 +180,7 @@
     </tbody>
   </table>
   
-  <form name='frm' id='frm' style='margin-top: 50px;' action="/order_pay/create.do" method='post'>
+  <form name='frm1' id='frm1' style='margin-top: 50px;' action="/order_pay/create.do" method='POST'>
     <input type="hidden" name="amount" value=" ${total_order }">   <%-- 전체 주문 금액 --%>
     
     
