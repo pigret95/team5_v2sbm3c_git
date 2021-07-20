@@ -8,7 +8,7 @@
   
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, width=device-width" />
-    <title>Book Word</title>
+    <title>Book World</title>
     <link href="../css/style.css" rel="Stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
