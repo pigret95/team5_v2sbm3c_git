@@ -64,9 +64,9 @@ $(document).ready(function(){
            <div class="search">
      
       
-       <form  name="frm" id="frm" method='get' action="/contents/list_by_bookno_search_paging.do">
+     <%--   <form  name="frm" id="frm" method='get' action="/contents/list_by_bookno_search_paging.do">
           <c:choose>
-        <c:when test="${param.word != '' }"> <%-- 검색하는 경우 --%>
+        <c:when test="${param.word != '' }"> 검색하는 경우
        
         <div class="search_input_main">
           <input style="border:none;" type='text' name='word' id='word' value='${param.word }'>
@@ -76,7 +76,7 @@ $(document).ready(function(){
         </c:when>
         
         
-        <c:otherwise> <%-- 검색하지 않는 경우 --%>
+        <c:otherwise> 검색하지 않는 경우
           <div class="search_input_main">
           <input style="border:none;" type='text' name='word' id='word' value=''>
           </div>
@@ -86,7 +86,7 @@ $(document).ready(function(){
         <!-- search_input_main -->
         <button type='submit' class="button"></button>
         </form>
-      
+       --%>
       
    
     
@@ -221,7 +221,7 @@ $(document).ready(function(){
 </li>
  <li><a class="menu_link" href="/">홈 </a></li>
  <c:choose>
-      <c:when test="${grade >= 1 or grade <= 10}"><li ><A class='menu_link'  href='/event/list_search.do' >이벤트</A></li></c:when>    
+      <c:when test="${grade >= 1 and grade <= 10}"><li ><A class='menu_link'  href='/event/list_search.do' >이벤트</A></li></c:when>    
       <c:when test="${grade >= 11 or grade == null}"><li><A class='menu_link'  href='/event/list_grid.do' >이벤트</A></li></c:when>
     </c:choose>  
 </ul>
