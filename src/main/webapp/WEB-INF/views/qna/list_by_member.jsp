@@ -17,7 +17,7 @@
 
   <body>
     <jsp:include page="../menu/top.jsp" />
-  
+      <DIV class='content_body'>
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터</A> > 
       <A href="" class='title_link'>1:1 문의</A> > 
@@ -29,7 +29,7 @@
         <span class='menu_divide'>│</span> <A href="javascript:location.reload();">새로고침</A>
       </ASIDE>
     </DIV> -->
-    <DIV class='content_body'>
+
   
       <table class="table table-striped" style='width: 100%;'>
         <colgroup>

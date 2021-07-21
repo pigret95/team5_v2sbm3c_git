@@ -25,7 +25,7 @@
       <A href="/qna/list_qna.do" class='title_link'>문의 내역</A>
     </DIV>    
   
-    <DIV class='content_body'>
+
   
       <table class="table table-striped" style='width: 100%;'>
         <colgroup>
@@ -99,7 +99,7 @@
     
       <%-- <DIV class='bottom_menu'>${paging }</DIV> --%>
     </DIV>  
-  </DIV>
+
 <jsp:include page="../menu/bottom.jsp" />
 </body>
 
