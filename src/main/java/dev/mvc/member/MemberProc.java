@@ -1,5 +1,6 @@
 package dev.mvc.member;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,24 @@ public class MemberProc implements MemberProcInter {
   
   @Override
   public int create(MemberVO memberVO) {
+    AES256Util aes256Util = null;
+    String password = null;
+
+    try {
+      aes256Util = new AES256Util();
+    } catch (UnsupportedEncodingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    try {
+      password = aes256Util.aesEncode(memberVO.getPasswd()); //암호화
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    memberVO.setPasswd(password);
+
     int cnt = this.memberDAO.create(memberVO);
     return cnt;
   }
@@ -28,6 +47,26 @@ public class MemberProc implements MemberProcInter {
 
   @Override
   public int login(Map<String, Object> map) {
+    String passwd = (String) map.get("passwd");
+    AES256Util aes256Util = null;
+
+    try {
+      aes256Util = new AES256Util();
+    } catch (UnsupportedEncodingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    String password = null;
+    try {
+      password = aes256Util.aesEncode(passwd); //암호화
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    map.put("passwd", password);
+
     int cnt = this.memberDAO.login(map);
     return cnt;
   }
@@ -108,12 +147,52 @@ public class MemberProc implements MemberProcInter {
 
   @Override
   public int passwd_update(HashMap<Object, Object> map) {
+    String passwd = (String)map.get("passwd");
+    AES256Util aes256Util = null;
+    
+    try {
+      aes256Util = new AES256Util();
+    } catch (UnsupportedEncodingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    String new_passwd = null;
+    try {
+      new_passwd = aes256Util.aesEncode(passwd); //암호화
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    map.put("passwd", new_passwd);
+        
     int cnt = this.memberDAO.passwd_update(map);
     return cnt;
   }
 
   @Override
   public int passwd_check(HashMap<Object, Object> map) {
+    String passwd = (String)map.get("passwd");
+    AES256Util aes256Util = null;
+    
+    try {
+      aes256Util = new AES256Util();
+    } catch (UnsupportedEncodingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    String password = null;
+    try {
+      password = aes256Util.aesEncode(passwd); //암호화
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    map.put("passwd", password);
+    
     int cnt = this.memberDAO.passwd_check(map);
     return cnt;
   }
@@ -155,7 +234,24 @@ public class MemberProc implements MemberProcInter {
 
   @Override
   public String passwd_find(int memberno) {
-    String passwd = this.memberDAO.passwd_find(memberno);
+    String find_passwd = this.memberDAO.passwd_find(memberno);
+    AES256Util aes256Util = null;
+    
+    try {
+      aes256Util = new AES256Util();
+    } catch (UnsupportedEncodingException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
+    String passwd = null;
+    try {
+      passwd = aes256Util.aesDecode(find_passwd); // 복호화
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    
     return passwd;
   }
 
