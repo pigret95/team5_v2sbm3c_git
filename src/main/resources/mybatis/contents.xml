@@ -127,6 +127,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </foreach>
   </delete>
   
+  <select id="read_index" resultType="dev.mvc.contents.ContentsVO">
+  SELECT contentsno, bookno, memberno, title, content, recom, word,rdate,file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher,r
+  FROM (
+    SELECT contentsno, bookno, memberno, title, content, recom, word, rdate,file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher,rownum as r
+    FROM (
+              SELECT contentsno, bookno, memberno, title, content, recom, word, rdate,file1,file1saved,thumb1,size1,price,saleprice,dc,point,writer,publisher
+              FROM contents
+              ORDER BY contentsno DESC
+             )
+  )
+   WHERE <![CDATA[ r >= 1 AND r <= 2 ]]>
+  </select>
 
 </mapper> 
 
