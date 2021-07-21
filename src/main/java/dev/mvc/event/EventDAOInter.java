@@ -25,6 +25,11 @@ public interface EventDAOInter {
  */
   public EventVO read(int eventno);
   /*
+   * 조회 데이터 6개
+   */
+  public List<EventVO> read_index();
+  
+  /*
    * 수정
    */
   public int update(EventVO eventVO);

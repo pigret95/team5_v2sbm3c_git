@@ -24,6 +24,10 @@ public interface EventProcInter {
    * 조회
    */
   public EventVO read(int eventno);
+  /*
+   * 조회 데이터 6개
+   */
+  public List<EventVO> read_index();
     /*
      * 수정
      */

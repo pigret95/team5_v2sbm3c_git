@@ -25,6 +25,12 @@ public class EventProc implements EventProcInter {
     List<EventVO> list = this.eventDAO.list();
     return list;
   }
+  
+  @Override
+  public List<EventVO> read_index() {
+    List<EventVO> list = this.eventDAO.read_index();
+    return list;
+  }
 
   @Override
   public List<EventVO> list_search(HashMap<String, Object> hashMap) {
