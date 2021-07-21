@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface ContentsProcInter {
   /**
-   * 등록
+   * �벑濡�
    * @param contentsVO
    * @return
    */
@@ -15,25 +15,25 @@ public interface ContentsProcInter {
 
 
   /**
-   * 카테고리별 검색 레코드 갯수
+   * 移댄뀒怨좊━蹂� 寃��깋 �젅肄붾뱶 媛��닔
    * @param hashMap
    * @return
    */
   public int search_count(HashMap<String, Object> hashMap);
 
   /**
-   * 페이지 목록 문자열 생성, Box 형태
-   * @param list_file 목록 파일명 
-   * @param bookno 종류번호
-   * @param search_count 검색 갯수
-   * @param now_page 현재 페이지, now_page는 1부터 시작
-   * @param word 검색어
+   * �럹�씠吏� 紐⑸줉 臾몄옄�뿴 �깮�꽦, Box �삎�깭
+   * @param list_file 紐⑸줉 �뙆�씪紐� 
+   * @param bookno 醫낅쪟踰덊샇
+   * @param search_count 寃��깋 媛��닔
+   * @param now_page �쁽�옱 �럹�씠吏�, now_page�뒗 1遺��꽣 �떆�옉
+   * @param word 寃��깋�뼱
    * @return
    */
   public String pagingBox(String list_file, int bookno, int search_count, int now_page, String word);
   
   /**
-   * 검색 + 페이징 목록
+   * 寃��깋 + �럹�씠吏� 紐⑸줉
    * @param map
    * @return
    */
@@ -41,52 +41,56 @@ public interface ContentsProcInter {
   
 
   /**
-   * 조회
+   * 議고쉶
    * @param contentsno
    * @return
    */
   public ContentsVO read(int contentsno);
   
   /**
-   * 텍스트 수정용 조회
+   * �뀓�뒪�듃 �닔�젙�슜 議고쉶
    * @param contentsno
    * @return
    */
   public ContentsVO read_update_text(int contentsno);
   /**
-   * 텍스트 정보 수정
+   * �뀓�뒪�듃 �젙蹂� �닔�젙
    * @param contentsVO
    * @return
    */
   public int update_text(ContentsVO contentsVO);
   
   /**
-   * 파일 정보 수정
+   * �뙆�씪 �젙蹂� �닔�젙
    * @param contentsVO
    * @return
    */
   public int update_file(ContentsVO contentsVO);
   /**
-   * 특정 그룹에 속한 레코드 갯수 산출
+   * �듅�젙 洹몃９�뿉 �냽�븳 �젅肄붾뱶 媛��닔 �궛異�
    * @param bookno
    * @return
    */
   public int count_by_bookno(int bookno);
   
   /**
-   * 삭제
+   * �궘�젣
    * @param contentsno
    * @return
    */
    public int delete(int contentsno);
   
    /**
-    * 추천수 증가
+    * 異붿쿇�닔 利앷�
     * @param contentsno
     * @return
     */
    public int update_recom(int contentsno);
 
+   /*
+    * 조회 데이터 6개
+    */
+   public List<ContentsVO> read_index();
 }
 
 

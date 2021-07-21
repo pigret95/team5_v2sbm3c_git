@@ -3,6 +3,8 @@ package dev.mvc.event;
 import java.util.HashMap;
 import java.util.List;
 
+import dev.mvc.contents.ContentsVO;
+
 public interface EventProcInter {
   /*
    * 등록
@@ -36,4 +38,6 @@ public interface EventProcInter {
    * 삭제
    */
   public int delete(int eventno);
+  
+
 }

@@ -4,23 +4,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dev.mvc.event.EventVO;
+
 public interface ContentsDAOInter {
   /**
-   * 등록
+   * �벑濡�
    * @param contentsVO
    * @return
    */
   public int create(ContentsVO contentsVO);
   
   /**
-   * 카테고리별 검색 레코드 갯수
+   * 移댄뀒怨좊━蹂� 寃��깋 �젅肄붾뱶 媛��닔
    * @param hashMap
    * @return
    */
   public int search_count(HashMap<String, Object> hashMap);
   
   /**
-   * 검색 + 페이징 목록
+   * 寃��깋 + �럹�씠吏� 紐⑸줉
    * @param map
    * @return
    */
@@ -29,47 +31,51 @@ public interface ContentsDAOInter {
 
   
   /**
-   * 조회
+   * 議고쉶
    * @param contentsno
    * @return
    */
   public ContentsVO read(int contentsno);
   
   /**
-   * 텍스트 정보 수정
+   * �뀓�뒪�듃 �젙蹂� �닔�젙
    * @param contentsVO
    * @return
    */
   public int update_text(ContentsVO contentsVO);
   
   /**
-   * 파일 정보 수정
+   * �뙆�씪 �젙蹂� �닔�젙
    * @param contentsVO
    * @return
    */
   public int update_file(ContentsVO contentsVO);
   /**
-   * 특정 그룹에 속한 레코드 갯수 산출
+   * �듅�젙 洹몃９�뿉 �냽�븳 �젅肄붾뱶 媛��닔 �궛異�
    * @param bookno
    * @return
    */
   public int count_by_bookno(int bookno);
   
   /**
-   * 삭제
+   * �궘�젣
    * @param contentsno
    * @return
    */
    public int delete(int contentsno);
   
    /**
-    * 추천수 증가
+    * 異붿쿇�닔 利앷�
     * @param contentsno
     * @return
     */
    public int update_recom(int contentsno);
    
 
+   /*
+    * 조회 데이터 6개
+    */
+   public List<ContentsVO> read_index();
 }
 
 
