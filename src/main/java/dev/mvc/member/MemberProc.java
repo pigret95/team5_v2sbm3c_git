@@ -15,8 +15,8 @@ public class MemberProc implements MemberProcInter {
   private MemberDAOInter memberDAO;
   
   @Override
-  public int create(MemberVO meberVO) {
-    int cnt = this.memberDAO.create(meberVO);
+  public int create(MemberVO memberVO) {
+    int cnt = this.memberDAO.create(memberVO);
     return cnt;
   }
   
