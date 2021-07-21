@@ -1,6 +1,5 @@
 package dev.mvc.member;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -268,63 +266,69 @@ public class MemberCont {
                              String id, String passwd,
                              @RequestParam(value="id_save", defaultValue="") String id_save,
                              @RequestParam(value="passwd_save", defaultValue="") String passwd_save) {
-
     Map<String, Object> map = new HashMap<String, Object>();
     map.put("id", id);
     map.put("passwd", passwd);
     
     int count = memberProc.login(map);
-    if (count == 1) { // 로그인 성공
-      // System.out.println(id + " 로그인 성공");
+    if (count == 1) { // 로그인 처리
       MemberVO memberVO = memberProc.readById(id);
-      session=request.getSession(true);
-      session.setAttribute("memberno", memberVO.getMemberno()); // 서버의 메모리에 기록
-      session.setAttribute("id", id);
-      session.setAttribute("name", memberVO.getName());
-      session.setAttribute("grade", memberVO.getGrade());
-      
-      // -------------------------------------------------------------------
-      // id 관련 쿠기 저장
-      // -------------------------------------------------------------------
-      if (id_save.equals("Y")) { // id를 저장할 경우, Checkbox를 체크한 경우
-        Cookie ck_id = new Cookie("ck_id", id);
-        ck_id.setPath("/"); 
-        ck_id.setMaxAge(60 * 60 * 72 * 10); // 30 day, 초단위
-        response.addCookie(ck_id); // id 저장
-      } else { // N, id를 저장하지 않는 경우, Checkbox를 체크 해제한 경우
-        Cookie ck_id = new Cookie("ck_id", "");
-        ck_id.setPath("/"); 
-        ck_id.setMaxAge(0);
-        response.addCookie(ck_id); // id 저장
+      int grade = memberVO.getGrade();
+  
+      if(grade == 99) {
+        System.out.println(id + " 탈퇴회원 입니다.");
+        count = 0; // 로그인 미처리를 의미.
+      }else {
+        System.out.println(id + " 로그인 성공");
+        session=request.getSession(true);
+        session.setAttribute("memberno", memberVO.getMemberno()); // 서버의 메모리에 기록
+        session.setAttribute("id", id);
+        session.setAttribute("name", memberVO.getName());
+        session.setAttribute("grade", memberVO.getGrade());
+        
+        // -------------------------------------------------------------------
+        // id 관련 쿠기 저장
+        // -------------------------------------------------------------------
+        if (id_save.equals("Y")) { // id를 저장할 경우, Checkbox를 체크한 경우
+          Cookie ck_id = new Cookie("ck_id", id);
+          ck_id.setPath("/"); 
+          ck_id.setMaxAge(60 * 60 * 72 * 10); // 30 day, 초단위
+          response.addCookie(ck_id); // id 저장
+        } else { // N, id를 저장하지 않는 경우, Checkbox를 체크 해제한 경우
+          Cookie ck_id = new Cookie("ck_id", "");
+          ck_id.setPath("/"); 
+          ck_id.setMaxAge(0);
+          response.addCookie(ck_id); // id 저장
+        }
+        // id를 저장할지 선택하는  CheckBox 체크 여부
+        Cookie ck_id_save = new Cookie("ck_id_save", id_save);
+        ck_id_save.setPath("/"); 
+        ck_id_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
+        response.addCookie(ck_id_save);
+        // -------------------------------------------------------------------
+  
+        // -------------------------------------------------------------------
+        // Password 관련 쿠기 저장
+        // -------------------------------------------------------------------
+        if (passwd_save.equals("Y")) { // 패스워드 저장할 경우
+          Cookie ck_passwd = new Cookie("ck_passwd", passwd);
+          ck_passwd.setPath("/"); 
+          ck_passwd.setMaxAge(60 * 60 * 72 * 10); // 30 day
+          response.addCookie(ck_passwd);
+        } else { // N, 패스워드를 저장하지 않을 경우
+          Cookie ck_passwd = new Cookie("ck_passwd", "");
+          ck_passwd.setPath("/");
+          ck_passwd.setMaxAge(0);
+          response.addCookie(ck_passwd);
+        }
+        // passwd를 저장할지 선택하는  CheckBox 체크 여부
+        Cookie ck_passwd_save = new Cookie("ck_passwd_save", passwd_save);
+        ck_passwd_save.setPath("/");
+        ck_passwd_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
+        response.addCookie(ck_passwd_save);
+        // -------------------------------------------------------------------
+        
       }
-      // id를 저장할지 선택하는  CheckBox 체크 여부
-      Cookie ck_id_save = new Cookie("ck_id_save", id_save);
-      ck_id_save.setPath("/"); 
-      ck_id_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
-      response.addCookie(ck_id_save);
-      // -------------------------------------------------------------------
-
-      // -------------------------------------------------------------------
-      // Password 관련 쿠기 저장
-      // -------------------------------------------------------------------
-      if (passwd_save.equals("Y")) { // 패스워드 저장할 경우
-        Cookie ck_passwd = new Cookie("ck_passwd", passwd);
-        ck_passwd.setPath("/"); 
-        ck_passwd.setMaxAge(60 * 60 * 72 * 10); // 30 day
-        response.addCookie(ck_passwd);
-      } else { // N, 패스워드를 저장하지 않을 경우
-        Cookie ck_passwd = new Cookie("ck_passwd", "");
-        ck_passwd.setPath("/");
-        ck_passwd.setMaxAge(0);
-        response.addCookie(ck_passwd);
-      }
-      // passwd를 저장할지 선택하는  CheckBox 체크 여부
-      Cookie ck_passwd_save = new Cookie("ck_passwd_save", passwd_save);
-      ck_passwd_save.setPath("/");
-      ck_passwd_save.setMaxAge(60 * 60 * 72 * 10); // 30 day
-      response.addCookie(ck_passwd_save);
-      // -------------------------------------------------------------------
-      
     }
     
     int cnt = count;
