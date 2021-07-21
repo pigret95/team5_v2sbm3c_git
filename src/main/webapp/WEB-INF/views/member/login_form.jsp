@@ -16,9 +16,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
   $(function() {
     $('#btn_create').on('click', create);
-    $('#btn_loadDefault').on('click', loadDefault);
+    $('#btn_loadmember').on('click', loadmember);
+    $('#btn_loadadmin').on('click', loadadmin);
   });
 
   // 회원 가입  
@@ -26,14 +28,18 @@
     location.href="/member/create.do";
   }
 
-  // 테스트용 기본값 로딩
-  function loadDefault() {
+  // 관리자 테스트용 기본값 로딩
+  function loadadmin() {
     $('#id').val('admin1');
     $('#passwd').val('1234');
   }
-    
-</script> 
 
+  // 회원 테스트용 기본값 로딩
+  function loadmember() {
+    $('#id').val('user1');
+    $('#passwd').val('1234');
+  }
+</script> 
 </head> 
  
 <body>
@@ -75,7 +81,8 @@
       <div class="form-group">
         <div class="col-md-offset-4 col-md-8">
           <button type="submit" class="btn btn-primary btn-md">로그인</button>
-          <button type='button' onclick="loadDefault();" class="btn btn-primary btn-md">테스트 계정</button><br><br>
+          <button type='button' id='btn_loadadmin' class="btn btn-primary btn-md">관리자 테스트 계정</button>
+          <button type='button' id='btn_loadmember' class="btn btn-primary btn-md">회원 테스트 계정</button><br><br>
           <a href='./id_find.do' >아이디 찾기</a><span class='menu_divide' >│</span> 
           <a href='./passwd_find.do' >비밀번호 찾기</a><span class='menu_divide' >│</span> 
           <a href='./create.do' >회원가입</a>
