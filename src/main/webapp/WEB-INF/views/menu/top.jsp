@@ -36,17 +36,27 @@ $(document).ready(function(){
         
         
           ${sessionScope.id } <span><A class='menu_link'  href='/member/logout.do' >로그아웃</A></span> &nbsp
-         <span><a class="menu_link" href="/order_pay/list_by_memberno.do">마이페이지</a></span> &nbsp
+       
          
          <c:choose>
-            <c:when test="${grade >= 1 and grade <= 10}"> <span><A class='menu_link'  href='/member/list.do' >회원목록</A></span>  &nbsp</c:when>    
+            <c:when test="${grade >= 1 and grade <= 10}"> <span><A class='menu_link'  href='/member/list.do' >회원목록</A></span>  &nbsp
+             <span><a class="menu_link" class='menu_link' href='/member/read.do?memberno=${memberno }'>회원정보관리</a></span> &nbsp
+            </c:when>    
            </c:choose>
         </c:otherwise>
-      </c:choose> 
+      </c:choose>
+      
+               <c:choose>
+            <c:when test="${grade >= 10}"> 
+              <span><a class="menu_link" href="/order_pay/list_by_memberno.do">주문/결재내역</a></span> &nbsp
+             <span><a class="menu_link" class='menu_link' href='/member/read.do?memberno=${memberno }'>회원정보관리</a></span> &nbsp
+            </c:when>    
+           </c:choose>
+
       <!-- <span><a class="menu_link" href="#">주문</a></span>  &nbsp -->
       <span><a class="menu_link" href="/cart/list_by_memberno.do">장바구니</a></span>  &nbsp
       <span><a class="menu_link" href="/myroom/list_by_memberno.do">보관함</a></span>  &nbsp
-       <span></span><a class="menu_link" class='menu_link' href='/member/read.do?memberno=${memberno }'>회원정보관리</a></span> &nbsp
+      
       <span><a class="menu_link" href="../faq/service_home.do">고객센터</a></span>
       
      
