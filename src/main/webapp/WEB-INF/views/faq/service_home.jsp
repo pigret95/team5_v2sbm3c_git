@@ -34,25 +34,28 @@
   
     <c:choose>
       <c:when test="${grade >= 1 and grade <= 10}">
-      <ul><div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 faq</div>
+      <div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 faq</div>
+      <ul>    
      <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=1">주문/결제</A></span></li>
      <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=2">배송/수령일 안내</A></span></li>
       <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=3">반품/교환/환불</A></span></li>
       <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=4">도서/상품</A></span></li>
       <li class="side_menu_admin"><span><A class='menu_link'  href="/faq/list_by_faqgrpno_admin.do?faqgrpno=5">서비스</A></span></li></ul>
       
-      <ul><div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 공지사항</div>
+      <div style="border-bottom:1px solid #666666; margin-top:5px; text-align:center;">관리자 전용 공지사항</div>
+      <ul>
      <li class="side_menu_admin"><span><A class='menu_link'  href="/notice/list_admin.do">공지사항</A></span></li></ul>
      
       
       </c:when>    
     </c:choose> 
+    
 </DIV>
 
 
 <DIV class="main">
 
-<DIV class="faq_search">
+<!-- <DIV class="faq_search">
 
   
       <div class="search_input">
@@ -65,7 +68,7 @@
 
 
 
-</DIV>
+</DIV> -->
 
 <DIV class="notice_link">
   <a class="menu_link" href="../notice/list.do">공지사항</a>
@@ -93,7 +96,7 @@
   </TABLE>
 </DIV>
 
-<DIV class="faq_new_list">
+<DIV class="faq_new_list" style="height:100%;">
   <DIV class="sub_title">자주 묻는 질문</DIV>
   <div style="float:right; margin-right:10px;">
   
