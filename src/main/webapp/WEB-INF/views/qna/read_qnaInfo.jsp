@@ -1,4 +1,4 @@
-<%@page import="org.springframework.web.context.annotation.SessionScope"%>
+    <%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -32,7 +32,7 @@
  
   <body>
     <jsp:include page="../menu/top.jsp" />
-   
+    <DIV class='content_body'>
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터</A> > 
       <A href="" class='title_link'>1:1 문의</A> > 
@@ -40,7 +40,7 @@
       <A href="/qna/read_qnainfo.do?qnano=${qnano }" class='title_link'>${title }</A>
     </DIV>    
   
-    <DIV class='content_body'>
+
       <DIV class='menu_line'></DIV>
           
         <fieldset class="fieldset_basic">
@@ -49,7 +49,7 @@
               <c:set var="file1saved" value="${qnaVO.file1saved.toLowerCase() }" />
               <c:choose>
                 <c:when test="${file1saved.endsWith('jpg') || file1saved.endsWith('png') || file1saved.endsWith('gif')}">
-                  <DIV style="width: 50%; float: left; margin-right: 10px;">
+                  <DIV style="width: 50%; float: left;">
                     <IMG src="/qna/storage/${qnaVO.file1saved }" style="width: 50%;">
                   </DIV>
                 </c:when>
@@ -60,10 +60,30 @@
                   </DIV>
                 </c:otherwise>
               </c:choose>   
-              <DIV style="width: 47%; height: 260px; float: left; margin-right: 10px;">
-                <span style="font-size: 1.5em; font-weight: bold;">${content }</span><br>
-                <span style="font-size: 1.5em; font-weight: bold;">${qdate }</span><br>
+              
+              
+              <DIV class="form_update" style="width: 100%; height: 100%; float: left; margin-right: 10px; ">
+                      <label class="control-label col-md-2">주문 상세 번호</label>
+                <div class="col-md-10">
+                 <span style="font-size: 1.2em; font-weight: bold;">${order_itemno }</span><br>
+                </div>
+                <br><br>
+               <label class="control-label col-md-2">문의 제목</label>
+                <div class="col-md-10">
+                 <span style="font-size: 1.2em; font-weight: bold;">${title }</span><br>
+                </div>
+                <br><br>
+              <label class="control-label col-md-2" >문의 내용</label>
+              <div class="col-md-10">
+                <span style="font-size: 15px; ">${content }</span><br>
+                </div>
                 
+            <br><br>
+                
+                <label class="control-label col-md-2">문의 날짜</label>
+                  <div class="col-md-10">
+                <span style="font-size: 15px;">${qdate }</span><br>
+                </div>
                 <%-- (state == 0) ? 처리중 : 답변완료; --%>
                 <c:if test="${state eq '1' }">
                   <span style="font-size: 1.5em; font-weight: bold;">${reply }</span><br>
@@ -71,6 +91,7 @@
                 </c:if> 
                 
               </DIV>
+              
             </li>
             <li>
               <%-- 관리자면 답글 등록이 보임 --%>
@@ -79,13 +100,16 @@
                 <form name='frm' method='POST' action="/qna/write_reply.do" class="form-horizontal">
                 <input type="hidden" name="qnano" value="${qnano }">
                 <input type="hidden" name="state" value="${state }">
-                  <div class="form-group">
-                    <div class="col-md-12">
+                  <div class="form_update">
+                   <label class="control-label col-md-2">답변</label>
+                    <div class="col-md-10">
                       <textarea class="form-control" name='reply' id='reply' rows='10'
-                        placeholder="문의에 대한 답변을 입력하세요"></textarea>
+                        placeholder="문의에 대한 답변을 입력하세요" style="border:1px solid #d3d3d3;"></textarea>
                     </div>
                   </div>
-                  <input type="submit" value="답변 등록">
+                    <div class="container-fluid center-block" style="width:250px; position:static; padding:10px; ">  
+                  <input type="submit" class="btn bg-warning"  style="float:left; margin:5px;" value="답변 등록">
+                  </div>
                 </form>
               </c:if> 
             </li>
