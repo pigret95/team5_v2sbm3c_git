@@ -27,7 +27,7 @@ public class HomeCont {
   public ModelAndView home() {
     ModelAndView mav = new ModelAndView();
     
-    List<EventVO> list = this.eventProc.list();
+    List<EventVO> list = this.eventProc.read_index();
     mav.addObject("list", list);
 
     
