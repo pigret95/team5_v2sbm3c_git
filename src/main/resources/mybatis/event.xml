@@ -17,6 +17,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   ORDER BY eventno DESC
   </select>
   
+  <!-- 6개 조회 -->
+   <select id="read_index"  resultType="dev.mvc.event.EventVO" >
+      SELECT eventno,  title, contents,  file1, file1saved, size1, thumb, rdate, r
+      FROM(
+        SELECT eventno,  title, contents,  file1, file1saved, size1, thumb, rdate,  rownum as r 
+        FROM(
+                SELECT   eventno,  title, contents,  file1, file1saved, size1, thumb, rdate
+                FROM event
+                ORDER BY eventno DESC
+                )
+            )
+   WHERE <![CDATA[ r >= 1 AND r <= 6 ]]>
+   </select>
+  
  <!-- 검색 -->
  <select id="list_search" resultType="dev.mvc.event.EventVO" parameterType="HashMap">
   SELECT eventno, title, contents, file1, file1saved, thumb, size1, rdate
