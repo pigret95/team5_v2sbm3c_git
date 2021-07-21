@@ -137,7 +137,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
               ORDER BY contentsno DESC
              )
   )
-   WHERE <![CDATA[ r >= 1 AND r <= 2 ]]>
+   WHERE <![CDATA[ r >= 1 AND r <= 1 ]]>
   </select>
 
 </mapper> 
