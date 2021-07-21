@@ -13,6 +13,24 @@ $(document).ready(function(){
       }
     });
   });
+
+$(function(){
+ $('#search_check').on('click', search_check); 
+});
+
+function search_check(){
+	 
+	   var word = $('#word').val(); 
+
+
+  if($.trim(word).length==0){
+/*    alert('검색어를 입력하세요'); */
+   location.href  ="/index.do";
+     }else{
+       location.href  ="/contents/list_by_bookno_search_paging.do?word="+word;
+         } 
+}
+
 </script>
 
 <DIV class='container_main'>
@@ -35,7 +53,7 @@ $(document).ready(function(){
        
         
         
-          ${sessionScope.id } <span><A class='menu_link'  href='/member/logout.do' >로그아웃</A></span> &nbsp
+         ${sessionScope.id } <span><A class='menu_link'  href='/member/logout.do' >로그아웃</A></span> &nbsp
        
          
          <c:choose>
@@ -75,30 +93,20 @@ $(document).ready(function(){
            <div class="search">
      
       
-     <%--   <form  name="frm" id="frm" method='get' action="/contents/list_by_bookno_search_paging.do">
-          <c:choose>
-        <c:when test="${param.word != '' }"> 검색하는 경우
-       
-        <div class="search_input_main">
-          <input style="border:none;" type='text' name='word' id='word' value='${param.word }'>
-        </div>
-        
-         
-        </c:when>
+     
+
         
         
-        <c:otherwise> 검색하지 않는 경우
           <div class="search_input_main">
           <input style="border:none;" type='text' name='word' id='word' value=''>
           </div>
-          
-        </c:otherwise>
-      </c:choose>
+       
         <!-- search_input_main -->
-        <button type='submit' class="button"></button>
-        </form>
-       --%>
+      <button  id="search_check" class="button"></button>
       
+      
+
+ 
    
     
       </div>
