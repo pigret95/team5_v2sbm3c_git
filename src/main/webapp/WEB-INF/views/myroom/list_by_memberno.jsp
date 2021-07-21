@@ -127,11 +127,11 @@
   <input type='hidden' name='contentsno' id='contentsno'>
 </form>
 
+<DIV class='content_body'>
 <DIV class='title_line'>
   보관함
 </DIV>
 
-<DIV class='content_body'>
   <ASIDE style="float: left;  font-size: 1.3em;">
    <input type="checkbox" id="allCheck"> 
     <label for="allCheck">모두 선택</label>

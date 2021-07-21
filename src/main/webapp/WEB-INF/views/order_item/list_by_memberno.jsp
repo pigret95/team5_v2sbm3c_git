@@ -29,11 +29,10 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
  
+ <DIV class='content_body'>
   <DIV class='title_line'>
     ${sessionScope.id }님 주문 결재 상세 내역
   </DIV>
-
-  <DIV class='content_body' style='width: 100%;'>
 
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
@@ -41,8 +40,7 @@
    
     <div class='menu_line'></div>
    
-   
-    <table class="table table-striped" style='width: 100%;'>
+    <table class="table table-striped">
     <colgroup>
       <col style='width: 5%;'/>
       <col style='width: 5%;'/>
@@ -54,8 +52,9 @@
       <col style='width: 5%;'/>
       <col style='width: 10%;'/>
       <col style='width: 15%;'/>
-     
+      <col style='width: 15%;'/>
     </colgroup>
+    
     <TR>
       <TH class='th_bs'>주문<br>결재</TH>
       <TH class='th_bs'>주문<br>상세</TH>
@@ -67,6 +66,7 @@
       <TH class='th_bs'>금액</TH>
       <TH class='th_bs'>배송상태</TH>
       <TH class='th_bs'>주문일</TH>
+      <TH class='th_bs'>기타</TH>
     </TR>
    
     <c:forEach var="order_itemVO" items="${list }">

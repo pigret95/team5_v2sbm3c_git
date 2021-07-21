@@ -29,11 +29,10 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
  
+ <DIV class='content_body'>
   <DIV class='title_line'>
     ${sessionScope.id }님 주문결재 내역
   </DIV>
-
-  <DIV class='content_body' style='width: 100%;'>
 
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>

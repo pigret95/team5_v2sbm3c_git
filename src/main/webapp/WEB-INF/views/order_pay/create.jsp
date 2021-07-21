@@ -106,11 +106,11 @@
 
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
+
+  <DIV class='content_body'>
   <DIV class='title_line'>
     주문, 결재
   </DIV>
-
-  <DIV class='content_body'>
 
   <ASIDE class="aside_left">
     주문 상품

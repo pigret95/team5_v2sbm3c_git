@@ -43,8 +43,9 @@ $(document).ready(function(){
            </c:choose>
         </c:otherwise>
       </c:choose> 
-      <span><a class="menu_link" href="#">주문</a></span>  &nbsp
+      <!-- <span><a class="menu_link" href="#">주문</a></span>  &nbsp -->
       <span><a class="menu_link" href="/cart/list_by_memberno.do">장바구니</a></span>  &nbsp
+      <span><a class="menu_link" href="/myroom/list_by_memberno.do">보관함</a></span>  &nbsp
       <span><a class="menu_link" href="../faq/service_home.do">고객센터</a></span>
       
      
