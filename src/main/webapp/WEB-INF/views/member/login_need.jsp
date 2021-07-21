@@ -18,7 +18,7 @@
 </head>
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+   <DIV class='content_body'>
   <DIV class='message'>
     <H3>관리자 권한이 필요한 페이지입니다.</H3>
     <BR><BR>
@@ -27,7 +27,7 @@
      <button type="submit" class="btn btn-primary">로그인</button>  
     </form>     
   </DIV>
- 
+ </DIV>
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
 </html>

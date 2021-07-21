@@ -19,12 +19,12 @@
 </head> 
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+  <DIV class='content_body'>
 <DIV class='title_line'  style="width: 90%">
   회원탈퇴 알림
 </DIV>
 
- <DIV class='content_body'>
+
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
     </ASIDE> 
@@ -43,7 +43,7 @@
     </fieldset>
   </DIV>
 </DIV>
- 
+
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
  

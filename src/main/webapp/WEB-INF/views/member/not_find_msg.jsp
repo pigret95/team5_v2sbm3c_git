@@ -33,7 +33,7 @@
 </head> 
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+   <DIV class='content_body'>
 <DIV class='title_line'  style="width: 90%">알림</DIV>
   <DIV class='message'>
     <fieldset class='fieldset_basic'>
@@ -47,7 +47,7 @@
       </ul>
     </fieldset>    
   </DIV>
- 
+ </DIV>
 <jsp:include page="../menu/bottom.jsp" flush='false' />
 </body>
  

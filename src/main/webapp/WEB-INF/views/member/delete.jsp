@@ -18,12 +18,12 @@
 </head> 
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+   <DIV class='content_body'>
   <DIV class='title_line'>
     회원 삭제
   </DIV>
 
-  <DIV class='content_body'>
+
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
       <span class='menu_divide' >│</span> 
