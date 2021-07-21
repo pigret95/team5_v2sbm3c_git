@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -74,7 +75,7 @@
           </c:when>
           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
             <a href="/event/read.do?eventno=${eventno}">
-              <img src='/images/none.jpg' style='width: 100%; height: 150px;'>
+              <img src='/event/image/none.gif' style='width: 100%; height: 150px;'>
             </a><br>
             <a href="/event/read.do?eventno=${eventno}">${title }</a>
           </c:otherwise>
@@ -101,5 +102,3 @@
  
 </body>
 </html>
-
-
