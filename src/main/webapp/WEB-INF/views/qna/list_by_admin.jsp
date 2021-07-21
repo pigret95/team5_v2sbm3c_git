@@ -15,8 +15,9 @@
     
   </head>
 
-  <body>
-    <jsp:include page="../menu/top.jsp" />
+<body>
+<jsp:include page="../menu/top.jsp" />
+ <DIV class='content_body'>
   
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터</A> > 
@@ -98,8 +99,9 @@
     
       <%-- <DIV class='bottom_menu'>${paging }</DIV> --%>
     </DIV>  
-    <jsp:include page="../menu/bottom.jsp" />
-  </body>
+  </DIV>
+<jsp:include page="../menu/bottom.jsp" />
+</body>
 
 </html>
 

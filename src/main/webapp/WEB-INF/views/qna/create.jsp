@@ -21,10 +21,8 @@
  
 <body>
   <jsp:include page="../menu/top.jsp" flush='false' />
-    <div class="title_line">
-          
-    </div>
-    
+
+    <DIV class='content_body'>
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터 ></A> 
       <A href="" class='title_link'>1:1 문의 ></A>
@@ -69,6 +67,7 @@
          
       </FORM>
     </DIV>
+  </DIV>
   
     
   <jsp:include page="../menu/bottom.jsp" flush='false' />
