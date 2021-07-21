@@ -139,11 +139,10 @@ $(function(){
   <input type='hidden' name='cnt' id='cnt'>
 </form>
 
+<DIV class='content_body'>
 <DIV class='title_line'>
   장바구니
 </DIV>
-
-<DIV class='content_body'>
 
   <ASIDE style="float: left;  font-size: 1.3em;">
    <input type="checkbox" id="allCheck"> 

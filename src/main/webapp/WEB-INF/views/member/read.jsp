@@ -85,11 +85,11 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
 
+  <DIV class='content_body'>
   <DIV class='title_line'>
     회원정보 조회
   </DIV>
   
-  <DIV class='content_body'>
     <ASIDE class="aside_right">
       <c:choose>
         <c:when test="${sessionScope.id == memberVO.id}"> 

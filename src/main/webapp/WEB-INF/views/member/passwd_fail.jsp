@@ -20,7 +20,7 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
  
-<DIV class='title_line'>
+<DIV class='title_line'  style="width: 90%">
   회원탈퇴 알림
 </DIV>
 

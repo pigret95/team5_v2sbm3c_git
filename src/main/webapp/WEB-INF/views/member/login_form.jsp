@@ -38,11 +38,10 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
-<DIV class='content_body'>
 
+<DIV class='content_body'>
  <DIV class='title_line'>로그인</DIV>
  
-
   <DIV style='width: 80%; margin: 0px auto;'>
     <FORM name='frm' method='POST' action='./login.do' class="form-horizontal">
      <%-- 로그인 후 자동으로 이동할 페이지 전달 ★ --%>

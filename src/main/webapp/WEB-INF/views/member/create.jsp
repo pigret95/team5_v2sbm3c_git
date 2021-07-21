@@ -170,12 +170,7 @@
     회원 가입
   </DIV>
 
- 
-    <ASIDE class="aside_right">
-      <A href="javascript:location.reload();">새로고침</A>
-    </ASIDE>
-
-    <div class='menu_line'></div>
+   <div class='menu_line'></div>
     
     <FORM name='frm' id='frm' method='POST' action='./create.do' class="form-horizontal">
       <div class="form-group">

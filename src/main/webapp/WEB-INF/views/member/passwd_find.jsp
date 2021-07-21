@@ -21,12 +21,12 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
- 
+
+ <DIV class='content_body'>
   <DIV class='title_line'>
     패스워드 찾기
   </DIV>
 
-  <DIV class='content_body'>
     <ASIDE class="aside_right">
       <A href="javascript:location.reload();">새로고침</A>
     </ASIDE> 

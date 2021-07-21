@@ -34,7 +34,7 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
  
-<DIV class='title_line'>알림</DIV>
+<DIV class='title_line'  style="width: 90%">알림</DIV>
   <DIV class='message'>
     <fieldset class='fieldset_basic'>
       <ul>

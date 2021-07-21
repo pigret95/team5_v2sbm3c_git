@@ -19,7 +19,7 @@
 <body>
 <jsp:include page="../menu/top.jsp" flush='false' />
  
-  <DIV class='title_line'>
+  <DIV class='title_line' style="width: 90%">
     패스워드 찾기 결과
   </DIV>
 

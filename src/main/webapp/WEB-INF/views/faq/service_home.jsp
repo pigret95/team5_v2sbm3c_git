@@ -23,9 +23,9 @@
  
 <body>
 <jsp:include page="../menu/top.jsp" />
- <DIV class='content_body'>
-<DIV class='title_line'>고객센터</DIV>
 
+<DIV class='content_body'>
+<DIV class='title_line'>고객센터</DIV>
 
 <DIV class="side_menu">
   <ul>
