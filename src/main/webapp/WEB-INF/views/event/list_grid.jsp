@@ -92,7 +92,7 @@
             <c:choose> 
               <c:when test="${thumb.endsWith('jpg') || thumb.endsWith('png') || thumb.endsWith('gif')}"> <!-- 이미지 인경우 -->
                 <a href="./read.do?eventno=${eventno}">               
-                  <IMG src="./storage/${thumb }" style='width: 100%; height: 150px;'>
+                  <IMG src="/event/storage/${thumb }" style='width: 100%; height: 150px;'>
                 </a><br>
                 ${title} <br>
               </c:when>
@@ -108,7 +108,7 @@
           </c:when>
           <c:otherwise> <%-- 파일이 없는 경우 기본 이미지 출력 --%>
             <a href="./read.do?eventno=${eventno}">
-              <img src='/images/none.jpg' style='width: 100%; height: 150px;'>
+              <img src='/event/image/none.gif' style='width: 100%; height: 150px;'>
             </a><br>
             <a href="./read.do?eventno=${eventno}">${title }</a>
           </c:otherwise>
