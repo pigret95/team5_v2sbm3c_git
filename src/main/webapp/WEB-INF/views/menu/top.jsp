@@ -25,7 +25,7 @@ function search_check(){
 
   if($.trim(word).length==0){
 /*    alert('검색어를 입력하세요'); */
-   location.href  ="/index.do";
+ /*   location.href  ="/index.do"; */
      }else{
        location.href  ="/contents/list_by_bookno_search_paging.do?word="+word;
          } 
