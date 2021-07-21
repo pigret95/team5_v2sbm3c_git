@@ -1,7 +1,7 @@
 /* ver 1.9 */
-/* ��� �±׿� ���� */
+/* 占쏙옙占� 占승그울옙 占쏙옙占쏙옙 */
 * {
-  font-family: '����';
+  font-family: '占쏙옙占쏙옙';
   margin: 0px;
   padding: 0px;
   list-style-type: none;
@@ -12,7 +12,7 @@
   
 }
 
-/*���*/
+/*占쏙옙占�*/
 .main_header {
   height: 150px;
   width: 100%;
@@ -147,7 +147,7 @@
 }
 
 
-/*�޴� ��ũ*/
+/*占쌨댐옙 占쏙옙크*/
 .menu_link{
   color:black;
 }
@@ -172,7 +172,7 @@
   color: black;
 }
 
-/*Ÿ��Ʋ��ũ*/
+/*타占쏙옙틀占쏙옙크*/
 
 .title_link:link {
   font-size: 20px;
@@ -198,7 +198,7 @@
   color: black;
 }
 
-/*�޴���
+/*占쌨댐옙占쏙옙
 ul.menu {
   background: #f29c74;
   font-size: 16px;
@@ -352,7 +352,6 @@ li.menu1:focus .type{
   float: left;
   width: 800px;
   height: 500px;
-  border: 1px solid red;
   margin-left: 55px;
   margin-bottom: 20px;
 }
@@ -361,7 +360,6 @@ li.menu1:focus .type{
   float: left;
   width: 500px;
   height: 500px;
-  border: 1px solid blue;
   margin-bottom: 20px;
 }
 
@@ -374,7 +372,7 @@ li.menu1:focus .type{
   border-top: solid 1px #999999;
 }
 
-/*������*/
+/*占쏙옙占쏙옙占쏙옙*/
   .title_line {
     text-align: left;
     border-bottom: solid 3px #555555;
@@ -462,7 +460,7 @@ li.menu1:focus .type{
      border:1px solid red;
   }
   
-/* ������*/
+/* 占쏙옙占쏙옙占쏙옙*/
 .side_menu{
   float:left;
   width:20%;
@@ -606,7 +604,7 @@ li.menu1:focus .type{
 }
 
 .board {
-  font-family:'����';
+  font-family:'占쏙옙占쏙옙';
   font-size:13px;
   position:absolute;
   top:200px;
@@ -637,7 +635,7 @@ li.menu1:focus .type{
   cursor:pointer;
 }
 
- /* 기타 메시지 */
+ /* 湲고� 硫붿떆吏� */
   .message {
     width: 70%;
     border: none;
@@ -648,21 +646,21 @@ li.menu1:focus .type{
     
   }
   
-  /* 알림 메시지 */ 
+  /* �븣由� 硫붿떆吏� */ 
   .span_info {
     color: #ffffff;
     background-color: rgba(0, 200, 0, 0.6);
     padding: 2px;
   }
   
-  /* 주의 메시지 */
+  /* 二쇱쓽 硫붿떆吏� */
   .span_alert {
     color: #ffffff;
     background-color: rgba(0, 0, 200, 0.6);
     padding: 2px;
   }
   
-  /* 경고 메시지 */  
+  /* 寃쎄퀬 硫붿떆吏� */  
   .span_warning {
     color: #FFFFFF;
     background-color: rgba(255, 0, 0, 0.6);
@@ -679,27 +677,27 @@ li.menu1:focus .type{
     padding: 10px;
   }
   
-   A:link{  /* 방문전 상태 */
-    text-decoration: none; /* 밑줄 삭제 */
+   A:link{  /* 諛⑸Ц�쟾 �긽�깭 */
+    text-decoration: none; /* 諛묒쨪 �궘�젣 */
     color: #555555;
   }
 
-  A:visited{  /* 방문후 상태 */
-    text-decoration: none; /* 밑줄 삭제 */
+  A:visited{  /* 諛⑸Ц�썑 �긽�깭 */
+    text-decoration: none; /* 諛묒쨪 �궘�젣 */
     color: #555555;
   }
   
-  A:hover{  /* A 태그에 마우스가 올라간 상태 */
-    text-decoration: underline; /* 밑줄 출력 */
+  A:hover{  /* A �깭洹몄뿉 留덉슦�뒪媛� �삱�씪媛� �긽�깭 */
+    text-decoration: underline; /* 諛묒쨪 異쒕젰 */
     color: #7777FF;
   }
   
-  A:active{  /* A 태그를 클릭한 상태 */
-    text-decoration: underline; /* 밑줄 출력 */
+  A:active{  /* A �깭洹몃�� �겢由��븳 �긽�깭 */
+    text-decoration: underline; /* 諛묒쨪 異쒕젰 */
     color: #7777FF;
   }
 
-/* 화면 내용 하단 메뉴 우측 배치 */
+/* �솕硫� �궡�슜 �븯�떒 硫붾돱 �슦痢� 諛곗튂 */
   .content_body_bottom {
     clear: both;
     padding-top: 20px;
@@ -718,7 +716,7 @@ li.menu1:focus .type{
   .bottom_menu {
     text-align: center; 
     margin: 20px auto;
-    clear: both;  /* 앞쪽 태그의 float 효과를 제거함. */
+    clear: both;  /* �븵履� �깭洹몄쓽 float �슚怨쇰�� �젣嫄고븿. */
   }
 
   .aside_left {
@@ -726,7 +724,7 @@ li.menu1:focus .type{
     font-size: 1.3em;
   }
   
-  /** 본래의 A 태그의 크기를 제거하고 부모의 가변 크기를 사용 */
+  /** 蹂몃옒�쓽 A �깭洹몄쓽 �겕湲곕�� �젣嫄고븯怨� 遺�紐⑥쓽 媛�蹂� �겕湲곕�� �궗�슜 */
   .aside_left A {
     font-size: 1.0em;
   }
@@ -741,24 +739,24 @@ li.menu1:focus .type{
     font-size: 1.0em;
   }
     
-    /* ASIDE 메뉴 세로 구분선 */
-  .menu_divide { /* 서브 메뉴의 세로 구분선 */
+    /* ASIDE 硫붾돱 �꽭濡� 援щ텇�꽑 */
+  .menu_divide { /* �꽌釉� 硫붾돱�쓽 �꽭濡� 援щ텇�꽑 */
     color: #777777;
-    font-size: 0.8em; /* 부모 글자 크기에 비해서 80%로 출력 */
-    vertical-align: 10%;  /* 0%는 bottom 기준 */
+    font-size: 0.8em; /* 遺�紐� 湲��옄 �겕湲곗뿉 鍮꾪빐�꽌 80%濡� 異쒕젰 */
+    vertical-align: 10%;  /* 0%�뒗 bottom 湲곗� */
   }
   
   .copyright {
     margin-top: 10px;
     border-top: solid 1px #999999;
     text-align: center; 
-    clear: both;  /* 앞쪽 태그의 float 효과를 제거함. */    
+    clear: both;  /* �븵履� �깭洹몄쓽 float �슚怨쇰�� �젣嫄고븿. */    
   }
 
-/* 1em 기본값 : 16px, 주변 태그의 글자크기를 1em으로 인식
-      DIV 태그가 20px 일경우 자식태그가 0.5em이면 최종적으로 10px이 적용됨.
-      DIV 태그가 20px 일경우 자식태그가 1em이면 최종적으로 20px이 적용됨.
-      DIV 태그가 20px 일경우 자식태그가 1.5em이면 최종적으로 30px이 적용됨.
+/* 1em 湲곕낯媛� : 16px, 二쇰� �깭洹몄쓽 湲��옄�겕湲곕�� 1em�쑝濡� �씤�떇
+      DIV �깭洹멸� 20px �씪寃쎌슦 �옄�떇�깭洹멸� 0.5em�씠硫� 理쒖쥌�쟻�쑝濡� 10px�씠 �쟻�슜�맖.
+      DIV �깭洹멸� 20px �씪寃쎌슦 �옄�떇�깭洹멸� 1em�씠硫� 理쒖쥌�쟻�쑝濡� 20px�씠 �쟻�슜�맖.
+      DIV �깭洹멸� 20px �씪寃쎌슦 �옄�떇�깭洹멸� 1.5em�씠硫� 理쒖쥌�쟻�쑝濡� 30px�씠 �쟻�슜�맖.
   */
   .th_basic {
     font-size: 0.8em;
