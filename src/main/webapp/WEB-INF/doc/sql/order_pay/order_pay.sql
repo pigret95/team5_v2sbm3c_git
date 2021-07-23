@@ -6,15 +6,14 @@ CREATE TABLE order_pay(
     rname                             VARCHAR2(30)     NOT NULL,
     rtel                              VARCHAR2(14)     NOT NULL,
     rzipcode                          VARCHAR2(5)    NULL ,
-    raddress1                         VARCHAR2(80)     NOT NULL,
-    raddress2                         VARCHAR2(50)     NOT NULL,
+    raddress1                         VARCHAR2(200)     NOT NULL,
+    raddress2                         VARCHAR2(200)     NOT NULL,
     paytype                           NUMBER(1)    DEFAULT 0     NOT NULL,
     amount                            NUMBER(10)     DEFAULT 0     NOT NULL,
     rdate                             DATE     NOT NULL,
     memberno                          NUMBER(10)    NOT NULL ,
   FOREIGN KEY (memberno) REFERENCES member (memberno)
 );
-
 COMMENT ON TABLE order_pay is '주문_결재';
 COMMENT ON COLUMN order_pay.order_payno is '주문 번호';
 COMMENT ON COLUMN order_pay.rname is '수취인성명';
@@ -66,5 +65,8 @@ ORDER BY order_payno DESC;
 -- 삭제
 DELETE FROM order_pay
 WHERE order_payno=1;
+
+ALTER TABLE order_pay MODIFY raddress1 VARCHAR2(200);
+ALTER TABLE order_pay MODIFY raddress2 VARCHAR2(200);
 
 commit;

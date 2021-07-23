@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     SELECT qnano, memberno, title, order_itemno, qdate, state, file1, thumb1, file1saved
     FROM qna
     WHERE <![CDATA[ state < 1 ]]>
-    ORDER BY qdate DESC
+    ORDER BY qdate ASC
   </select>
  
   <!-- 문의 건별 QnA 상세 조회 (회원 관리자) -->
