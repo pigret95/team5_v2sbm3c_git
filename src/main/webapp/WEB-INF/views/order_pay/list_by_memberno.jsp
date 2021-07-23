@@ -64,42 +64,49 @@
       <TH class='th_bs'>주문일</TH>
       <TH class='th_bs'>기타</TH>
     </TR>
-   
-    <c:forEach var="order_payVO" items="${list }">
-      <c:set var="order_payno" value ="${order_payVO.order_payno}" />
-      <c:set var="memberno" value ="${order_payVO.memberno}" />
-      <c:set var="rname" value ="${order_payVO.rname}" />
-      <c:set var="rtel" value ="${order_payVO.rtel}" />
-      <c:set var="address" value ="(${order_payVO.rzipcode}) ${order_payVO.raddress1} ${order_payVO.raddress1}" />
-      <c:set var="paytype" value ="${order_payVO.paytype}" />
-      <c:set var="amount" value ="${order_payVO.amount}" />
-      <c:set var="rdate" value ="${order_payVO.rdate}" />
+    <c:choose>
+      <c:when test="${list.size() > 0 }">
+      <c:forEach var="order_payVO" items="${list }">
+        <c:set var="order_payno" value ="${order_payVO.order_payno}" />
+        <c:set var="memberno" value ="${order_payVO.memberno}" />
+        <c:set var="rname" value ="${order_payVO.rname}" />
+        <c:set var="rtel" value ="${order_payVO.rtel}" />
+        <c:set var="address" value ="(${order_payVO.rzipcode}) ${order_payVO.raddress1} ${order_payVO.raddress1}" />
+        <c:set var="paytype" value ="${order_payVO.paytype}" />
+        <c:set var="amount" value ="${order_payVO.amount}" />
+        <c:set var="rdate" value ="${order_payVO.rdate}" />
+           
          
-       
-    <TR>
-      <TD class=td_basic>${order_payno}</TD>
-      <TD class=td_basic><A href="/member/read.do?memberno=${memberno}">${memberno}</A></TD>
-      <TD class='td_basic'>${rname}</TD>
-      <TD class='td_left'>${rtel}</TD>
-      <TD class='td_basic'>${address}</TD>
-      <TD class='td_basic'>
-        <c:choose>
-          <c:when test="${paytype == 1}">신용 카드</c:when>
-          <c:when test="${paytype == 2}">모바일</c:when>
-          <c:when test="${paytype == 3}">포이트</c:when>
-          <c:when test="${paytype == 4}">계좌 이체</c:when>
-          <c:when test="${paytype == 5}">직접 입금</c:when>
-        </c:choose>
-      </TD>
-      <TD class='td_basic'><fmt:formatNumber value="${amount }" pattern="#,###" /></TD>
-      <TD class='td_basic'>${rdate.substring(1,16) }</TD>
-      <TD class='td_basic'>
-        <A href="/order_item/list_by_memberno.do?order_payno=${order_payno}"><img src="/order_pay/images/bu6.png" title="주문 내역 상세 조회"></A>
-      </TD>
-      
-    </TR>
-    </c:forEach>
-    
+      <TR>
+        <TD class=td_basic>${order_payno}</TD>
+        <TD class=td_basic><A href="/member/read.do?memberno=${memberno}">${memberno}</A></TD>
+        <TD class='td_basic'>${rname}</TD>
+        <TD class='td_left'>${rtel}</TD>
+        <TD class='td_basic'>${address}</TD>
+        <TD class='td_basic'>
+          <c:choose>
+            <c:when test="${paytype == 1}">신용 카드</c:when>
+            <c:when test="${paytype == 2}">모바일</c:when>
+            <c:when test="${paytype == 3}">포이트</c:when>
+            <c:when test="${paytype == 4}">계좌 이체</c:when>
+            <c:when test="${paytype == 5}">직접 입금</c:when>
+          </c:choose>
+        </TD>
+        <TD class='td_basic'><fmt:formatNumber value="${amount }" pattern="#,###" /></TD>
+        <TD class='td_basic'>${rdate.substring(1,16) }</TD>
+        <TD class='td_basic'>
+          <A href="/order_item/list_by_memberno.do?order_payno=${order_payno}"><img src="/order_pay/images/bu6.png" title="주문 내역 상세 조회"></A>
+        </TD>
+        
+      </TR>
+      </c:forEach>
+      </c:when>
+      <c:otherwise>
+        <tr>
+        <td colspan="12" style="text-align: center; font-size: 1.3em;">과거 주문 내역이 없습니다.</td>
+        </tr>
+      </c:otherwise>
+    </c:choose>
   </TABLE>
    
   <DIV class='bottom_menu'>
