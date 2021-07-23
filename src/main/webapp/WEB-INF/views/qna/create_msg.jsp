@@ -58,7 +58,7 @@
         </c:choose> --%>
                     
         <button type='button' 
-                    onclick="location.href='/qna/list_qna'"
+                    onclick="location.href='/qna/list_qna.do'"
                     class="btn btn-info">목록</button>
       </LI>
      </UL>

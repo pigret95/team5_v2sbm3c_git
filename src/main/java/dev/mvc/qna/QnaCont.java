@@ -227,7 +227,7 @@ public class QnaCont {
       hashMap.put("state", 1); // 답변상태 1로 변경
       int cnt = this.qnaProc.write_reply(hashMap);
       mav.addObject("cnt", cnt);
-      mav.setViewName("/qna/list_by_admin");
+      mav.setViewName("redirect:/qna/list_qna.do");
     
     return mav;
   }
