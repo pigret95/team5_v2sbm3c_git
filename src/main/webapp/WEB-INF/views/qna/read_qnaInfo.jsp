@@ -35,9 +35,9 @@
     <DIV class='content_body'>
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터</A> > 
-      <A href="" class='title_link'>1:1 문의</A> > 
+      <A href="/qna/list_qna.do" class='title_link'>1:1 문의</A> > 
       <A href="/qna/list_qna.do" class='title_link'>문의 내역 ></A>
-      <A href="/qna/read_qnainfo.do?qnano=${qnano }" class='title_link'>${title }</A>
+      <A href="/qna/read_qnaInfo.do?qnano=${qnano }" class='title_link'>${title }</A>
     </DIV>    
   
 

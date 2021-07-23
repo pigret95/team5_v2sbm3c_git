@@ -21,7 +21,7 @@
   
     <DIV class='title_line'>
       <A href="/faq/service_home.do" class='title_link'>고객 센터</A> > 
-      <A href="" class='title_link'>1:1 문의 (관리자)</A> > 
+      <A href="/qna/list_qna.do" class='title_link'>1:1 문의 (관리자)</A> > 
       <A href="/qna/list_qna.do" class='title_link'>문의 내역</A>
     </DIV>    
   
