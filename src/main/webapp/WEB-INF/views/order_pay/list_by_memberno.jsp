@@ -62,7 +62,7 @@
       <TH class='th_bs'>결재 타입</TH>
       <TH class='th_bs'>결재 금액</TH>
       <TH class='th_bs'>주문일</TH>
-      <TH class='th_bs'>기타</TH>
+      <TH class='th_bs'>주문 상세</TH>
     </TR>
     <c:choose>
       <c:when test="${list.size() > 0 }">
