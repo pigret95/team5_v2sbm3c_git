@@ -176,12 +176,17 @@ function cart_ajax_post() {
 <body>
   <jsp:include page="../menu/top.jsp" />
  <DIV class='content_body'>
+ <c:choose>
+ <c:when test="${param.word != '' }">
+   </c:when>
+   <c:otherwise>
   <DIV class='title_line'>
     <A href="../bookgrp/list.do" class='title_link'>도서 그룹</A> > <A
       href="../book/list_by_bookgrpno.do?bookgrpno=${bookgrpVO.bookgrpno }"
       class='title_link'>${bookgrpVO.grpname }</A> > ${bookVO.bookname }
   </DIV>
-  
+</c:otherwise>
+  </c:choose>
       
       
  
@@ -273,6 +278,7 @@ function cart_ajax_post() {
 
 
     <table class="table table-striped" style='width: 100%; border:none;'>
+    
           <colgroup>
             <c:choose> 
            <c:when test="${grade <= 10 }">
@@ -299,6 +305,8 @@ function cart_ajax_post() {
 
           <%-- table 내용 --%>
           <tbody>
+           <c:choose>
+          <c:when test="${list.size() > 0 }">
             <c:forEach var="contentsVO" items="${list }" varStatus="status">
               <c:set var="contentsno" value="${contentsVO.contentsno }" />
               <c:set var="thumb1" value="${contentsVO.thumb1 }" />
@@ -357,9 +365,19 @@ function cart_ajax_post() {
                 </c:choose>
               </tr>
             </c:forEach>
-
+           </c:when>
+                
+          <c:otherwise>
+              <tr>
+                <td colspan="6" style="text-align: center; font-size: 1.3em;">"${param.word }"에 대한 검색 내역이 없습니다.
+                <br> 검색어의 철자가 정확한지 다시 한번 확인해주세요
+              <br> 검색어의 단어 수를 줄이거나, 두 단어 이상의 검색어인 경우, 띄어쓰기를 해주세요</td>
+              </tr>
+   
+          </c:otherwise>
+          </c:choose>
           </tbody>
-          
+    
     </table>
     
     <DIV class='bottom_menu'>${paging }</DIV>

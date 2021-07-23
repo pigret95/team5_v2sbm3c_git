@@ -253,7 +253,7 @@ function read_delete_ajax(bookno) {
       <TR>
       <TD class="td_bs_left">${bookVO.bookno }</TD>
       <TD class="td_bs_left">${bookVO.bookgrpno }</TD>
-         <TD class="td_bs_left"><A href="../contents/list_by_bookno_search_paging.do?bookno=${bookVO.bookno }&now_page=1 ">${bookVO.bookname }</A></TD>
+         <TD class="td_bs_left"><A href="../contents/list_by_bookno_search_paging.do?bookno=${bookVO.bookno }&now_page=1&word= ">${bookVO.bookname }</A></TD>
         <TD class="td_bs">${bookVO.rdate.substring(0, 10) }</TD>
         
         <c:choose> 

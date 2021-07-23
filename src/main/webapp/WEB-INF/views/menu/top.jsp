@@ -27,7 +27,7 @@ function search_check(){
 /*    alert('검색어를 입력하세요'); */
  /*   location.href  ="/index.do"; */
      }else{
-       location.href  ="/contents/list_by_bookno_search_paging.do?word="+word;
+       location.href  ="/contents/list_by_bookno_search_paging.do?bookno=30100&word="+word;
          } 
 }
 
@@ -157,83 +157,83 @@ function search_check(){
 
 <div class="board">
   <ul class="list">
-    <li style="font-size:15px;"><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=10100">소설</a></li>
+    <li style="font-size:15px;"><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=10100&now_page=1&word= ">소설</a></li>
     <br>
-    <li style="font-size:15px;"><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=20100">시/에세이</a></li>
+    <li style="font-size:15px;"><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=20100&now_page=1&word= ">시/에세이</a></li>
     <br>
     <li style="font-size:15px;"><a class="menu_link" href="#">경제/경영</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30100">경영</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30200">경제</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30300">세무/회계</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30400">마케팅/광고</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30500">유통/창업</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30600">재테크/금융</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30100&now_page=1&word= ">경영</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30200&now_page=1&word= ">경제</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30300&now_page=1&word= ">세무/회계</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30400&now_page=1&word= ">마케팅/광고</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30500&now_page=1&word= ">유통/창업</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=30600&now_page=1&word= ">재테크/금융</a></li>
   </ul>
   
   <ul class="list">
     <li style="font-size:15px;">인문</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40100">인문학일반</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40200">심리학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40300">교육학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40400">유아교육</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40500">철학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40100&now_page=1&word= ">인문학일반</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40200&now_page=1&word= ">심리학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40300&now_page=1&word= ">교육학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40400&now_page=1&word= ">유아교육</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=40500&now_page=1&word= ">철학</a></li>
     <br>
     <li style="font-size:15px;">자기계발</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50100">성공/처세</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50200">자기능력계발</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50300">인간관계</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50100&now_page=1&word= ">성공/처세</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50200&now_page=1&word= ">자기능력계발</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=50300&now_page=1&word= ">인간관계</a></li>
   </ul>
   <ul class="list">
     <li style="font-size:15px;">과학</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60100">과학이론</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60200">수학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60300">물리학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60400">화학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60500">생물학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60600">지구과학</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60700">천문학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60100&now_page=1&word= ">과학이론</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60200&now_page=1&word= ">수학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60300&now_page=1&word= ">물리학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60400&now_page=1&word= ">화학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60500&now_page=1&word= ">생물학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60600&now_page=1&word= ">지구과학</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=60700&now_page=1&word= ">천문학</a></li>
   </ul>
   <ul class="list">
     <li style="font-size:15px;">기술/공학</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70100">토목/건설</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70200">건축/인테리어</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70300">자동차/운전</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70400">기계</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70500">전기/전자</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70100&now_page=1&word= ">토목/건설</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70200&now_page=1&word= ">건축/인테리어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70300&now_page=1&word= ">자동차/운전</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70400&now_page=1&word= ">기계</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=70500&now_page=1&word= ">전기/전자</a></li>
     <br>
     <li style="font-size:15px;">자격증</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80100">토익</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80200">컴퓨터</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80300">기능사</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80400">산업기사</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80500">기사</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80600">기타자격증</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80100&now_page=1&word= ">토익</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80200&now_page=1&word= ">컴퓨터</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80300&now_page=1&word= ">기능사</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80400&now_page=1&word= ">산업기사</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80500&now_page=1&word= ">기사</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=80600&now_page=1&word= ">기타자격증</a></li>
     </ul>
     <ul class="list">
     <li style="font-size:15px;">IT</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90100">IT일반</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90200">OS</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90300">네트워크</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90400">보안/해킹</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90500">데이터베이스</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90600">웹프로그래밍</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90700">프로그래밍/언어</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90800">모바일프로그래밍</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90100&now_page=1&word= ">IT일반</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90200&now_page=1&word= ">OS</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90300&now_page=1&word= ">네트워크</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90400&now_page=1&word= ">보안/해킹</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90500&now_page=1&word= ">데이터베이스</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90600&now_page=1&word= ">웹프로그래밍</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90700&now_page=1&word= ">프로그래밍/언어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=90800&now_page=1&word= ">모바일프로그래밍</a></li>
   </ul>
   <ul class="list">
     <li style="font-size:15px;">중/고등참고서</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100100">고등학교</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100200">중학교</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100300">논술/면접</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100400">검정고시</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100500">EBS</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100600">올림피아드</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100100&now_page=1&word= ">고등학교</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100200&now_page=1&word= ">중학교</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100300&now_page=1&word= ">논술/면접</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100400&now_page=1&word= ">검정고시</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100500&now_page=1&word= ">EBS</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=100600&now_page=1&word= ">올림피아드</a></li>
     <br>
     <li style="font-size:15px;">외국어</li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110100">영어</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110200">중국어</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110300">일본어</a></li>
-    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110400">그 외 언어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110100&now_page=1&word= ">영어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110200&now_page=1&word= ">중국어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110300&now_page=1&word= ">일본어</a></li>
+    <li><a class="menu_link" href="/contents/list_by_bookno_search_paging.do?bookno=110400&now_page=1&word= ">그 외 언어</a></li>
   </ul>
 </div>
 
