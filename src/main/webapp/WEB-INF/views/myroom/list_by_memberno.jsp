@@ -170,61 +170,70 @@
     </thead>
     
     <tbody>
-      <c:forEach var="myroomVO" items="${list }">
-        <c:set var="myroomno" value="${myroomVO.myroomno }" />
-        <c:set var="contentsno" value="${myroomVO.contentsno }" />
-        <c:set var="memberno" value="${myroomVO.memberno }" />
-        <c:set var="rdate" value="${myroomVO.rdate }" />
-        
-        <c:set var="title" value="${myroomVO.title }" />
-        <c:set var="content" value="${myroomVO.content }" />
-        <c:set var="thumb1" value="${myroomVO.thumb1 }" />
-        <c:set var="price" value="${myroomVO.price }" />
-        <c:set var="saleprice" value="${myroomVO.saleprice }" />
-        <c:set var="dc" value="${myroomVO.dc }" />
-        <c:set var="point" value="${myroomVO.point }" />
-        
-        
-                 
-      <tr>
-        <td>
-          <input type="checkbox" id="chkBox" name="chkBox" data-Myroomno="${myroomno }">
-        </td> 
-        
-          <td style='vertical-align: middle; text-align: center;'>
+      <c:choose>
+       <c:when test="${list.size() > 0 }">
+        <c:forEach var="myroomVO" items="${list }">
+          <c:set var="myroomno" value="${myroomVO.myroomno }" />
+          <c:set var="contentsno" value="${myroomVO.contentsno }" />
+          <c:set var="memberno" value="${myroomVO.memberno }" />
+          <c:set var="rdate" value="${myroomVO.rdate }" />
           
-            <c:choose>
-              <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
-                <%-- /static/contents/storage/ --%>
-                <a href="/contents/read.do?contentsno=${contentsno}"><IMG src="/contents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
-              </c:when>
-              <c:otherwise> <!-- 이미지가 아닌 일반 파일 -->
-                ${contentsVO.file1}
-              </c:otherwise>
-            </c:choose>
-          </td>  
+          <c:set var="title" value="${myroomVO.title }" />
+          <c:set var="content" value="${myroomVO.content }" />
+          <c:set var="thumb1" value="${myroomVO.thumb1 }" />
+          <c:set var="price" value="${myroomVO.price }" />
+          <c:set var="saleprice" value="${myroomVO.saleprice }" />
+          <c:set var="dc" value="${myroomVO.dc }" />
+          <c:set var="point" value="${myroomVO.point }" />
           
-          <td style='vertical-align: middle; text-align: left;'>
-            <a href="/contents/read.do?contentsno=${contentsno}"><strong>${title}</strong></a> 
-          </td>
           
-          <td style='vertical-align: middle; text-align: center;'>
-            <del><fmt:formatNumber value="${price}" pattern="#,###" /></del><br>
-            <span style="color: #FF0000; font-size: 1.2em;">${dc} %</span>
-            <strong><fmt:formatNumber value="${saleprice}" pattern="#,###" /></strong><br>
-            <span style="font-size: 0.8em;">포인트: <fmt:formatNumber value="${point}" pattern="#,###" /></span>
-          </td>
+                   
+        <tr>
+          <td>
+            <input type="checkbox" id="chkBox" name="chkBox" data-Myroomno="${myroomno }">
+          </td> 
           
-          <td style='vertical-align: middle; text-align: center;'>
-            ${rdate.substring(0, 10)} <!-- 년월일 -->
-          </td>
-          
-          <td style='vertical-align: middle; text-align: center;'>
-           <button type="submit" id="btn_cart" onclick='cart_ajax(${contentsno })'>장바구니</button><br>
-           <A href="javascript: delete_func(${myroomno })"><IMG src="/cart/images/delete4.png" title="삭제"></A> 
-          </td>
-        </tr>
-      </c:forEach>
+            <td style='vertical-align: middle; text-align: center;'>
+            
+              <c:choose>
+                <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
+                  <%-- /static/contents/storage/ --%>
+                  <a href="/contents/read.do?contentsno=${contentsno}"><IMG src="/contents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
+                </c:when>
+                <c:otherwise> <!-- 이미지가 아닌 일반 파일 -->
+                  ${contentsVO.file1}
+                </c:otherwise>
+              </c:choose>
+            </td>  
+            
+            <td style='vertical-align: middle; text-align: left;'>
+              <a href="/contents/read.do?contentsno=${contentsno}"><strong>${title}</strong></a> 
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              <del><fmt:formatNumber value="${price}" pattern="#,###" /></del><br>
+              <span style="color: #FF0000; font-size: 1.2em;">${dc} %</span>
+              <strong><fmt:formatNumber value="${saleprice}" pattern="#,###" /></strong><br>
+              <span style="font-size: 0.8em;">포인트: <fmt:formatNumber value="${point}" pattern="#,###" /></span>
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              ${rdate.substring(0, 10)} <!-- 년월일 -->
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+             <button type="submit" id="btn_cart" onclick='cart_ajax(${contentsno })'>장바구니</button><br>
+             <A href="javascript: delete_func(${myroomno })"><IMG src="/cart/images/delete4.png" title="삭제"></A> 
+            </td>
+          </tr>
+        </c:forEach>
+        </c:when>
+        <c:otherwise>
+          <tr>
+            <td colspan="7"  style="text-align: center; font-size: 1.3em; padding: 50px;">보관함에 담은 상품이 없습니다.</td>
+         </tr>
+        </c:otherwise>
+      </c:choose>
     </tbody>
   </table>
     

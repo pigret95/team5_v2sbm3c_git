@@ -184,70 +184,79 @@ $(function(){
     </thead>
     
     <tbody>
-      <c:forEach var="cartVO" items="${list }" varStatus="status">
-        <c:set var="cartno" value="${cartVO.cartno }" />
-        <c:set var="contentsno" value="${cartVO.contentsno }" />
-        <c:set var="memberno" value="${cartVO.memberno }" />
-        <c:set var="cnt" value="${cartVO.cnt }" />
-        <c:set var="rdate" value="${cartVO.rdate }" />
-        
-        <c:set var="title" value="${cartVO.title }" />
-        <c:set var="content" value="${cartVO.content }" />
-        <c:set var="thumb1" value="${cartVO.thumb1 }" />
-        <c:set var="price" value="${cartVO.price }" />
-        <c:set var="saleprice" value="${cartVO.saleprice }" />
-        <c:set var="dc" value="${cartVO.dc }" />
-        <c:set var="point" value="${cartVO.point }" />
-        
-        <c:set var="tot" value="${cartVO.tot }" />
-        <c:set var="tot_cnt" value="${cartVO.tot_cnt }" />
+      <c:choose>
+       <c:when test="${list.size() > 0 }">
+        <c:forEach var="cartVO" items="${list }" varStatus="status">
+          <c:set var="cartno" value="${cartVO.cartno }" />
+          <c:set var="contentsno" value="${cartVO.contentsno }" />
+          <c:set var="memberno" value="${cartVO.memberno }" />
+          <c:set var="cnt" value="${cartVO.cnt }" />
+          <c:set var="rdate" value="${cartVO.rdate }" />
           
-        <tr>
-          <td>
-            <input type="checkbox" id="chkBox" name="chkBox" data-cartNum="${cartno }">
-          </td>
-              
-          <td style='vertical-align: middle; text-align: center;'>
-            <c:choose>
-              <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
-                <%-- /static/contents/storage/ --%>
-                <a href="/contents/read.do?contentsno=${contentsno}"><IMG src="/contents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
-              </c:when>
-              <c:otherwise> <!-- 이미지가 아닌 일반 파일 -->
-                ${contentsVO.file1}
-              </c:otherwise>
-            </c:choose>
-          </td>  
+          <c:set var="title" value="${cartVO.title }" />
+          <c:set var="content" value="${cartVO.content }" />
+          <c:set var="thumb1" value="${cartVO.thumb1 }" />
+          <c:set var="price" value="${cartVO.price }" />
+          <c:set var="saleprice" value="${cartVO.saleprice }" />
+          <c:set var="dc" value="${cartVO.dc }" />
+          <c:set var="point" value="${cartVO.point }" />
           
-          <td style='vertical-align: middle; text-align: left;'>
-            <a href="/contents/read.do?contentsno=${contentsno}"><strong>${title}</strong></a> 
-          </td>
-          
-          <td style='vertical-align: middle; text-align: center;'>
-            <del><fmt:formatNumber value="${price}" pattern="#,###" /></del><br>
-            <span style="color: #FF0000; font-size: 1.2em;">${dc} %</span>
-            <strong><fmt:formatNumber value="${saleprice}" pattern="#,###" /></strong><br>
-            <span style="font-size: 0.8em;">포인트: <fmt:formatNumber value="${point}" pattern="#,###" /></span>
-          </td>
-          
-          <td style='vertical-align: middle; text-align: center;'>
-            <input type='number' id='${cartno }_cnt' min='1' max='100' step='1' value="${cnt }" 
-              style='width: 52px;'><br>
-            <button type='button' onclick="update_cnt(${cartno})" class='btn' style='margin-top: 5px;'>변경</button>
-          </td>
-          
-          <td style='vertical-align: middle; text-align: center;'>
-            <fmt:formatNumber value="${tot}" pattern="#,###" />
-          </td>
-          
-          <td style='vertical-align: middle; text-align: center;'>
-            <!-- <A href="#"><IMG src="#" title="보관함담기"></A><br> -->
-            <button type="button" id='btn_myroom' onclick="myroom_ajax(${contentsno})">보관함담기</button><br>
-            <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
-            <%-- <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button> --%>
-          </td>
-        </tr>
-      </c:forEach>
+          <c:set var="tot" value="${cartVO.tot }" />
+          <c:set var="tot_cnt" value="${cartVO.tot_cnt }" />
+            
+          <tr>
+            <td>
+              <input type="checkbox" id="chkBox" name="chkBox" data-cartNum="${cartno }">
+            </td>
+                
+            <td style='vertical-align: middle; text-align: center;'>
+              <c:choose>
+                <c:when test="${thumb1.endsWith('jpg') || thumb1.endsWith('png') || thumb1.endsWith('gif')}">
+                  <%-- /static/contents/storage/ --%>
+                  <a href="/contents/read.do?contentsno=${contentsno}"><IMG src="/contents/storage/${thumb1 }" style="width: 120px; height: 80px;"></a> 
+                </c:when>
+                <c:otherwise> <!-- 이미지가 아닌 일반 파일 -->
+                  ${contentsVO.file1}
+                </c:otherwise>
+              </c:choose>
+            </td>  
+            
+            <td style='vertical-align: middle; text-align: left;'>
+              <a href="/contents/read.do?contentsno=${contentsno}"><strong>${title}</strong></a> 
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              <del><fmt:formatNumber value="${price}" pattern="#,###" /></del><br>
+              <span style="color: #FF0000; font-size: 1.2em;">${dc} %</span>
+              <strong><fmt:formatNumber value="${saleprice}" pattern="#,###" /></strong><br>
+              <span style="font-size: 0.8em;">포인트: <fmt:formatNumber value="${point}" pattern="#,###" /></span>
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              <input type='number' id='${cartno }_cnt' min='1' max='100' step='1' value="${cnt }" 
+                style='width: 52px;'><br>
+              <button type='button' onclick="update_cnt(${cartno})" class='btn' style='margin-top: 5px;'>변경</button>
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              <fmt:formatNumber value="${tot}" pattern="#,###" />
+            </td>
+            
+            <td style='vertical-align: middle; text-align: center;'>
+              <!-- <A href="#"><IMG src="#" title="보관함담기"></A><br> -->
+              <button type="button" id='btn_myroom' onclick="myroom_ajax(${contentsno})">보관함담기</button><br>
+              <A href="javascript: delete_func(${cartno })"><IMG src="/cart/images/delete4.png" title="삭제"></A>
+              <%-- <button type="button" id='btn_del' data-cartno="${cartno}">삭제</button> --%>
+            </td>
+          </tr>
+        </c:forEach> 
+       </c:when>
+       <c:otherwise>
+         <tr>
+          <td colspan="7"  style="text-align: center; font-size: 1.3em; padding: 50px;">장바구니에 담은 상품이 없습니다.</td>
+         </tr>
+       </c:otherwise>
+      </c:choose>
       
     </tbody>
   </table>
@@ -303,10 +312,17 @@ $(function(){
       </tr>
     </tbody>
   </table>
-  <div style="text-align: center;">   
-    <form name='frm' id='frm' style='margin-top: 50px;' action="/order_pay/create.do" method='get'>
-      <button type='submit' id='btn_order' class="btn btn-primary">주문하기</button>
-    </form>
+  <div style="text-align: center;">
+    <c:choose>
+      <c:when test="${list.size() > 0 }">   
+        <form name='frm' id='frm' style='margin-top: 50px;' action="/order_pay/create.do" method='get'>
+          <button type='submit' id='btn_order' class="btn btn-primary">주문하기</button>
+        </form>
+      </c:when>
+      <c:otherwise>
+      
+      </c:otherwise>
+    </c:choose>
   </div>
   
 </DIV>
