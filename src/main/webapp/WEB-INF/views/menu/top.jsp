@@ -26,8 +26,9 @@ function search_check(){
   if($.trim(word).length==0){
 /*    alert('검색어를 입력하세요'); */
  /*   location.href  ="/index.do"; */
+    alert("검색어를 입력하세요");
      }else{
-       location.href  ="/contents/list_by_bookno_search_paging.do?bookno=30100&word="+word;
+       location.href  ="/contents/list_by_bookno_search_paging.do?word="+word;
          } 
 }
 
