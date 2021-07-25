@@ -99,7 +99,7 @@ function search_check(){
         
         
           <div class="search_input_main">
-          <input style="border:none;" type='text' name='word' id='word' value=''>
+          <input style="border:none;" type='text' name='word' id='word' value='${param.word }'  >
           </div>
        
         <!-- search_input_main -->
