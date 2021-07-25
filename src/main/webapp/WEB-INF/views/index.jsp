@@ -146,12 +146,7 @@
   </DIV>  
  
  <DIV>
- <a href="/contents/create.do?bookno=10100&bookgrpno=10000">소설카테고리에 책등록</a>
-<br>
- <a href="/contents/update_file.do?contentsno=11000">책이미지수정</a>
- <br>
- <a href="/event/update.do?eventno=1">이벤트수정</a>
- 
+
  
  
  </DIV>
