@@ -57,7 +57,7 @@
         </c:choose>
                     
         <button type='button' 
-                    onclick="location.href='./list_by_bookno_search_paging.do?bookno=${param.bookno}'"
+                    onclick="location.href='./list_by_bookno_search_paging.do?&now_page=1&bookno=${param.bookno}&word='"
                     class="btn btn-info">목록</button>
       </LI>
      </UL>

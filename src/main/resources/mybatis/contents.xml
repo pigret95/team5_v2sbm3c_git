@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE bookno=#{bookno}
       </when>
       <otherwise> <!-- 검색하는 경우의 레코드 갯수 -->
-        WHERE bookno=#{bookno} AND (title LIKE '%' || #{word} || '%' 
+        WHERE  bookno=#{bookno} AND  (title LIKE '%' || #{word} || '%' 
                                                        OR content LIKE '%' || #{word} || '%' 
                                                        OR word LIKE '%' || #{word} || '%')
       </otherwise>

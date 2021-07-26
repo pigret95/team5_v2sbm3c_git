@@ -123,7 +123,7 @@
       <DIV class='content_bottom_menu'>
         <button type="submit" class="btn btn-info">등록</button>
         <button type="button" 
-                    onclick="location.href='./list_by_bookno_search_paging.do?bookgrpno=${param.bookgrpno}'" 
+                    onclick="location.href='./list_by_bookno_search_paging.do?bookno=${param.bookno}&word= '" 
                     class="btn btn-info">취소[목록]</button>
       </DIV>
        
