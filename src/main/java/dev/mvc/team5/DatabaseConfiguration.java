@@ -1,4 +1,4 @@
-package dev.mvc.book_world;
+package dev.mvc.team5;
 
 import javax.sql.DataSource;
 
@@ -18,7 +18,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @PropertySource("classpath:/application.properties")  // 占쎄퐬占쎌젟 占쎈솁占쎌뵬 占쎌맄燁삼옙
-@MapperScan(basePackages= {"dev.mvc.book_world",
+@MapperScan(basePackages= {"dev.mvc.team5_v2sbm3c_git",
                            "dev.mvc.member",
                            "dev.mvc.bookgrp",
                            "dev.mvc.book",
