@@ -23,8 +23,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>789</x>
-        <y>40</y>
+        <x>833</x>
+        <y>10</y>
       </constraint>
       <sourceConnections>
         <net.java.amateras.db.visual.model.ForeignKeyModel>
@@ -51,8 +51,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1119</x>
-              <y>241</y>
+              <x>1061</x>
+              <y>262</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.db.visual.model.ForeignKeyModel>
@@ -79,8 +79,8 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>605</x>
-                    <y>589</y>
+                    <x>643</x>
+                    <y>516</y>
                   </constraint>
                   <sourceConnections/>
                   <targetConnections>
@@ -107,8 +107,8 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>20</x>
-                          <y>691</y>
+                          <x>28</x>
+                          <y>658</y>
                         </constraint>
                         <sourceConnections>
                           <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -164,7 +164,7 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>14</x>
+                                      <x>36</x>
                                       <y>185</y>
                                     </constraint>
                                     <sourceConnections>
@@ -192,8 +192,8 @@
                                           <constraint>
                                             <height>-1</height>
                                             <width>-1</width>
-                                            <x>18</x>
-                                            <y>15</y>
+                                            <x>56</x>
+                                            <y>18</y>
                                           </constraint>
                                           <sourceConnections/>
                                           <targetConnections>
@@ -389,7 +389,7 @@
                                       <height>-1</height>
                                       <width>-1</width>
                                       <x>119</x>
-                                      <y>509</y>
+                                      <y>475</y>
                                     </constraint>
                                     <sourceConnections>
                                       <net.java.amateras.db.visual.model.ForeignKeyModel>
@@ -1230,8 +1230,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1402</x>
-              <y>38</y>
+              <x>1360</x>
+              <y>39</y>
             </constraint>
             <sourceConnections>
               <net.java.amateras.db.visual.model.ForeignKeyModel reference="../../.."/>
@@ -1580,8 +1580,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1430</x>
-        <y>378</y>
+        <x>1315</x>
+        <y>458</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -1721,8 +1721,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1092</x>
-        <y>734</y>
+        <x>996</x>
+        <y>729</y>
       </constraint>
       <sourceConnections>
         <net.java.amateras.db.visual.model.ForeignKeyModel>
@@ -1749,8 +1749,8 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>1119</x>
-              <y>527</y>
+              <x>1064</x>
+              <y>575</y>
             </constraint>
             <sourceConnections/>
             <targetConnections>
@@ -1880,8 +1880,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>1432</x>
-        <y>637</y>
+        <x>1257</x>
+        <y>703</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -1964,7 +1964,7 @@
   </children>
   <dommains/>
   <dialectName>Oracle</dialectName>
-  <logicalMode>false</logicalMode>
+  <logicalMode>true</logicalMode>
   <jarFile>C:\ai8\ojdbc8.jar</jarFile>
   <jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
   <jdbcUrl>jdbc:oracle:thin:@localhost:1521:XE</jdbcUrl>

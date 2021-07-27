@@ -1,4 +1,4 @@
-package dev.mvc.team5;
+package dev.mvc.book_world;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"dev.mvc"})
-public class Team5V2sbm3cApplication {
+public class BookWorldApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Team5V2sbm3cApplication.class, args);
+		SpringApplication.run(BookWorldApplication.class, args);
 	}
 
 }
