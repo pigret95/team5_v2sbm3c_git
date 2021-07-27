@@ -61,3 +61,16 @@ Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
 
 ● 회원 목록
 ![member](https://user-images.githubusercontent.com/42789806/127171244-6c1c279b-bc2a-4e3b-a30d-8d1b276915cf.png)
+
+● 장바구니
+![jumun](https://user-images.githubusercontent.com/42789806/127180188-493f5012-958c-402a-8435-7035e723e6e8.png)
+
+● 주문하기
+![jumun2](https://user-images.githubusercontent.com/42789806/127180414-79138784-9351-40e4-92a4-bfc753c10ffa.png)
+
+● 주문내역
+![gz](https://user-images.githubusercontent.com/42789806/127180602-7765c056-f73f-4613-9051-d83e3e250b22.png)
+
+● 상품문의
+![munyipng](https://user-images.githubusercontent.com/42789806/127180794-f92328d3-7681-46c8-aded-af2ea3856dba.png)
+
