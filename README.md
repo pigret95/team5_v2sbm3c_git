@@ -45,7 +45,7 @@ Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
 ### 5) Action
 
 ● main(index)
-![KakaoTalk_20210727_222938881](https://user-images.githubusercontent.com/42789806/127164795-a0d9b218-abe6-4af1-a20d-8f19af245f64.png)
+![main](https://user-images.githubusercontent.com/42789806/127178849-4da53df5-7556-424d-821d-139752204156.png)
 
 ● 로그인 페이지
 ![login](https://user-images.githubusercontent.com/42789806/127169971-bce76549-4e54-4525-bbb9-6e7f859d9517.png)
