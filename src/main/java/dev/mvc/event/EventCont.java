@@ -155,7 +155,7 @@ public class EventCont {
     HashMap<String, Object> map = new HashMap<String, Object>(); 
     map.put("word", word); 
     
-    List<EventVO> list = this.eventProc.list();
+    List<EventVO> list = this.eventProc.list_search(map);
     mav.addObject("list", list);
 
     
