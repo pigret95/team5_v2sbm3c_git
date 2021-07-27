@@ -39,4 +39,6 @@ Technology : JDBC, HTML5, CSS, EL, Javascript, JSON, JSP, AJAX
 
 Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
 
+![KakaoTalk_20210727_222938881](https://user-images.githubusercontent.com/42789806/127164795-a0d9b218-abe6-4af1-a20d-8f19af245f64.png)
+
 
