@@ -30,7 +30,7 @@ O/S : Windows 10
 
 Language : JAVA (JDK1.8.0_281)
 
-DBMS : MySQL, MariaDB
+DBMS : Oracle
 
 Web Application Server : boot DEVTOOLS
 
