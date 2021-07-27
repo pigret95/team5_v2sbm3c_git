@@ -44,7 +44,17 @@ Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
 ![team5](https://user-images.githubusercontent.com/42789806/127168572-a341fd32-bfcf-4391-81fe-a35be5becb84.png)
 ### 5) Action
 
-   ● main(index)
+● main(index)
 ![KakaoTalk_20210727_222938881](https://user-images.githubusercontent.com/42789806/127164795-a0d9b218-abe6-4af1-a20d-8f19af245f64.png)
 
+● 로그인 페이지
+![login](https://user-images.githubusercontent.com/42789806/127169971-bce76549-4e54-4525-bbb9-6e7f859d9517.png)
 
+● 자주 물어보는 질문 페이지
+![fag](https://user-images.githubusercontent.com/42789806/127170935-8f016ee2-ad36-482c-b642-bdffa90819a8.png)
+
+● 회원 가입
+![gayip](https://user-images.githubusercontent.com/42789806/127171497-c640262c-a850-41e3-9bf7-e64c22874d1b.png)
+
+● 회원 목록
+![member](https://user-images.githubusercontent.com/42789806/127171244-6c1c279b-bc2a-4e3b-a30d-8d1b276915cf.png)
