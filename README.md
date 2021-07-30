@@ -14,13 +14,16 @@ MariaDB기반 모델링을 토대로 Spring Boot 기반 동작하는 도서 판�
 
 ● '회원' 테이블은 회원가입 및 로그인 기능을 제공하며 이름, 아이디, 패스워드, 이메일, 주소 등의 데이터를 입력할 수있다.
 
+● '회원' 테이블의 비밀번호 암호화를 위해 AES128 알고리즘을 사용하였다.
+
 ● 테이블 간의 참조관계 및 제약조건 설정을 통해 무결성을 유지시켰다.
 
 ● index 화면과 각각의 View는 CDN 방식의 BootStrap과 css를 활용해 UI의 접근성을 상승시켰다.
 
-● '도서 그룹'과 '도서' 등록 및 수정 삭제 시 Spring Controller와 AJAX 통신, JQuery를 사용해 메모리 사용을 절감하였다.
+● '도서 그룹'과 '도서' 등록 및 수정 삭제 시 Spring Controller와 AJAX 통신, jQuery를 사용해 메모리 사용을 절감하였다.
 
-● '컨텐츠'와 '회원' 레코드 등록 시 id 및 이메일 등에 대한 유효성 검사를 위해 AJAX 통신과 JQuery가 사용됐다.
+● '컨텐츠'와 '회원' 레코드 등록 시 id 및 이메일 등에 대한 유효성 검사를 위해 AJAX 통신과 jQuery가 사용됐다.
+
 
 
 
@@ -34,11 +37,11 @@ DBMS : Oracle 11g
 
 Web Application Server : boot DEVTOOLS
 
-Framework : Spring Boot 2.4.3, Mybatis 3.4.1, BootStrap 3.4.1, JQuery
+Framework : Spring Boot 2.4.3, Mybatis 3.4.1, BootStrap 3.4.1, jQuery
 
-Technology : JDBC, HTML5, CSS, EL, Javascript, JSON, JSP, AJAX
+Technology : JDBC, HTML5, CSS, EL, Javascript, JSON, JSP, Ajax
 
-Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
+Tools : STS 4.6.0, Amateras UML, Amateras ERD, SQLdeveloper
 
 ### 4) ERD
 ![team5](https://user-images.githubusercontent.com/42789806/127168572-a341fd32-bfcf-4391-81fe-a35be5becb84.png)
