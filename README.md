@@ -80,6 +80,17 @@ Tools : STS4, Amateras UML, Amateras ERD, SQLdeveloper
 ● 주문내역
 ![gz](https://user-images.githubusercontent.com/42789806/127180602-7765c056-f73f-4613-9051-d83e3e250b22.png)
 
+● 주문상세
+![order_item](https://user-images.githubusercontent.com/62326572/127650419-4ac82d54-9a44-4790-9610-64450a5d9286.PNG)
+
 ● 상품문의
 ![munyipng](https://user-images.githubusercontent.com/42789806/127180794-f92328d3-7681-46c8-aded-af2ea3856dba.png)
+
+QnA 질문
+![qna_q](https://user-images.githubusercontent.com/62326572/127650481-12616dda-4ca2-4ae2-be56-8f2946b222da.PNG)
+![qna_r](https://user-images.githubusercontent.com/62326572/127650487-bd653c39-ef8c-4c33-bfb4-c860462f9183.PNG)
+![qna_c](https://user-images.githubusercontent.com/62326572/127650501-73de13b0-42a7-478a-8395-978558606d07.PNG)
+
+
+
 
