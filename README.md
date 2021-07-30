@@ -1,7 +1,7 @@
 # team5_v2sbm3c_git
 ### 1) Project Subject
 
-MariaDB기반 모델링을 토대로 Spring Boot 기반 동작하는 도서 판매 및 구입 Website를 제작한다.
+Oracle 기반 모델링을 토대로 Spring Boot 기반 동작하는 도서 판매 및 구입 Website를 제작한다.
 ### 2) Main Function
 
 ● 테이블은 총 13개로 '도서 그룹', '도서', '컨텐츠', '회원', '장바구니', '보관함','주문상세','주문_결제','질문 답변 관리','이벤트','공지사항','자주묻는질문','faq질문그룹'이 존재한다.
